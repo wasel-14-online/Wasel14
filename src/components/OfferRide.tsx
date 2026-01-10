@@ -12,6 +12,7 @@ import { Badge } from './ui/badge';
 import { MapComponent } from './MapComponent';
 import { toast } from 'sonner';
 import { tripsAPI } from '../services/api';
+import { mapsService } from '../services/integrations';
 import { useAuth } from '../contexts/AuthContext';
 
 interface Stop {
@@ -40,7 +41,15 @@ export function OfferRide() {
   const [acceptPackages, setAcceptPackages] = useState(false);
 
   // Mock geocoding - In production, use a real geocoding service
-  const geocodeLocation = (location: string): { lat: number; lng: number } => {
+  // Systems Thinking: Leverage real geocoding service with fallback
+  const resolveLocation = async (location: string): Promise<{ lat: number; lng: number }> => {
+    try {
+      const result = await mapsService.geocodeAddress(location);
+      if (result) return result.coordinates;
+    } catch (err) {
+      console.error('Geocoding failed, using system fallback');
+    }
+
     const mockCoordinates: Record<string, { lat: number; lng: number }> = {
       'dubai': { lat: 25.2048, lng: 55.2708 },
       'abu dhabi': { lat: 24.4539, lng: 54.3773 },
@@ -50,14 +59,14 @@ export function OfferRide() {
       'alexandria': { lat: 31.2001, lng: 29.9187 },
       'doha': { lat: 25.2867, lng: 51.5310 },
     };
-    
+
     const key = location.toLowerCase();
     return mockCoordinates[key] || { lat: 25.2048, lng: 55.2708 };
   };
 
-  const addStop = () => {
+  const addStop = async () => {
     if (newStopLabel.trim()) {
-      const coords = geocodeLocation(newStopLabel);
+      const coords = await resolveLocation(newStopLabel);
       setStops([...stops, { label: newStopLabel, ...coords }]);
       setNewStopLabel('');
     }
@@ -100,27 +109,39 @@ export function OfferRide() {
   };
 
   // Prepare map locations for preview
-  const getMapLocations = () => {
-    if (!from && !to && stops.length === 0) return [];
-    
-    const locations = [];
-    
+  const [mapLocations, setMapLocations] = useState<any[]>([]);
+
+  const updateMapPreview = async () => {
+    if (!from && !to && stops.length === 0) {
+      setMapLocations([]);
+      return;
+    }
+
+    const locations: any[] = [];
+
     if (from) {
-      const coords = geocodeLocation(from);
-      locations.push({ ...coords, label: from, type: 'start' as const });
+      const coords = await resolveLocation(from);
+      locations.push({ ...coords, label: from, type: 'start' });
     }
-    
+
     stops.forEach(stop => {
-      locations.push({ ...stop, type: 'stop' as const });
+      locations.push({ ...stop, type: 'stop' });
     });
-    
+
     if (to) {
-      const coords = geocodeLocation(to);
-      locations.push({ ...coords, label: to, type: 'destination' as const });
+      const coords = await resolveLocation(to);
+      locations.push({ ...coords, label: to, type: 'destination' });
     }
-    
-    return locations;
+
+    setMapLocations(locations);
   };
+
+  // Systems Thinking: Auto-update preview when route components change
+  useEffect(() => {
+    if (showRoutePreview) {
+      updateMapPreview();
+    }
+  }, [from, to, stops, showRoutePreview]);
 
   return (
     <div className="max-w-4xl mx-auto space-y-8">
@@ -262,7 +283,7 @@ export function OfferRide() {
                 
                 {showRoutePreview && (
                   <MapComponent
-                    locations={getMapLocations()}
+                    locations={mapLocations}
                     showRoute={true}
                     height="300px"
                   />

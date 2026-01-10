@@ -1,4 +1,4 @@
-eimport { ThemeProvider } from 'next-themes';
+import { ThemeProvider } from 'next-themes';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { InstallPWA } from './components/InstallPWA';
 import { DemoBanner } from './components/DemoBanner';
@@ -6,6 +6,8 @@ import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { AIProvider } from './contexts/AIContext';
 import { Toaster } from './components/ui/sonner';
+import { useKeyboardNavigation, SkipLink } from './components/ui/accessibility';
+import { SkeletonScreen } from './components/ui/skeleton-screen';
 import { useState, useEffect } from 'react';
 import { AuthPage } from './components/AuthPage';
 import { LandingPage } from './components/LandingPage';
@@ -82,11 +84,14 @@ function AppContent() {
   const [showAuthPage, setShowAuthPage] = useState(false);
   const [authTab, setAuthTab] = useState<'login' | 'signup'>('signup');
 
+  // Enable keyboard navigation
+  useKeyboardNavigation();
+
   // Show loading state while checking authentication
   if (loading) {
     return (
       <div className="flex h-screen items-center justify-center bg-gray-50 dark:bg-gray-900">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+        <SkeletonScreen variant="dashboard" className="max-w-md" />
       </div>
     );
   }
@@ -271,12 +276,13 @@ function AppContent() {
 
   return (
     <>
+      <SkipLink href="#main-content">Skip to main content</SkipLink>
       <InstallPWA />
       <Toaster />
-      
+
       {/* Voice Assistant */}
       <VoiceAssistant />
-      
+
       {/* Floating Action Button */}
       <FloatingActionButton
         onBookRide={() => setCurrentPage('find-ride')}
@@ -284,7 +290,7 @@ function AppContent() {
         onScheduleTrip={() => setCurrentPage('scheduled-trips')}
         onCorporateBooking={() => setCurrentPage('business')}
       />
-      
+
       <div className="flex h-screen bg-gray-50 dark:bg-gray-900">
         {/* Sidebar */}
         <Sidebar
@@ -301,7 +307,7 @@ function AppContent() {
             onNavigate={setCurrentPage}
           />
 
-          <main className="flex-1 overflow-y-auto p-3 sm:p-6">
+          <main id="main-content" className="flex-1 overflow-y-auto p-3 sm:p-6" role="main">
             <DemoBanner />
             {renderPage()}
           </main>

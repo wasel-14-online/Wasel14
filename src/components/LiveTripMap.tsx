@@ -64,16 +64,19 @@ export function LiveTripMap({
         }
       },
       (error) => {
+        console.error('GPS System Error:', error);
         let errorMessage = 'Unable to retrieve your location';
         switch (error.code) {
           case error.PERMISSION_DENIED:
             errorMessage = 'Location permission denied. Please enable location access in your browser settings.';
             break;
           case error.POSITION_UNAVAILABLE:
-            errorMessage = 'Location information unavailable';
+            errorMessage = 'Location information unavailable. Are you in a tunnel or basement?';
             break;
           case error.TIMEOUT:
-            errorMessage = 'Location request timed out';
+            errorMessage = 'Location request timed out. Retrying system connection...';
+            // Asymmetric Recovery: Automatic retry on timeout
+            setTimeout(startLocationSharing, 10000);
             break;
         }
         setLocationError(errorMessage);

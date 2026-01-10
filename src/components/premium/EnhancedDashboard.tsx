@@ -5,13 +5,13 @@
  * Updated with Wassel Brand Identity (Teal/Sage/Maroon) and new services
  */
 
-import { motion } from 'framer-motion';
-import { 
-  Car, 
-  Package, 
-  Calendar, 
-  TrendingUp, 
-  MapPin, 
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+  Car,
+  Package,
+  Calendar,
+  TrendingUp,
+  MapPin,
   Clock,
   DollarSign,
   Star,
@@ -25,19 +25,42 @@ import {
   Stethoscope,
   Key,
   Bus,
-  Crown
+  Crown,
+  Brain,
+  ArrowRight,
+  Lightbulb,
+  Sparkles
 } from 'lucide-react';
 import { PremiumCard, PremiumCardContent } from './PremiumCard';
 import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
+import { mentalModels } from '../../data/mentalModels';
+import { useConversationAI } from '../../hooks/useAIFeatures';
+import { useEffect, useState } from 'react';
 
 interface EnhancedDashboardProps {
   onNavigate: (page: string) => void;
 }
 
 export function EnhancedDashboard({ onNavigate }: EnhancedDashboardProps) {
+  const [currentModel, setCurrentModel] = useState(mentalModels[0]);
+  const { suggestions: feedback, getSuggestions, loading: feedbackLoading } = useConversationAI();
+
+  useEffect(() => {
+    // Systems Thinking: Auto-select model based on day of month for diversity
+    const day = new Date().getDate();
+    const model = mentalModels[day % mentalModels.length];
+    setCurrentModel(model);
+
+    // Exponential Feedback: Analyze current state vs mental model
+    const history = [
+      { sender: 'system', message: `Current mental model: ${model.title}. User has completed 147 trips.`, timestamp: new Date().toISOString() }
+    ];
+    getSuggestions(history, 'dashboard-thinking-nudge');
+  }, []);
+
   const stats = [
-    { label: 'Total Trips', value: '147', change: '+12%', icon: Car, color: 'from-teal-500 to-teal-700' },
+    { label: 'System Growth', value: '147', change: '+12%', icon: Car, color: 'from-teal-500 to-teal-700' },
     { label: 'This Month', value: 'AED 1,240', change: '+8%', icon: DollarSign, color: 'from-green-500 to-emerald-600' },
     { label: 'Avg Rating', value: '4.9', change: '+0.2', icon: Star, color: 'from-yellow-500 to-amber-600' },
     { label: 'Saved CO₂', value: '24kg', change: '+15%', icon: Zap, color: 'from-teal-400 to-cyan-500' },
@@ -171,6 +194,77 @@ export function EnhancedDashboard({ onNavigate }: EnhancedDashboardProps) {
             </Button>
           </motion.div>
         </div>
+      </motion.div>
+
+      {/* Billionaire Thinking Nudge - The Soul of Feedback */}
+      <motion.div
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.35 }}
+      >
+        <PremiumCard className="overflow-hidden border-0 shadow-xl bg-gradient-to-br from-slate-900 to-indigo-950 text-white" hover>
+          <PremiumCardContent className="p-0">
+            <div className="flex flex-col md:flex-row">
+              <div className="p-6 md:w-2/3 space-y-4">
+                <div className="flex items-center gap-2 text-indigo-400">
+                  <Brain className="w-5 h-5" />
+                  <span className="text-xs font-bold uppercase tracking-widest">Billionaire Mindset • Day {currentModel.day}</span>
+                </div>
+
+                <div>
+                  <h2 className="text-2xl font-bold mb-2 flex items-center gap-2">
+                    {currentModel.title}
+                    <Sparkles className="w-4 h-4 text-amber-400" />
+                  </h2>
+                  <p className="text-slate-300 leading-relaxed italic">
+                    "{currentModel.description}"
+                  </p>
+                </div>
+
+                <AnimatePresence mode="wait">
+                  {feedback.length > 0 && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="bg-white/5 border border-white/10 rounded-xl p-4 flex gap-3 items-start"
+                    >
+                      <Lightbulb className="w-5 h-5 text-amber-400 shrink-0 mt-1" />
+                      <div>
+                        <p className="text-sm font-medium text-indigo-100">Visionary Insight:</p>
+                        <p className="text-xs text-slate-400 mt-1">{feedback[0]}</p>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              <div className="bg-white/5 p-6 md:w-1/3 flex flex-col justify-between border-t md:border-t-0 md:border-l border-white/10">
+                <div className="space-y-4">
+                  <div className="flex justify-between items-end">
+                    <span className="text-xs text-slate-400 uppercase font-bold">Asymmetric Lever</span>
+                    <span className="text-xs font-mono text-indigo-400">High Upside</span>
+                  </div>
+                  <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={{ width: "85%" }}
+                      className="h-full bg-gradient-to-r from-indigo-500 to-purple-500"
+                    />
+                  </div>
+                  <p className="text-[10px] text-slate-500 uppercase tracking-tighter">System alignment with {currentModel.inspiration}</p>
+                </div>
+
+                <Button
+                  onClick={() => onNavigate('thinking-coach')}
+                  className="w-full mt-6 bg-indigo-600 hover:bg-indigo-500 text-white border-0"
+                >
+                  Master Model
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </div>
+            </div>
+          </PremiumCardContent>
+        </PremiumCard>
       </motion.div>
 
       {/* Stats Grid */}

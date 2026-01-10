@@ -4,8 +4,9 @@ import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { Progress } from './ui/progress';
 import { Textarea } from './ui/textarea';
-import { Brain, ChevronLeft, ChevronRight, CheckCircle, Star, Target, Zap, Users, TrendingUp, Share2, Bell, Trophy, Flame } from 'lucide-react';
+import { Brain, ChevronLeft, ChevronRight, CheckCircle, Star, Target, Zap, Users, TrendingUp, Share2, Bell, Trophy, Flame, MessageSquare, Sparkles } from 'lucide-react';
 import { mentalModels, MentalModel } from '../data/mentalModels';
+import { useConversationAI, useNLPSearch, useAITracking } from '../hooks/useAIFeatures';
 
 const availableBadges: Badge[] = [
   { id: 'first-day', title: 'First Step', description: 'Completed your first day', icon: '🌟', unlocked: false },
@@ -53,6 +54,12 @@ export function ThinkingCoach() {
   });
   const [reflection, setReflection] = useState('');
   const [notificationPermission, setNotificationPermission] = useState<NotificationPermission>('default');
+  const [newGoal, setNewGoal] = useState('');
+
+  // Leverage AI Engine
+  const { suggestions: aiPrompts, getSuggestions: getAIPrompts, loading: aiLoading } = useConversationAI();
+  const { parseQuery, loading: parsingLoading } = useNLPSearch();
+  const { trackEvent } = useAITracking();
 
   // Load progress from localStorage
   useEffect(() => {
@@ -125,6 +132,111 @@ export function ThinkingCoach() {
     return badges;
   };
 
+  // Request notification permission
+  const requestNotificationPermission = async () => {
+    if ('Notification' in window) {
+      const permission = await Notification.requestPermission();
+      setNotificationPermission(permission);
+      if (permission === 'granted') {
+        const newProgress = { ...progress, notificationsEnabled: true };
+        saveProgress(newProgress);
+        // Schedule daily reminder
+        scheduleDailyReminder();
+      }
+    }
+  };
+
+  // Schedule daily reminder
+  const scheduleDailyReminder = () => {
+    if (progress.notificationsEnabled && notificationPermission === 'granted') {
+      // For simplicity, show notification immediately for demo
+      // In real app, use service worker for scheduled notifications
+      setTimeout(() => {
+        new Notification('Billionaire Thinking Coach', {
+          body: 'Time for your daily mental model practice!',
+          icon: '/icon-192x192.png'
+        });
+      }, 5000); // 5 seconds for demo
+    }
+  };
+
+  // Add goal with AI parsing (Leverage principle)
+  const addGoal = async () => {
+    if (newGoal.trim()) {
+      const parsed = await parseQuery(newGoal);
+      const goalText = parsed ? `Target: ${parsed.to || parsed.from || newGoal}` : newGoal;
+
+      const newProgress = {
+        ...progress,
+        goals: [...progress.goals, goalText.trim()]
+      };
+      saveProgress(newProgress);
+      setNewGoal('');
+
+      trackEvent('goal_added', { goal: goalText, ai_parsed: !!parsed });
+    }
+  };
+
+  // Get personalized recommendations (Exponential AI Upgrade)
+  const getRecommendations = () => {
+    const recommendations: MentalModel[] = [];
+    const completedDaysSet = new Set(progress.completedDays);
+
+    // Filter out completed models first
+    const availableModels = mentalModels.filter(m => !completedDaysSet.has(m.day));
+    const goalContext = progress.goals.join(' ').toLowerCase();
+
+    if (goalContext) {
+      // Billionaire Logic: Rank models by multidimensional relevance
+      const scoredModels = availableModels.map(model => {
+        let score = 0;
+        const text = (model.title + model.description + model.inspiration).toLowerCase();
+
+        if (goalContext.includes('system') || goalContext.includes('leverage')) score += 5;
+        if (goalContext.includes('wealth') && (text.includes('buffett') || text.includes('compound'))) score += 3;
+        if (goalContext.includes('innovation') && (text.includes('musk') || text.includes('first principles'))) score += 3;
+        if (goalContext.includes('vision') && text.includes('bezos')) score += 3;
+        if (goalContext.includes('freedom') && text.includes('naval')) score += 3;
+
+        return { model, score };
+      }).sort((a, b) => b.score - a.score);
+
+      recommendations.push(...scoredModels.filter(s => s.score > 0).map(s => s.model));
+    }
+
+    // System Fallback: Provide progression-based models
+    if (recommendations.length < 3) {
+      const nextDay = Math.max(...progress.completedDays, 0) + 1;
+      const sequential = availableModels.filter(m => m.day >= nextDay).slice(0, 3);
+
+      // Merge unique recommendations
+      const combined = Array.from(new Set([...recommendations, ...sequential]));
+      return combined.slice(0, 3);
+    }
+
+    return recommendations.slice(0, 3);
+  };
+
+  // Share progress
+  const shareProgress = async () => {
+    const text = `I've completed ${progress.completedDays.length} days of the Billionaire Thinking Coach! Current streak: ${progress.streak} days. 🧠💎 #ThinkingCoach`;
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: 'My Thinking Coach Progress',
+          text: text,
+          url: window.location.href
+        });
+      } catch (err) {
+        console.log('Share cancelled');
+      }
+    } else {
+      // Fallback: copy to clipboard
+      navigator.clipboard.writeText(text);
+      alert('Progress copied to clipboard!');
+    }
+  };
+
   const currentModel = mentalModels.find(m => m.day === currentDay) || mentalModels[0];
   const isCompleted = progress.completedDays.includes(currentDay);
   const progressPercentage = (progress.completedDays.length / 30) * 100;
@@ -152,6 +264,15 @@ export function ThinkingCoach() {
     };
     saveProgress(newProgress);
     setReflection('');
+    trackEvent('reflection_saved', { day: currentDay });
+  };
+
+  // Get AI Coaching Prompts (Feedback Loop principle)
+  const handleGetAIPrompts = () => {
+    const history = [
+      { sender: 'user', message: reflection, timestamp: new Date().toISOString() }
+    ];
+    getAIPrompts(history, `thinking-coach-day-${currentDay}`);
   };
 
   const getInspirationIcon = (inspiration: string) => {
@@ -217,6 +338,21 @@ export function ThinkingCoach() {
               <span className="font-medium">Badges: {progress.badges.length}</span>
             </div>
           </div>
+          <div className="mt-4 flex gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={requestNotificationPermission}
+              disabled={notificationPermission === 'granted' && progress.notificationsEnabled}
+            >
+              <Bell className="w-4 h-4 mr-2" />
+              {progress.notificationsEnabled ? 'Notifications On' : 'Enable Reminders'}
+            </Button>
+            <Button variant="outline" size="sm" onClick={shareProgress}>
+              <Share2 className="w-4 h-4 mr-2" />
+              Share Progress
+            </Button>
+          </div>
           <div className="mt-4 grid grid-cols-5 gap-2">
             {Array.from({ length: 30 }, (_, i) => i + 1).map(day => (
               <div
@@ -267,6 +403,52 @@ export function ThinkingCoach() {
               );
             })}
           </div>
+        </CardContent>
+      </Card>
+
+      {/* Personalization */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Personalized Recommendations</CardTitle>
+          <CardDescription>
+            Set your goals to get AI-powered model suggestions
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="flex gap-2">
+            <Textarea
+              placeholder="Enter your goals (e.g., build wealth, start business, improve decisions)"
+              value={newGoal}
+              onChange={(e) => setNewGoal(e.target.value)}
+              rows={2}
+            />
+            <Button onClick={addGoal} disabled={!newGoal.trim()}>
+              Add Goal
+            </Button>
+          </div>
+          {progress.goals.length > 0 && (
+            <div>
+              <h4 className="font-semibold mb-2">Your Goals:</h4>
+              <div className="flex flex-wrap gap-2">
+                {progress.goals.map((goal, index) => (
+                  <Badge key={index} variant="secondary">{goal}</Badge>
+                ))}
+              </div>
+            </div>
+          )}
+          {progress.goals.length > 0 && (
+            <div>
+              <h4 className="font-semibold mb-2">Recommended Models:</h4>
+              <div className="space-y-2">
+                {getRecommendations().map(model => (
+                  <div key={model.day} className="p-3 border rounded-lg">
+                    <h5 className="font-medium">Day {model.day}: {model.title}</h5>
+                    <p className="text-sm text-muted-foreground">{model.description.slice(0, 100)}...</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </CardContent>
       </Card>
 
@@ -332,21 +514,57 @@ export function ThinkingCoach() {
             )}
           </div>
 
-          {/* Reflection */}
-          <div className="space-y-3">
-            <h3 className="font-semibold">Your Reflection</h3>
+          {/* Reflection with AI Feedback Loop */}
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <h3 className="font-semibold flex items-center gap-2">
+                <MessageSquare className="w-4 h-4" />
+                Billionaire Reflection
+              </h3>
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                onClick={handleGetAIPrompts}
+                disabled={!reflection.trim() || aiLoading}
+                className="text-primary hover:bg-primary/5"
+              >
+                <Sparkles className="w-4 h-4 mr-2" />
+                {aiLoading ? 'Analyzing System...' : 'Get AI Coaching'}
+              </Button>
+            </div>
+            
             <Textarea
-              placeholder="How does this mental model apply to your life? What insights did you gain?"
+              placeholder="Deconstruct this model. How does it shift your current systems? What is the asymmetric upside?"
               value={reflection}
               onChange={(e) => setReflection(e.target.value)}
               rows={4}
+              className="bg-muted/20 focus:bg-background transition-all border-primary/10 focus:border-primary/30"
             />
+
+            {aiPrompts.length > 0 && (
+              <div className="bg-primary/5 border border-primary/20 rounded-xl p-5 animate-in fade-in slide-in-from-top-4 duration-500">
+                <h4 className="text-sm font-bold mb-3 flex items-center gap-2 text-primary">
+                  <Brain className="w-4 h-4" />
+                  SYSTEMS ANALYSIS PROMPTS
+                </h4>
+                <ul className="space-y-3">
+                  {aiPrompts.map((prompt, i) => (
+                    <li key={i} className="text-sm text-muted-foreground flex gap-3 leading-relaxed">
+                      <span className="shrink-0 flex items-center justify-center size-5 rounded-full bg-primary/10 text-[10px] font-bold text-primary">{i + 1}</span>
+                      {prompt}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
             <Button
               onClick={handleSaveReflection}
-              variant="outline"
+              variant="default"
+              className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg shadow-indigo-500/20"
               disabled={!reflection.trim()}
             >
-              Save Reflection
+              Commit to System
             </Button>
             {progress.reflections[currentDay] && (
               <p className="text-sm text-muted-foreground">

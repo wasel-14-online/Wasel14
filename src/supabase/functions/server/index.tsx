@@ -1079,6 +1079,134 @@ app.post("/make-server-0b1f4071/referral/apply", async (c) => {
   }
 });
 
+// ==================== AI MARKETPLACE ENDPOINTS ====================
+
+// Get AI pricing recommendation for trip
+app.post("/make-server-0b1f4071/marketplace/pricing", async (c) => {
+  try {
+    const authHeader = c.req.header('Authorization');
+    const user = await getAuthenticatedUser(authHeader);
+    if (!user) return c.json({ error: 'Unauthorized' }, 401);
+
+    const { tripId, basePrice } = await c.req.json();
+
+    // Import the pricing service dynamically to avoid import issues
+    const { AIDynamicPricingService } = await import('../../../services/marketplaceAIService.ts');
+    const pricingService = new AIDynamicPricingService();
+
+    const recommendation = await pricingService.calculateOptimalPrice(tripId, basePrice);
+
+    return c.json({ success: true, recommendation });
+  } catch (error) {
+    console.error('AI Pricing error:', error);
+    return c.json({ error: 'Failed to get pricing recommendation' }, 500);
+  }
+});
+
+// Get demand prediction for location
+app.get("/make-server-0b1f4071/marketplace/demand/:location", async (c) => {
+  try {
+    const location = c.req.param('location');
+    const horizon = parseInt(c.req.query('horizon') || '24');
+
+    // Import demand service dynamically
+    const { DemandPredictionService } = await import('../../../services/demandPredictionService.ts');
+    const demandService = new DemandPredictionService();
+
+    const predictions = await demandService.predictMultipleHorizons(location);
+
+    return c.json({ success: true, predictions });
+  } catch (error) {
+    console.error('Demand prediction error:', error);
+    return c.json({ error: 'Failed to get demand prediction' }, 500);
+  }
+});
+
+// Negotiate trip price
+app.post("/make-server-0b1f4071/marketplace/negotiate", async (c) => {
+  try {
+    const authHeader = c.req.header('Authorization');
+    const user = await getAuthenticatedUser(authHeader);
+    if (!user) return c.json({ error: 'Unauthorized' }, 401);
+
+    const { tripId, offerPrice, userRole } = await c.req.json();
+
+    // Simple negotiation logic (in production, this would be more sophisticated)
+    const trip = await kv.get(tripId);
+    if (!trip) return c.json({ error: 'Trip not found' }, 404);
+
+    const basePrice = trip.price_per_seat;
+    const minAcceptable = basePrice * 0.8;
+    const maxAcceptable = basePrice * 1.3;
+
+    let response;
+    if (userRole === 'passenger') {
+      // Passenger wants lower price
+      if (offerPrice >= minAcceptable) {
+        response = { accepted: true, finalPrice: offerPrice };
+      } else {
+        const counterOffer = Math.min(basePrice * 0.9, maxAcceptable);
+        response = { accepted: false, counterOffer };
+      }
+    } else {
+      // Driver wants higher price
+      if (offerPrice <= maxAcceptable) {
+        response = { accepted: true, finalPrice: offerPrice };
+      } else {
+        const counterOffer = Math.max(basePrice * 1.1, minAcceptable);
+        response = { accepted: false, counterOffer };
+      }
+    }
+
+    return c.json({ success: true, ...response });
+  } catch (error) {
+    console.error('Negotiation error:', error);
+    return c.json({ error: 'Failed to process negotiation' }, 500);
+  }
+});
+
+// Get marketplace analytics
+app.get("/make-server-0b1f4071/marketplace/analytics", async (c) => {
+  try {
+    const authHeader = c.req.header('Authorization');
+    const user = await getAuthenticatedUser(authHeader);
+    if (!user) return c.json({ error: 'Unauthorized' }, 401);
+
+    // Generate mock analytics data (in production, this would aggregate real data)
+    const analytics = {
+      revenue: {
+        total: 185000,
+        aiOptimized: 138750,
+        traditional: 46250,
+        growth: 23.5
+      },
+      trips: {
+        total: 1250,
+        aiNegotiated: 975,
+        conversion: 34.2,
+        avgPrice: 42.50
+      },
+      users: {
+        total: 2500,
+        active: 1800,
+        premium: 750,
+        satisfaction: 4.7
+      },
+      ai: {
+        accuracy: 87.3,
+        confidence: 82.1,
+        recommendations: 2100,
+        accepted: 1680
+      }
+    };
+
+    return c.json({ success: true, analytics });
+  } catch (error) {
+    console.error('Analytics error:', error);
+    return c.json({ error: 'Failed to fetch analytics' }, 500);
+  }
+});
+
 // ==================== NEW FEATURES (PACKAGES, VERIFICATION, PAYMENTS) ====================
 
 // Calculate Price (Server-Side Logic)

@@ -183,6 +183,17 @@ const mockAPI = {
       if (error) throw error;
       return { trips: data || [] };
     },
+    async updateTrip(tripId: string, updates: any) {
+      const { data, error } = await supabase
+        .from('trips')
+        .update({ ...updates, updated_at: new Date().toISOString() })
+        .eq('id', tripId)
+        .select()
+        .single();
+
+      if (error) throw error;
+      return { trip: data };
+    },
     async calculatePrice(type: string, weight?: number, distance_km?: number, base_price?: number) {
       // Pricing logic for different service types
       const pricing = {

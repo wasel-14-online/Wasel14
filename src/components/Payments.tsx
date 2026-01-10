@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Wallet, CreditCard, TrendingUp, TrendingDown, Plus, Loader2 } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
+import { walletAPI } from '../services/api';
+import { paymentService } from '../services/integrations';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogFooter } from './ui/dialog';
@@ -69,7 +71,21 @@ const transactions = [
 export function Payments() {
   const [isAddingFunds, setIsAddingFunds] = useState(false);
   const [amount, setAmount] = useState('');
+  const [balance, setBalance] = useState(250.00);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    loadWallet();
+  }, []);
+
+  const loadWallet = async () => {
+    try {
+      const { wallet } = await walletAPI.getWallet();
+      setBalance(wallet.balance);
+    } catch (err) {
+      console.error('Wallet load failed');
+    }
+  };
 
   const handleAddFunds = async () => {
     if (!amount || isNaN(Number(amount)) || Number(amount) <= 0) {
@@ -79,25 +95,20 @@ export function Payments() {
 
     setLoading(true);
     try {
-      const response = await fetch('/make-server-0b1f4071/payments/process', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          amount: Number(amount),
-          payment_method_id: 'pm_123', // mock
-          booking_id: null // wallet topup
-        })
-      });
-      
-      if (response.ok) {
-        toast.success(`Successfully added $${amount} to wallet`);
+      // Billionaire Thinking: Leverage the integrated payment service
+      const intent = await paymentService.createPaymentIntent(Number(amount));
+
+      if (intent.status === 'succeeded') {
+        await walletAPI.addFunds(Number(amount));
+        toast.success(`Successfully added AED ${amount} to wallet`);
         setIsAddingFunds(false);
         setAmount('');
+        loadWallet();
       } else {
-        toast.error('Payment failed');
+        toast.error('Payment failed at gateway');
       }
     } catch (error) {
-      toast.error('An error occurred');
+      toast.error('Financial system error');
     } finally {
       setLoading(false);
     }
@@ -156,7 +167,7 @@ export function Payments() {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              <div className="text-4xl text-primary">$250.00</div>
+              <div className="text-4xl text-primary">AED {balance.toFixed(2)}</div>
               <div className="flex gap-2">
                 <Button size="sm" className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground">
                   Add Funds
