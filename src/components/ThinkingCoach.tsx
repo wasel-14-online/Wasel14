@@ -52,6 +52,7 @@ export function ThinkingCoach() {
     notificationsEnabled: false
   });
   const [reflection, setReflection] = useState('');
+  const [notificationPermission, setNotificationPermission] = useState<NotificationPermission>('default');
 
   // Load progress from localStorage
   useEffect(() => {
@@ -65,6 +66,13 @@ export function ThinkingCoach() {
       // Set current day to the next incomplete day or last completed +1
       const lastCompleted = Math.max(...parsed.completedDays, 0);
       setCurrentDay(lastCompleted + 1 > 30 ? 30 : lastCompleted + 1);
+    }
+  }, []);
+
+  // Check notification permission
+  useEffect(() => {
+    if ('Notification' in window) {
+      setNotificationPermission(Notification.permission);
     }
   }, []);
 
@@ -228,6 +236,40 @@ export function ThinkingCoach() {
         </CardContent>
       </Card>
 
+      {/* Badges */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Trophy className="w-5 h-5" />
+            Achievements
+          </CardTitle>
+          <CardDescription>
+            Unlock badges by completing challenges
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {availableBadges.map(badge => {
+              const unlocked = progress.badges.includes(badge.id);
+              return (
+                <div
+                  key={badge.id}
+                  className={`p-3 rounded-lg border text-center ${
+                    unlocked ? 'bg-primary/10 border-primary' : 'bg-gray-50 border-gray-200'
+                  }`}
+                >
+                  <div className="text-2xl mb-2">{badge.icon}</div>
+                  <h4 className={`font-semibold ${unlocked ? 'text-primary' : 'text-gray-500'}`}>
+                    {badge.title}
+                  </h4>
+                  <p className="text-xs text-muted-foreground">{badge.description}</p>
+                </div>
+              );
+            })}
+          </div>
+        </CardContent>
+      </Card>
+
       {/* Current Day Model */}
       <Card className="border-2 border-primary/20">
         <CardHeader>
@@ -251,4 +293,85 @@ export function ThinkingCoach() {
               </Button>
               <Button
                 variant="outline"
-            
+                size="sm"
+                onClick={() => navigateDay('next')}
+                disabled={currentDay === 30}
+              >
+                <ChevronRight className="w-4 h-4" />
+              </Button>
+            </div>
+          </div>
+          <CardTitle className="text-2xl">{currentModel.title}</CardTitle>
+          <CardDescription className="flex items-center gap-2">
+            {(() => {
+              const Icon = getInspirationIcon(currentModel.inspiration);
+              return <Icon className="w-4 h-4" />;
+            })()}
+            Inspired by {currentModel.inspiration}
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <p className="text-lg leading-relaxed">{currentModel.description}</p>
+
+          {/* Completion Status */}
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              {isCompleted ? (
+                <>
+                  <CheckCircle className="w-5 h-5 text-green-500" />
+                  <span className="text-green-600 font-medium">Completed</span>
+                </>
+              ) : (
+                <span className="text-muted-foreground">Not completed yet</span>
+              )}
+            </div>
+            {!isCompleted && (
+              <Button onClick={handleMarkComplete} className="bg-primary hover:bg-primary/90">
+                Mark as Complete
+              </Button>
+            )}
+          </div>
+
+          {/* Reflection */}
+          <div className="space-y-3">
+            <h3 className="font-semibold">Your Reflection</h3>
+            <Textarea
+              placeholder="How does this mental model apply to your life? What insights did you gain?"
+              value={reflection}
+              onChange={(e) => setReflection(e.target.value)}
+              rows={4}
+            />
+            <Button
+              onClick={handleSaveReflection}
+              variant="outline"
+              disabled={!reflection.trim()}
+            >
+              Save Reflection
+            </Button>
+            {progress.reflections[currentDay] && (
+              <p className="text-sm text-muted-foreground">
+                Last saved: {new Date().toLocaleDateString()}
+              </p>
+            )}
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Tips */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Implementation Tips</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ul className="space-y-2 text-sm">
+            <li>• Spend 10 minutes each morning reviewing the daily model</li>
+            <li>• Apply the model to at least one decision today</li>
+            <li>• Journal your insights and how your thinking is changing</li>
+            <li>• Share your progress with an accountability partner</li>
+            <li>• Review completed models weekly to reinforce learning</li>
+          </ul>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
