@@ -9,7 +9,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui
 import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
-import { Download, TrendingUp, DollarSign, CreditCard, Users } from 'lucide-react';
+import { Download, TrendingUp } from 'lucide-react';
 
 export function FinancialReports() {
   const [period, setPeriod] = useState<'today' | 'week' | 'month' | 'year'>('month');

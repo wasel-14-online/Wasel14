@@ -4,11 +4,19 @@ import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { Progress } from './ui/progress';
 import { Textarea } from './ui/textarea';
-import { Brain, ChevronLeft, ChevronRight, CheckCircle, Star, Target, Zap, Users, TrendingUp, Share2, Bell, Trophy, Flame, MessageSquare, Sparkles } from 'lucide-react';
+import { Brain, ChevronLeft, ChevronRight, CheckCircle, Star, Target, Zap, Users, TrendingUp, Share2, Bell, Trophy, Flame, MessageSquare, Sparkles, Calculator, BarChart3 } from 'lucide-react';
 import { mentalModels, MentalModel } from '../data/mentalModels';
 import { useConversationAI, useNLPSearch, useAITracking } from '../hooks/useAIFeatures';
 
-const availableBadges: Badge[] = [
+interface ThinkingCoachBadge {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  unlocked: boolean;
+}
+
+const availableBadges: ThinkingCoachBadge[] = [
   { id: 'first-day', title: 'First Step', description: 'Completed your first day', icon: '🌟', unlocked: false },
   { id: 'week-warrior', title: 'Week Warrior', description: 'Completed 7 days', icon: '⚔️', unlocked: false },
   { id: 'streak-3', title: 'Consistency', description: '3-day streak', icon: '🔥', unlocked: false },
@@ -18,14 +26,6 @@ const availableBadges: Badge[] = [
   { id: 'reflector', title: 'Deep Thinker', description: 'Wrote 10 reflections', icon: '🧠', unlocked: false },
   { id: 'master', title: 'Billionaire Mind', description: 'Completed all 30 days', icon: '💎', unlocked: false },
 ];
-
-interface Badge {
-  id: string;
-  title: string;
-  description: string;
-  icon: string;
-  unlocked: boolean;
-}
 
 interface ThinkingCoachProgress {
   completedDays: number[];
@@ -72,7 +72,7 @@ export function ThinkingCoach() {
 
   // Leverage AI Engine
   const { suggestions: aiPrompts, getSuggestions: getAIPrompts, loading: aiLoading } = useConversationAI();
-  const { parseQuery, loading: parsingLoading } = useNLPSearch();
+  const { parseQuery, loading: _parsingLoading } = useNLPSearch();
   const { trackEvent } = useAITracking();
 
   // Load progress from localStorage
@@ -306,7 +306,7 @@ export function ThinkingCoach() {
     const history = [
       { sender: 'user', message: reflection, timestamp: new Date().toISOString() }
     ];
-    getAIPrompts(history, `thinking-coach-day-${currentDay}-math-${JSON.stringify({decisionCalc, compoundCalc})}`);
+    getAIPrompts(history, `thinking-coach-day-${currentDay}-math-${JSON.stringify({ decisionCalc, compoundCalc })}`);
   };
 
   const getInspirationIcon = (inspiration: string) => {
@@ -391,13 +391,12 @@ export function ThinkingCoach() {
             {Array.from({ length: 30 }, (_, i) => i + 1).map(day => (
               <div
                 key={day}
-                className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium ${
-                  progress.completedDays.includes(day)
+                className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium ${progress.completedDays.includes(day)
                     ? 'bg-primary text-primary-foreground'
                     : day === currentDay
-                    ? 'bg-secondary text-secondary-foreground border-2 border-primary'
-                    : 'bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400'
-                }`}
+                      ? 'bg-secondary text-secondary-foreground border-2 border-primary'
+                      : 'bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400'
+                  }`}
               >
                 {day}
               </div>
@@ -424,9 +423,8 @@ export function ThinkingCoach() {
               return (
                 <div
                   key={badge.id}
-                  className={`p-3 rounded-lg border text-center ${
-                    unlocked ? 'bg-primary/10 border-primary' : 'bg-gray-50 border-gray-200'
-                  }`}
+                  className={`p-3 rounded-lg border text-center ${unlocked ? 'bg-primary/10 border-primary' : 'bg-gray-50 border-gray-200'
+                    }`}
                 >
                   <div className="text-2xl mb-2">{badge.icon}</div>
                   <h4 className={`font-semibold ${unlocked ? 'text-primary' : 'text-gray-500'}`}>
@@ -677,9 +675,9 @@ export function ThinkingCoach() {
                 <MessageSquare className="w-4 h-4" />
                 Billionaire Reflection
               </h3>
-              <Button 
-                variant="ghost" 
-                size="sm" 
+              <Button
+                variant="ghost"
+                size="sm"
                 onClick={handleGetAIPrompts}
                 disabled={!reflection.trim() || aiLoading}
                 className="text-primary hover:bg-primary/5"
@@ -688,7 +686,7 @@ export function ThinkingCoach() {
                 {aiLoading ? 'Analyzing System...' : 'Get AI Coaching'}
               </Button>
             </div>
-            
+
             <Textarea
               placeholder="Deconstruct this model mathematically. Calculate expected value, leverage ratios, and asymmetric opportunities. How does this thinking compound over time?"
               value={reflection}

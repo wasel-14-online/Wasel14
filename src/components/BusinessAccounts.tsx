@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Building2, Users, TrendingUp, Calendar, Download, Plus, DollarSign } from 'lucide-react';
+import { Building2, Users, TrendingUp, Calendar, Download, Plus } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
@@ -13,13 +13,12 @@ import { toast } from 'sonner';
 
 export function BusinessAccounts() {
   const [showAddEmployee, setShowAddEmployee] = useState(false);
-  const [employees, setEmployees] = useState([
+  const [employees] = useState([
     { id: 1, name: 'Ahmed Mohammed', email: 'ahmed@company.com', department: 'Sales', trips: 45, spent: 1250 },
     { id: 2, name: 'Sara Ali', email: 'sara@company.com', department: 'Marketing', trips: 32, spent: 890 },
     { id: 3, name: 'Omar Hassan', email: 'omar@company.com', department: 'Engineering', trips: 28, spent: 780 },
   ]);
-
-  const [fleetDrivers, setFleetDrivers] = useState([
+  const [fleetDrivers] = useState([
     { id: 1, name: 'Khalid Ahmed', vehicle: 'Toyota Camry 2023', trips: 156, earnings: 12400, rating: 4.9 },
     { id: 2, name: 'Fatima Said', vehicle: 'Honda Accord 2022', trips: 142, earnings: 11200, rating: 4.8 },
   ]);

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Locate, CalendarClock, Timer, UsersRound, CircleDollarSign, CarFront, CirclePlus, CircleX, Radar, PackageCheck, TruckIcon, Scale, Info, TrendingUp, Shield } from 'lucide-react';
+import { Locate, CalendarClock, Timer, UsersRound, CarFront, CirclePlus, CircleX, Radar, Scale, Info } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Input } from './ui/input';
 import { Button } from './ui/button';
@@ -29,7 +29,7 @@ export function OfferRide() {
   const [stops, setStops] = useState<Stop[]>([]);
   const [newStopLabel, setNewStopLabel] = useState('');
   const [showRoutePreview, setShowRoutePreview] = useState(false);
-  
+
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
   const [returnDate, setReturnDate] = useState('');
@@ -78,33 +78,33 @@ export function OfferRide() {
 
   const handlePublish = async () => {
     if (!user) {
-        toast.error('Please sign in to offer a ride');
-        return;
+      toast.error('Please sign in to offer a ride');
+      return;
     }
     if (!from || !to || !date || !time || !price || !vehicle) {
       toast.error('Please enter all required details');
       return;
     }
-    
+
     try {
-        await tripsAPI.createTrip({
-            type: tripType,
-            from,
-            to,
-            stops,
-            departure_date: date,
-            departure_time: time,
-            return_date: returnDate,
-            return_time: returnTime,
-            vehicle_model: vehicle,
-            total_seats: parseInt(seats),
-            price_per_seat: parseFloat(price),
-            accept_packages: acceptPackages,
-            notes
-        });
-        toast.success('Ride published successfully!');
+      await tripsAPI.createTrip({
+        type: tripType,
+        from,
+        to,
+        stops,
+        departure_date: date,
+        departure_time: time,
+        return_date: returnDate,
+        return_time: returnTime,
+        vehicle_model: vehicle,
+        total_seats: parseInt(seats),
+        price_per_seat: parseFloat(price),
+        accept_packages: acceptPackages,
+        notes
+      });
+      toast.success('Ride published successfully!');
     } catch (error) {
-        toast.error('Failed to publish ride');
+      toast.error('Failed to publish ride');
     }
   };
 
@@ -196,8 +196,8 @@ export function OfferRide() {
                 <Label>From</Label>
                 <div className="relative">
                   <Locate className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                  <Input 
-                    placeholder="Starting location" 
+                  <Input
+                    placeholder="Starting location"
                     className="pl-10"
                     value={from}
                     onChange={(e) => setFrom(e.target.value)}
@@ -209,8 +209,8 @@ export function OfferRide() {
                 <Label>To</Label>
                 <div className="relative">
                   <Locate className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                  <Input 
-                    placeholder="Destination" 
+                  <Input
+                    placeholder="Destination"
                     className="pl-10"
                     value={to}
                     onChange={(e) => setTo(e.target.value)}
@@ -222,7 +222,7 @@ export function OfferRide() {
             {/* Add Stops */}
             <div className="space-y-3">
               <Label>Stops Along the Way (Optional)</Label>
-              
+
               {stops.length > 0 && (
                 <div className="space-y-2">
                   {stops.map((stop, index) => (
@@ -252,9 +252,9 @@ export function OfferRide() {
                     onKeyPress={(e) => e.key === 'Enter' && addStop()}
                   />
                 </div>
-                <Button 
+                <Button
                   type="button"
-                  variant="outline" 
+                  variant="outline"
                   onClick={addStop}
                   className="gap-2"
                 >
@@ -280,7 +280,7 @@ export function OfferRide() {
                     {showRoutePreview ? 'Hide Map' : 'Show Map'}
                   </Button>
                 </div>
-                
+
                 {showRoutePreview && (
                   <MapComponent
                     locations={mapLocations}
@@ -298,11 +298,11 @@ export function OfferRide() {
               <Label>Departure Date</Label>
               <div className="relative">
                 <CalendarClock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                <Input 
-                    type="date" 
-                    className="pl-10"
-                    value={date}
-                    onChange={(e) => setDate(e.target.value)}
+                <Input
+                  type="date"
+                  className="pl-10"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
                 />
               </div>
             </div>
@@ -311,11 +311,11 @@ export function OfferRide() {
               <Label>Departure Time</Label>
               <div className="relative">
                 <Timer className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                <Input 
-                    type="time" 
-                    className="pl-10" 
-                    value={time}
-                    onChange={(e) => setTime(e.target.value)}
+                <Input
+                  type="time"
+                  className="pl-10"
+                  value={time}
+                  onChange={(e) => setTime(e.target.value)}
                 />
               </div>
             </div>
@@ -328,11 +328,11 @@ export function OfferRide() {
                 <Label>Return Date</Label>
                 <div className="relative">
                   <CalendarClock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                  <Input 
-                      type="date" 
-                      className="pl-10" 
-                      value={returnDate}
-                      onChange={(e) => setReturnDate(e.target.value)}
+                  <Input
+                    type="date"
+                    className="pl-10"
+                    value={returnDate}
+                    onChange={(e) => setReturnDate(e.target.value)}
                   />
                 </div>
               </div>
@@ -341,11 +341,11 @@ export function OfferRide() {
                 <Label>Return Time</Label>
                 <div className="relative">
                   <Timer className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                  <Input 
-                      type="time" 
-                      className="pl-10"
-                      value={returnTime}
-                      onChange={(e) => setReturnTime(e.target.value)} 
+                  <Input
+                    type="time"
+                    className="pl-10"
+                    value={returnTime}
+                    onChange={(e) => setReturnTime(e.target.value)}
                   />
                 </div>
               </div>
@@ -358,11 +358,11 @@ export function OfferRide() {
               <Label>Vehicle Model</Label>
               <div className="relative">
                 <CarFront className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                <Input 
-                    placeholder="e.g., Toyota Camry" 
-                    className="pl-10" 
-                    value={vehicle}
-                    onChange={(e) => setVehicle(e.target.value)}
+                <Input
+                  placeholder="e.g., Toyota Camry"
+                  className="pl-10"
+                  value={vehicle}
+                  onChange={(e) => setVehicle(e.target.value)}
                 />
               </div>
             </div>
@@ -371,14 +371,14 @@ export function OfferRide() {
               <Label>Available Seats</Label>
               <div className="relative">
                 <UsersRound className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                <Input 
-                    type="number" 
-                    min="1" 
-                    max="8" 
-                    placeholder="1-8 seats" 
-                    className="pl-10"
-                    value={seats}
-                    onChange={(e) => setSeats(e.target.value)} 
+                <Input
+                  type="number"
+                  min="1"
+                  max="8"
+                  placeholder="1-8 seats"
+                  className="pl-10"
+                  value={seats}
+                  onChange={(e) => setSeats(e.target.value)}
                 />
               </div>
             </div>
@@ -389,14 +389,14 @@ export function OfferRide() {
             <Label>Price per Seat (USD)</Label>
             <div className="relative">
               <CircleDollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-              <Input 
-                  type="number" 
-                  min="0" 
-                  step="0.01" 
-                  placeholder="Enter price" 
-                  className="pl-10"
-                  value={price}
-                  onChange={(e) => setPrice(e.target.value)} 
+              <Input
+                type="number"
+                min="0"
+                step="0.01"
+                placeholder="Enter price"
+                className="pl-10"
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
               />
             </div>
             <p className="text-sm text-gray-500">Set a fair price based on distance and fuel costs</p>
@@ -406,7 +406,7 @@ export function OfferRide() {
           <div className="space-y-4 p-6 border-2 rounded-xl bg-gradient-to-br from-primary/5 to-primary/10 relative overflow-hidden">
             {/* Decorative element */}
             <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16"></div>
-            
+
             <div className="flex items-start justify-between relative">
               <div className="space-y-2 flex-1 pr-4">
                 <div className="flex items-center gap-2">
@@ -429,14 +429,14 @@ export function OfferRide() {
                   </Badge>
                 </div>
               </div>
-              <Switch 
-                  id="accept-packages" 
-                  checked={acceptPackages}
-                  onCheckedChange={setAcceptPackages}
-                  className="mt-1"
+              <Switch
+                id="accept-packages"
+                checked={acceptPackages}
+                onCheckedChange={setAcceptPackages}
+                className="mt-1"
               />
             </div>
-            
+
             {acceptPackages && (
               <div className="grid gap-6 pt-4 border-t border-primary/20 animate-in slide-in-from-top-2">
                 {/* Package Size Selection */}
@@ -448,8 +448,8 @@ export function OfferRide() {
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                     <div className="relative">
                       <Checkbox id="pkg-small" className="peer sr-only" />
-                      <Label 
-                        htmlFor="pkg-small" 
+                      <Label
+                        htmlFor="pkg-small"
                         className="flex flex-col gap-2 p-4 border-2 rounded-lg bg-background hover:bg-accent cursor-pointer transition-all peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-primary/5"
                       >
                         <div className="flex items-center justify-between">
@@ -463,11 +463,11 @@ export function OfferRide() {
                         </div>
                       </Label>
                     </div>
-                    
+
                     <div className="relative">
                       <Checkbox id="pkg-medium" className="peer sr-only" />
-                      <Label 
-                        htmlFor="pkg-medium" 
+                      <Label
+                        htmlFor="pkg-medium"
                         className="flex flex-col gap-2 p-4 border-2 rounded-lg bg-background hover:bg-accent cursor-pointer transition-all peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-primary/5"
                       >
                         <div className="flex items-center justify-between">
@@ -481,11 +481,11 @@ export function OfferRide() {
                         </div>
                       </Label>
                     </div>
-                    
+
                     <div className="relative">
                       <Checkbox id="pkg-large" className="peer sr-only" />
-                      <Label 
-                        htmlFor="pkg-large" 
+                      <Label
+                        htmlFor="pkg-large"
                         className="flex flex-col gap-2 p-4 border-2 rounded-lg bg-background hover:bg-accent cursor-pointer transition-all peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-primary/5"
                       >
                         <div className="flex items-center justify-between">
@@ -536,7 +536,7 @@ export function OfferRide() {
           {/* Additional Notes */}
           <div className="space-y-2">
             <Label>Additional Notes (Optional)</Label>
-            <Textarea 
+            <Textarea
               placeholder="Any special instructions or requirements for riders..."
               className="min-h-24"
               value={notes}
@@ -549,7 +549,7 @@ export function OfferRide() {
             <Button variant="outline" className="flex-1">
               Save as Draft
             </Button>
-            <Button 
+            <Button
               className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground"
               onClick={handlePublish}
             >

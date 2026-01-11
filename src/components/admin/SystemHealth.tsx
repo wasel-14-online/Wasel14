@@ -4,15 +4,15 @@
  * Real-time system monitoring and health checks.
  */
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
 import { Badge } from '../ui/badge';
 import { Progress } from '../ui/progress';
-import { Activity, Database, Server, Zap, AlertCircle, CheckCircle } from 'lucide-react';
+import { AlertCircle, CheckCircle } from 'lucide-react';
 import { checkIntegrationStatus, getIntegrationHealth } from '../../services/integrations';
 
 export function SystemHealth() {
-  const [systemMetrics, setSystemMetrics] = useState({
+  const [systemMetrics] = useState({
     api: { status: 'healthy', responseTime: 145, uptime: 99.98 },
     database: { status: 'healthy', connections: 45, maxConnections: 100 },
     realtime: { status: 'healthy', activeChannels: 234, messageRate: 450 },

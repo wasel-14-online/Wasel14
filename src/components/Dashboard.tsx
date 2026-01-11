@@ -1,4 +1,4 @@
-import { ScanSearch, CirclePlus, TrendingUp, MessagesSquare, CreditCard, Locate, UsersRound, TrendingUpIcon, MapPin, Clock, Star, Zap, Target, Award } from 'lucide-react';
+import { ScanSearch, CirclePlus, TrendingUp, MessagesSquare, CreditCard, Locate, UsersRound, Star, Zap, Target, Award } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
@@ -74,10 +74,10 @@ const recentActivities = [
 ];
 
 export function Dashboard({ onNavigate }: DashboardProps) {
-  const { user, profile } = useAuth();
-  
+  const { profile } = useAuth();
+
   // Get first name for welcome message
-  const firstName = profile?.full_name?.split(' ')[0] || user?.email?.split('@')[0] || 'User';
+  const firstName = profile?.full_name?.split(' ')[0] || 'User';
 
   return (
     <div className="max-w-7xl mx-auto space-y-6">
@@ -86,7 +86,7 @@ export function Dashboard({ onNavigate }: DashboardProps) {
         {/* Decorative Background Elements */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full blur-3xl"></div>
-        
+
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
           <div className="flex items-start gap-4">
             <div className="bg-white rounded-2xl p-4 shadow-xl">
@@ -111,7 +111,7 @@ export function Dashboard({ onNavigate }: DashboardProps) {
               </div>
             </div>
           </div>
-          
+
           <div className="grid grid-cols-2 gap-4 lg:flex lg:gap-6">
             <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4 text-center">
               <TrendingUp className="w-6 h-6 text-white mx-auto mb-2" />
@@ -137,7 +137,7 @@ export function Dashboard({ onNavigate }: DashboardProps) {
         <Card className="group hover:shadow-2xl transition-all cursor-pointer border-2 border-transparent hover:border-primary/40 bg-gradient-to-br from-white via-white to-primary/5 dark:from-gray-900 dark:to-primary/10 overflow-hidden relative" onClick={() => onNavigate('find-ride')}>
           {/* Hover Effect Background */}
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-          
+
           <CardHeader className="relative z-10">
             <div className="flex items-start justify-between">
               <div className="space-y-2 flex-1">
@@ -172,7 +172,7 @@ export function Dashboard({ onNavigate }: DashboardProps) {
         <Card className="group hover:shadow-2xl transition-all cursor-pointer border-2 border-transparent hover:border-secondary/40 bg-gradient-to-br from-white via-white to-secondary/5 dark:from-gray-900 dark:to-secondary/10 overflow-hidden relative" onClick={() => onNavigate('offer-ride')}>
           {/* Hover Effect Background */}
           <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-          
+
           <CardHeader className="relative z-10">
             <div className="flex items-start justify-between">
               <div className="space-y-2 flex-1">
@@ -214,7 +214,7 @@ export function Dashboard({ onNavigate }: DashboardProps) {
           <CardHeader>
             <div className="flex items-center justify-between">
               <CardTitle className="text-base">Upcoming Trips</CardTitle>
-              <TrendingUpIcon className="w-5 h-5 text-gray-400" />
+              <TrendingUp className="w-5 h-5 text-gray-400" />
             </div>
           </CardHeader>
           <CardContent>
@@ -267,9 +267,8 @@ export function Dashboard({ onNavigate }: DashboardProps) {
             {recentActivities.map((activity, index) => (
               <div key={index} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
                 <div className="flex items-center gap-4">
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                    activity.type === 'wasel' ? 'bg-primary/10 text-primary' : 'bg-secondary/10 text-secondary'
-                  }`}>
+                  <div className={`w - 10 h - 10 rounded - full flex items - center justify - center ${activity.type === 'wasel' ? 'bg-primary/10 text-primary' : 'bg-secondary/10 text-secondary'
+                    } `}>
                     {activity.type === 'wasel' ? '→' : '↔'}
                   </div>
                   <div>

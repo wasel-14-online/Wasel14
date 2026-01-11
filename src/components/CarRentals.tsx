@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Key, Car, Clock, MapPin, Calendar, Users, Fuel, Settings, Shield, CreditCard, CheckCircle } from 'lucide-react';
+import { Key, Clock, MapPin, Calendar, Users, Fuel, Settings, Shield, CreditCard, CheckCircle } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
@@ -91,8 +91,8 @@ export function CarRentals() {
   const [hours, setHours] = useState('24');
   const [category, setCategory] = useState('all');
 
-  const filteredVehicles = category === 'all' 
-    ? vehicles 
+  const filteredVehicles = category === 'all'
+    ? vehicles
     : vehicles.filter(v => v.category.toLowerCase() === category);
 
   const calculatePrice = () => {
@@ -100,7 +100,7 @@ export function CarRentals() {
     if (rentalType === 'hourly') {
       return selectedVehicle.hourlyRate * parseInt(hours || '0');
     }
-    
+
     if (pickupDate && returnDate) {
       const pickup = new Date(pickupDate);
       const returnD = new Date(returnDate);
@@ -134,7 +134,7 @@ export function CarRentals() {
             className="w-full h-full object-cover"
           />
         </div>
-        
+
         <div className="relative z-10">
           <motion.div
             initial={{ scale: 0 }}
@@ -145,7 +145,7 @@ export function CarRentals() {
             <Key className="w-6 h-6" />
             <span className="font-semibold">Car Rentals</span>
           </motion.div>
-          
+
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             Rent Your Perfect Ride
           </h1>
@@ -171,7 +171,7 @@ export function CarRentals() {
       {/* Rental Type Selection */}
       <Card className="border-2">
         <CardContent className="p-6">
-          <Tabs value={rentalType} onValueChange={(v) => setRentalType(v as 'hourly' | 'daily')}>
+          <Tabs value={rentalType} onValueChange={(v: string) => setRentalType(v as 'hourly' | 'daily')}>
             <TabsList className="grid w-full max-w-md mx-auto grid-cols-2">
               <TabsTrigger value="hourly" className="text-base">
                 <Clock className="w-4 h-4 mr-2" />
@@ -213,11 +213,10 @@ export function CarRentals() {
               whileHover={{ y: -8, scale: 1.02 }}
             >
               <Card
-                className={`cursor-pointer transition-all duration-300 ${
-                  selectedVehicle?.id === vehicle.id
+                className={`cursor-pointer transition-all duration-300 ${selectedVehicle?.id === vehicle.id
                     ? 'ring-4 ring-indigo-500 shadow-2xl'
                     : 'hover:shadow-xl'
-                }`}
+                  }`}
                 onClick={() => setSelectedVehicle(vehicle)}
               >
                 <div className="relative h-48 overflow-hidden rounded-t-lg">
@@ -303,7 +302,7 @@ export function CarRentals() {
                       <MapPin className="w-4 h-4 text-green-600" />
                       Pickup Details
                     </h3>
-                    
+
                     <div className="space-y-2">
                       <Label htmlFor="pickup-location">Pickup Location *</Label>
                       <Input
@@ -361,7 +360,7 @@ export function CarRentals() {
                         <MapPin className="w-4 h-4 text-red-600" />
                         Return Details
                       </h3>
-                      
+
                       <div className="space-y-2">
                         <Label htmlFor="return-location">Return Location</Label>
                         <Input
@@ -409,7 +408,7 @@ export function CarRentals() {
                       </div>
                     </div>
                   </div>
-                  
+
                   <div className="space-y-2 text-sm">
                     <div className="flex items-center gap-2 text-green-700 dark:text-green-400">
                       <Shield className="w-4 h-4" />

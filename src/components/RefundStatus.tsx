@@ -3,9 +3,6 @@ import {
   DollarSign,
   Clock,
   CheckCircle,
-  AlertCircle,
-  XCircle,
-  RefreshCw,
   ChevronRight,
   CreditCard,
   Wallet,
@@ -39,7 +36,8 @@ interface RefundStatusProps {
   onContactSupport?: () => void;
 }
 
-export function RefundStatus({ userId, onContactSupport }: RefundStatusProps) {
+export function RefundStatus({ userId: _userId, onContactSupport }: RefundStatusProps) {
+  const _ = _userId;
   const [selectedRefund, setSelectedRefund] = useState<RefundRequest | null>(null);
   const [refundRequests] = useState<RefundRequest[]>([
     {

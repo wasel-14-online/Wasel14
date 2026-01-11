@@ -5,13 +5,12 @@ import { Badge } from './ui/badge';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { Progress } from './ui/progress';
-import { Separator } from './ui/separator';
-import { 
-  Shield, 
-  CheckCircle, 
-  Upload, 
-  Phone, 
-  Mail, 
+import {
+  Shield,
+  CheckCircle,
+  Upload,
+  Phone,
+  Mail,
   CreditCard,
   Camera,
   FileText,
@@ -29,7 +28,7 @@ interface VerificationItem {
   nameAr: string;
   description: string;
   descriptionAr: string;
-  icon: any;
+  icon: React.ElementType;
   status: VerificationStatus;
   required: boolean;
   rejectionReason?: string;
@@ -97,7 +96,7 @@ export function VerificationCenter() {
 
   const handleVerify = (id: string) => {
     const verification = verifications.find(v => v.id === id);
-    
+
     if (!verification) return;
 
     if (id === 'phone' || id === 'email') {
@@ -110,34 +109,34 @@ export function VerificationCenter() {
         setUploadProgress(prev => {
           if (prev >= 90) {
             clearInterval(interval);
-            
+
             // Call backend to submit verification
             // In a real app, we'd get the URL from supabase storage first
             const mockUrl = `https://storage.supabase.co/${id}-${Date.now()}.jpg`;
-            
+
             fetch('/make-server-0b1f4071/verification/submit', {
               method: 'POST',
               headers: {
-                 'Content-Type': 'application/json',
-                 'Authorization': `Bearer ${localStorage.getItem('supabase.auth.token')}` // In real app use session
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('supabase.auth.token')}` // In real app use session
               },
               body: JSON.stringify({
                 document_url: mockUrl,
                 document_type: id
               })
             }).then(res => {
-               if(res.ok) {
-                  setVerifications(verifications.map(v => 
-                    v.id === id ? { ...v, status: 'pending' } : v
-                  ));
-                  setUploadProgress(100);
-                  toast.success('Document uploaded! Verification in progress.');
-               } else {
-                  toast.error('Verification submission failed');
-                  setUploadProgress(0);
-               }
+              if (res.ok) {
+                setVerifications(verifications.map(v =>
+                  v.id === id ? { ...v, status: 'pending' } : v
+                ));
+                setUploadProgress(100);
+                toast.success('Document uploaded! Verification in progress.');
+              } else {
+                toast.error('Verification submission failed');
+                setUploadProgress(0);
+              }
             });
-            
+
             return 90;
           }
           return prev + 10;
@@ -325,7 +324,7 @@ export function VerificationCenter() {
           <div>
             <h4>Your Privacy & Security</h4>
             <p className="text-sm text-muted-foreground mt-1">
-              All documents are encrypted and stored securely. We never share your personal information with other users. 
+              All documents are encrypted and stored securely. We never share your personal information with other users.
               Verification is done by our trusted team and automated systems following strict privacy guidelines.
             </p>
             <p className="text-sm text-muted-foreground mt-2" dir="rtl">

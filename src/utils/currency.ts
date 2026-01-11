@@ -66,18 +66,18 @@ export function formatCurrency(
   locale?: string
 ): string {
   const currency = currencies[currencyCode] || currencies.USD;
-  const formatLocale = locale || currency.locale;
+  const formatLocale = locale || (currency?.locale || 'en-US');
 
   try {
     return new Intl.NumberFormat(formatLocale, {
       style: 'currency',
       currency: currencyCode,
-      minimumFractionDigits: currency.decimals,
-      maximumFractionDigits: currency.decimals,
+      minimumFractionDigits: currency?.decimals || 2,
+      maximumFractionDigits: currency?.decimals || 2,
     }).format(amount);
   } catch {
     // Fallback formatting
-    return `${currency.symbol}${amount.toFixed(currency.decimals)}`;
+    return `${currency?.symbol || '$'}${amount.toFixed(currency?.decimals || 2)}`;
   }
 }
 
@@ -109,7 +109,7 @@ export function parseCurrencyString(
   const currency = currencies[currencyCode] || currencies.USD;
   // Remove currency symbol and spaces
   const cleanedString = formattedString
-    .replace(currency.symbol, '')
+    .replace(currency?.symbol || '$', '')
     .replace(/\s/g, '')
     .replace(/,/g, '');
 

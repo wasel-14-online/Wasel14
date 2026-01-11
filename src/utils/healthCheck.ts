@@ -25,7 +25,7 @@ export interface HealthCheckResult {
  * Performs a comprehensive health check of the system
  */
 export async function performHealthCheck(): Promise<HealthCheckResult> {
-  const startTime = Date.now();
+  // const startTime = Date.now();
   const errors: string[] = [];
   const checks = {
     backend: false,
@@ -62,7 +62,7 @@ export async function performHealthCheck(): Promise<HealthCheckResult> {
   if (supabase) {
     try {
       const authStart = Date.now();
-      const { error } = await (supabase as NonNullable<typeof supabase>).auth.getSession();
+      const { error } = await (supabase as any).auth.getSession();
       latency.auth = Date.now() - authStart;
 
       if (!error) {

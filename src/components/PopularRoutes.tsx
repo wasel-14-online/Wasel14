@@ -1,4 +1,4 @@
-import { MoveRight, TrendingUp, Timer, CircleDollarSign, UsersRound } from 'lucide-react';
+import { MoveRight, TrendingUp, Timer, UsersRound } from 'lucide-react';
 import { Card, CardContent } from './ui/card';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
@@ -217,7 +217,7 @@ export function PopularRoutes({ onGetStarted }: PopularRoutesProps) {
         {/* Popular Routes Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           {popularRoutes.map((route, index) => (
-            <Card 
+            <Card
               key={index}
               className="hover:shadow-xl transition-all duration-300 cursor-pointer group border-gray-200 hover:border-primary/30 bg-white relative overflow-hidden"
             >
@@ -227,7 +227,7 @@ export function PopularRoutes({ onGetStarted }: PopularRoutesProps) {
                   Trending
                 </div>
               )}
-              
+
               {route.discount && (
                 <div className="absolute top-0 left-0 bg-gradient-to-r from-accent to-accent/90 text-accent-foreground px-4 py-1 text-xs rounded-br-lg">
                   {route.discount}% OFF
@@ -301,7 +301,7 @@ export function PopularRoutes({ onGetStarted }: PopularRoutesProps) {
 
                 {/* Hover CTA */}
                 <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <Button 
+                  <Button
                     onClick={onGetStarted}
                     className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
                     size="sm"
@@ -323,14 +323,14 @@ export function PopularRoutes({ onGetStarted }: PopularRoutesProps) {
                 We're adding new routes every day. Join Wassel and be the first to know when your route becomes available, or offer your own ride!
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button 
+                <Button
                   onClick={onGetStarted}
                   className="bg-primary hover:bg-primary/90 text-primary-foreground"
                   size="lg"
                 >
                   Browse All Routes
                 </Button>
-                <Button 
+                <Button
                   onClick={onGetStarted}
                   variant="outline"
                   className="border-primary text-primary hover:bg-primary/5"

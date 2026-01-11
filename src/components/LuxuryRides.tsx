@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Crown, Car, MapPin, Clock, Star, Shield, Sparkles, Wine, Music, Phone, CheckCircle } from 'lucide-react';
+import { Crown, Car, MapPin, Star, Shield, Sparkles, Wine, Music, Phone, CheckCircle } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
@@ -127,7 +127,7 @@ export function LuxuryRides() {
             className="w-full h-full object-cover"
           />
         </div>
-        
+
         {/* Animated golden particles */}
         {[...Array(20)].map((_, i) => (
           <motion.div
@@ -149,7 +149,7 @@ export function LuxuryRides() {
             }}
           />
         ))}
-        
+
         <div className="relative z-10">
           <motion.div
             initial={{ scale: 0 }}
@@ -160,7 +160,7 @@ export function LuxuryRides() {
             <Crown className="w-6 h-6" />
             <span className="font-semibold">Luxury Chauffeur Service</span>
           </motion.div>
-          
+
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
             Arrive in Absolute Style
           </h1>
@@ -224,11 +224,10 @@ export function LuxuryRides() {
               whileHover={{ y: -10, scale: 1.03 }}
             >
               <Card
-                className={`cursor-pointer transition-all duration-300 overflow-hidden ${
-                  selectedVehicle?.id === vehicle.id
+                className={`cursor-pointer transition-all duration-300 overflow-hidden ${selectedVehicle?.id === vehicle.id
                     ? 'ring-4 ring-amber-500 shadow-2xl'
                     : 'hover:shadow-2xl'
-                }`}
+                  }`}
                 onClick={() => setSelectedVehicle(vehicle)}
               >
                 <div className="relative h-48 overflow-hidden">
@@ -304,7 +303,7 @@ export function LuxuryRides() {
                       <MapPin className="w-5 h-5 text-amber-600" />
                       Journey Details
                     </h3>
-                    
+
                     <div className="space-y-2">
                       <Label htmlFor="pickup">Pickup Location *</Label>
                       <Input
@@ -385,7 +384,7 @@ export function LuxuryRides() {
                       <Sparkles className="w-5 h-5 text-amber-600" />
                       Premium Amenities
                     </h3>
-                    
+
                     <div className="space-y-2">
                       {amenities.map(amenity => (
                         <motion.div
@@ -436,7 +435,7 @@ export function LuxuryRides() {
                       </div>
                     </div>
                   </div>
-                  
+
                   <div className="space-y-2 text-sm border-t border-amber-200 dark:border-amber-800 pt-4">
                     <div className="flex justify-between">
                       <span>Vehicle rental ({duration}h)</span>

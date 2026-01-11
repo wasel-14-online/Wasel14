@@ -7,7 +7,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Users, UserPlus, Share2, MessageCircle, Star, Heart } from 'lucide-react';
+import { Users, UserPlus, Share2, MessageCircle } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
@@ -37,7 +37,7 @@ interface SharedRide {
 }
 
 export function RideSocial() {
-  const [friends, setFriends] = useState<Friend[]>([
+  const [friends] = useState<Friend[]>([
     {
       id: '1',
       name: 'Sarah Ahmed',
@@ -55,7 +55,7 @@ export function RideSocial() {
     },
   ]);
 
-  const [sharedRides, setSharedRides] = useState<SharedRide[]>([
+  const [sharedRides] = useState<SharedRide[]>([
     {
       id: '1',
       from: 'Dubai Marina',
@@ -135,7 +135,7 @@ export function RideSocial() {
                             <div className="absolute bottom-0 right-0 w-4 h-4 bg-green-500 rounded-full border-2 border-white" />
                           )}
                         </div>
-                        
+
                         <div>
                           <h3 className="font-semibold">{friend.name}</h3>
                           <p className="text-sm text-muted-foreground">
@@ -195,7 +195,7 @@ export function RideSocial() {
                       {new Date(ride.date).toLocaleDateString()} at {ride.time}
                     </p>
                   </div>
-                  
+
                   <div className="text-right">
                     <p className="text-sm text-muted-foreground line-through">
                       AED {ride.totalCost}

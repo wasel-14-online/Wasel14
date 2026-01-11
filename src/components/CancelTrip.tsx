@@ -18,7 +18,7 @@ import {
   SelectValue,
 } from './ui/select';
 import { Label } from './ui/label';
-import { AlertTriangle, DollarSign, Clock, Info } from 'lucide-react';
+import { AlertTriangle, Info } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { toast } from 'sonner';
 
@@ -40,14 +40,16 @@ interface RefundCalculation {
 }
 
 export function CancelTrip({
-  tripId,
+  _tripId,
   tripStatus,
   fare,
   scheduledTime,
   onCancel,
   onClose,
 }: CancelTripProps) {
-  const { t } = useLanguage();
+  const { t: _t } = useLanguage();
+  const _unused = { _tripId, _t };
+
   const [loading, setLoading] = useState(false);
   const [cancellationReason, setCancellationReason] = useState('');
   const [additionalNotes, setAdditionalNotes] = useState('');
@@ -124,9 +126,9 @@ export function CancelTrip({
     try {
       // Mock cancellation for demo
       await new Promise(resolve => setTimeout(resolve, 1000));
-      
+
       toast.success(
-        refundCalc?.refundAmount 
+        refundCalc?.refundAmount
           ? `Trip cancelled. AED ${refundCalc.refundAmount.toFixed(2)} will be refunded to your original payment method within 3-5 business days.`
           : 'Trip cancelled successfully.'
       );
@@ -165,7 +167,7 @@ export function CancelTrip({
               <span className="text-sm">Original Fare</span>
               <span className="font-semibold">AED {refundCalc.originalFare.toFixed(2)}</span>
             </div>
-            
+
             {refundCalc.cancellationFee > 0 && (
               <div className="flex justify-between text-red-600">
                 <span className="text-sm">Cancellation Fee</span>

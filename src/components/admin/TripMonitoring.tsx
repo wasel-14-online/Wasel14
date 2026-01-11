@@ -11,10 +11,9 @@ import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { MapPin, Clock, DollarSign, AlertTriangle, Eye, Phone } from 'lucide-react';
-import { supabase } from '../../lib/supabase';
-import { realTimeTrackingService } from '../../services/realTimeTracking';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { toast } from 'sonner';
+import { supabase } from '../../services/api';
 
 interface LiveTrip {
   id: string;
@@ -41,14 +40,16 @@ interface LiveTrip {
 }
 
 export function TripMonitoring() {
-  const { t } = useLanguage();
+  const { t: _t } = useLanguage();
   const [liveTrips, setLiveTrips] = useState<LiveTrip[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedTrip, setSelectedTrip] = useState<LiveTrip | null>(null);
+  const _ = { _t, selectedTrip };
+
 
   useEffect(() => {
     loadLiveTrips();
-    
+
     // Subscribe to trip updates
     const channel = supabase
       .channel('admin-trips')
@@ -85,7 +86,7 @@ export function TripMonitoring() {
 
       if (error) throw error;
 
-      const trips: LiveTrip[] = (data || []).map(trip => ({
+      const trips: LiveTrip[] = (data || []).map((trip: any) => ({
         id: trip.id,
         status: trip.status,
         passenger: {
@@ -135,7 +136,8 @@ export function TripMonitoring() {
   };
 
   const handleInterventionCall = (trip: LiveTrip) => {
-    toast.info('Initiating intervention call...');
+    const _trip = trip;
+    toast.info(`Initiating intervention call for trip ${_trip.id.slice(0, 8)}...`);
     // TODO: Integrate Twilio conference call
   };
 
@@ -198,9 +200,8 @@ export function TripMonitoring() {
               {liveTrips.map((trip) => (
                 <div
                   key={trip.id}
-                  className={`p-4 border rounded-lg ${
-                    trip.hasEmergency ? 'border-red-500 bg-red-50 dark:bg-red-950' : ''
-                  }`}
+                  className={`p-4 border rounded-lg ${trip.hasEmergency ? 'border-red-500 bg-red-50 dark:bg-red-950' : ''
+                    }`}
                 >
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-3">

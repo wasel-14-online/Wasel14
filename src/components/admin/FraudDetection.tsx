@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
-import { AlertTriangle, Shield, Eye, Ban } from 'lucide-react';
+import { AlertTriangle, Eye, Ban } from 'lucide-react';
 import { useLanguage } from '../../contexts/LanguageContext';
 
 interface FraudAlert {
@@ -25,7 +25,8 @@ interface FraudAlert {
 }
 
 export function FraudDetection() {
-  const { t } = useLanguage();
+  const { t: _t } = useLanguage();
+  const _ = _t;
   const [alerts, setAlerts] = useState<FraudAlert[]>([
     {
       id: '1',
@@ -115,15 +116,13 @@ export function FraudDetection() {
             {alerts.map((alert) => (
               <div
                 key={alert.id}
-                className={`p-4 border rounded-lg ${
-                  alert.severity === 'critical' ? 'border-red-500 bg-red-50 dark:bg-red-950' : ''
-                }`}
+                className={`p-4 border rounded-lg ${alert.severity === 'critical' ? 'border-red-500 bg-red-50 dark:bg-red-950' : ''
+                  }`}
               >
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center gap-3">
-                    <AlertTriangle className={`w-5 h-5 ${
-                      alert.severity === 'critical' ? 'text-red-600' : 'text-orange-600'
-                    }`} />
+                    <AlertTriangle className={`w-5 h-5 ${alert.severity === 'critical' ? 'text-red-600' : 'text-orange-600'
+                      }`} />
                     <div>
                       <div className="font-semibold">{alert.user_name}</div>
                       <div className="text-sm text-muted-foreground">

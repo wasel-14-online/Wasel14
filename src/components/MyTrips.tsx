@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { CalendarDays, Locate, UsersRound, CircleDollarSign, MoveRight, Radar } from 'lucide-react';
+import { CalendarDays, Locate, UsersRound, MoveRight, Radar } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 import { Badge } from './ui/badge';
@@ -178,8 +178,8 @@ export function MyTrips() {
                       <p className="text-sm text-gray-500">Total price</p>
                     </div>
                     <div className="flex flex-wrap gap-2">
-                      <Button 
-                        variant="outline" 
+                      <Button
+                        variant="outline"
                         size="sm"
                         onClick={() => handleTrackTrip(trip)}
                         className="gap-1"

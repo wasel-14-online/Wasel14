@@ -7,7 +7,7 @@ import {
   DropdownMenuTrigger,
 } from './ui/dropdown-menu';
 import { Search } from 'lucide-react';
-import { currencies, getCurrency, getAllCurrencies, formatCurrency, Currency } from '../utils/currency';
+import { getCurrency, getAllCurrencies, formatCurrency, Currency } from '../utils/currency';
 
 interface CurrencySelectorProps {
   value?: string;
@@ -66,9 +66,8 @@ export function CurrencySelector({
             <DropdownMenuItem
               key={currency.code}
               onClick={() => handleSelect(currency)}
-              className={`flex items-center justify-between py-2 ${
-                value === currency.code ? 'bg-primary/10' : ''
-              }`}
+              className={`flex items-center justify-between py-2 ${value === currency.code ? 'bg-primary/10' : ''
+                }`}
             >
               <div className="flex items-center gap-2">
                 <span className="text-lg w-8">{currency.symbol}</span>

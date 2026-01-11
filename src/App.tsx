@@ -11,7 +11,6 @@ import { SkeletonScreen } from './components/ui/skeleton-screen';
 import { useState, useEffect } from 'react';
 import { AuthPage } from './components/AuthPage';
 import { LandingPage } from './components/LandingPage';
-import { Dashboard } from './components/Dashboard';
 import { FindRide } from './components/FindRide';
 import { OfferRide } from './components/OfferRide';
 import { MyTrips } from './components/MyTrips';
@@ -60,7 +59,6 @@ import { TripInsurance } from './components/TripInsurance';
 import { AccidentReport } from './components/AccidentReport';
 import { InsuranceClaim } from './components/InsuranceClaim';
 // Premium components
-import { SplashScreen } from './components/premium/SplashScreen';
 import { FloatingActionButton } from './components/premium/FloatingActionButton';
 import { EnhancedDashboard } from './components/premium/EnhancedDashboard';
 // Advanced features
@@ -102,13 +100,13 @@ function AppContent() {
       return (
         <>
           <Toaster />
-          <AuthPage 
-            initialTab={authTab} 
-            onBack={() => setShowAuthPage(false)} 
+          <AuthPage
+            initialTab={authTab}
+            onBack={() => setShowAuthPage(false)}
             onSuccess={() => {
               // AuthContext will automatically update user state
               // No need to manually navigate
-            }} 
+            }}
           />
         </>
       );
@@ -117,7 +115,7 @@ function AppContent() {
     return (
       <>
         <Toaster />
-        <LandingPage 
+        <LandingPage
           onLogin={() => {
             setAuthTab('login');
             setShowAuthPage(true);
@@ -228,30 +226,30 @@ function AppContent() {
       case 'driver-dashboard':
         return <DriverEconomySystem />;
       case 'live-trip':
-        return <LiveTrip 
+        return <LiveTrip
           tripId="demo-trip-id"
           driverId="demo-driver-id"
-          driverInfo={{ 
-            name: 'Ahmed Khan', 
-            photo: '', 
-            rating: 4.8, 
-            vehicleModel: 'Toyota Camry', 
-            vehiclePlate: 'ABC 1234', 
+          driverInfo={{
+            name: 'Ahmed Khan',
+            photo: '',
+            rating: 4.8,
+            vehicleModel: 'Toyota Camry',
+            vehiclePlate: 'ABC 1234',
             vehicleColor: 'Silver'
           }}
-          pickupLocation={{ 
-            address: '123 Main Street, Amman', 
+          pickupLocation={{
+            address: '123 Main Street, Amman',
             coordinates: { lat: 31.9539, lng: 35.9106 }
           }}
-          dropoffLocation={{ 
-            address: '456 Queen Alia Street, Amman', 
+          dropoffLocation={{
+            address: '456 Queen Alia Street, Amman',
             coordinates: { lat: 31.9731, lng: 35.8433 }
           }}
         />;
       case 'trip-export':
         return <TripExport />;
       case 'cancel-trip':
-        return <CancelTrip 
+        return <CancelTrip
           tripId="demo-trip-id"
           tripStatus="waiting"
           fare={25.00}

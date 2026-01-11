@@ -26,17 +26,15 @@ import {
   TableHeader,
   TableRow,
 } from '../ui/table';
-import { 
-  Search, 
-  Filter, 
-  Ban, 
-  CheckCircle, 
+import {
+  Search,
+  CheckCircle,
   XCircle,
-  MoreVertical,
   Eye,
   Mail,
   Phone,
-  Shield
+  Shield,
+  Ban
 } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { useLanguage } from '../../contexts/LanguageContext';
@@ -59,7 +57,8 @@ interface User {
 }
 
 export function UserManagement() {
-  const { t, language } = useLanguage();
+  const { t: _t } = useLanguage();
+  const _ = _t;
   const [users, setUsers] = useState<User[]>([]);
   const [filteredUsers, setFilteredUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
@@ -67,6 +66,7 @@ export function UserManagement() {
   const [roleFilter, setRoleFilter] = useState<string>('all');
   const [statusFilter, setStatusFilter] = useState<string>('all');
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
+  const _u = selectedUser;
 
   useEffect(() => {
     loadUsers();
@@ -190,10 +190,10 @@ export function UserManagement() {
     try {
       const { error } = await supabase
         .from('profiles')
-        .update({ 
-          status: 'banned', 
+        .update({
+          status: 'banned',
           ban_reason: reason,
-          updated_at: new Date().toISOString() 
+          updated_at: new Date().toISOString()
         })
         .eq('id', userId);
 

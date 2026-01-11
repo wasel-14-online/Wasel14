@@ -96,7 +96,7 @@ export function ARNavigation({ destination, onClose }: ARNavigationProps) {
         (position) => {
           const userLat = position.coords.latitude;
           const userLng = position.coords.longitude;
-          
+
           // Calculate distance to destination
           const dist = calculateDistance(
             userLat,
@@ -104,7 +104,7 @@ export function ARNavigation({ destination, onClose }: ARNavigationProps) {
             destination.lat,
             destination.lng
           );
-          
+
           setDistance(dist);
         },
         (error) => {
@@ -136,7 +136,7 @@ export function ARNavigation({ destination, onClose }: ARNavigationProps) {
 
   const updateDirection = (currentHeading: number) => {
     const angleToDest = currentHeading; // Simplified - should calculate actual bearing
-    
+
     if (angleToDest > 337.5 || angleToDest <= 22.5) {
       setDirection('straight');
     } else if (angleToDest > 22.5 && angleToDest <= 67.5) {
@@ -198,10 +198,10 @@ export function ARNavigation({ destination, onClose }: ARNavigationProps) {
           muted
         />
 
-        {/* AR Overlay */}
+        {/* AR Overlay - Placeholder for future implementation */}
         <canvas
           ref={canvasRef}
-          className="absolute inset-0 w-full h-full pointer-events-none"
+          className="absolute inset-0 w-full h-full pointer-events-none hidden"
         />
 
         {/* UI Overlays */}
@@ -212,7 +212,7 @@ export function ARNavigation({ destination, onClose }: ARNavigationProps) {
               <Target className="w-4 h-4 mr-2" />
               {distance.toFixed(0)}m away
             </Badge>
-            
+
             <Button
               variant="ghost"
               size="sm"

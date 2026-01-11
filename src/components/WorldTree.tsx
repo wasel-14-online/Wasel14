@@ -1,12 +1,9 @@
 import { useState, useEffect } from 'react';
-import { 
-  TreeDeciduous, 
-  TrendingUp, 
-  TrendingDown, 
-  Leaf, 
-  Droplets,
+import {
+  TrendingUp,
+  TrendingDown,
+  Leaf,
   Sun,
-  Wind,
   Award,
   Target,
   Zap,
@@ -60,9 +57,9 @@ export function WorldTree() {
   const addTripImpact = (isEcoFriendly: boolean, distance: number) => {
     const co2PerKm = 0.12; // kg CO2 per km
     const carpoolReduction = 0.6; // 60% reduction when carpooling
-    
+
     let co2Impact = distance * co2PerKm;
-    
+
     const impact: TripImpact = {
       tripId: Math.random().toString(),
       distance,
@@ -134,18 +131,18 @@ export function WorldTree() {
             {/* Tree Visual */}
             <motion.div
               animate={
-                showAnimation === 'grow' 
+                showAnimation === 'grow'
                   ? { scale: [1, 1.2, 1], rotate: [0, 5, -5, 0] }
                   : showAnimation === 'shrink'
-                  ? { scale: [1, 0.9, 1], rotate: [0, -5, 5, 0] }
-                  : {}
+                    ? { scale: [1, 0.9, 1], rotate: [0, -5, 5, 0] }
+                    : {}
               }
               className="relative"
             >
               <div className={`text-9xl ${treeStage.color}`}>
                 {treeStage.emoji}
               </div>
-              
+
               {/* Floating particles */}
               <AnimatePresence>
                 {showAnimation === 'grow' && (
@@ -154,10 +151,10 @@ export function WorldTree() {
                       <motion.div
                         key={i}
                         initial={{ y: 0, x: 0, opacity: 1 }}
-                        animate={{ 
-                          y: -100, 
+                        animate={{
+                          y: -100,
                           x: (Math.random() - 0.5) * 100,
-                          opacity: 0 
+                          opacity: 0
                         }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 1.5, delay: i * 0.1 }}
@@ -174,10 +171,10 @@ export function WorldTree() {
                       <motion.div
                         key={i}
                         initial={{ y: 0, opacity: 1 }}
-                        animate={{ 
-                          y: 50, 
+                        animate={{
+                          y: 50,
                           x: (Math.random() - 0.5) * 50,
-                          opacity: 0 
+                          opacity: 0
                         }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 1, delay: i * 0.1 }}
@@ -209,21 +206,19 @@ export function WorldTree() {
                   <Heart className="h-4 w-4 text-red-500" />
                   Tree Health
                 </span>
-                <span className={`font-semibold ${
-                  treeStats.health >= 60 ? 'text-green-600' : 
-                  treeStats.health >= 30 ? 'text-orange-600' : 
-                  'text-red-600'
-                }`}>
+                <span className={`font-semibold ${treeStats.health >= 60 ? 'text-green-600' :
+                    treeStats.health >= 30 ? 'text-orange-600' :
+                      'text-red-600'
+                  }`}>
                   {treeStats.health}%
                 </span>
               </div>
-              <Progress 
-                value={treeStats.health} 
-                className={`h-4 ${
-                  treeStats.health >= 60 ? '[&>div]:bg-green-500' : 
-                  treeStats.health >= 30 ? '[&>div]:bg-orange-500' : 
-                  '[&>div]:bg-red-500'
-                }`}
+              <Progress
+                value={treeStats.health}
+                className={`h-4 ${treeStats.health >= 60 ? '[&>div]:bg-green-500' :
+                    treeStats.health >= 30 ? '[&>div]:bg-orange-500' :
+                      '[&>div]:bg-red-500'
+                  }`}
               />
             </div>
           </div>
@@ -248,28 +243,25 @@ export function WorldTree() {
           </CardContent>
         </Card>
 
-        <Card className={`bg-gradient-to-br border-2 ${
-          netImpact >= 0 
+        <Card className={`bg-gradient-to-br border-2 ${netImpact >= 0
             ? 'from-blue-50 to-cyan-50 dark:from-blue-950/20 dark:to-cyan-950/20 border-blue-200'
             : 'from-red-50 to-orange-50 dark:from-red-950/20 dark:to-orange-950/20 border-red-200'
-        }`}>
+          }`}>
           <CardContent className="pt-6">
             <div className="flex items-start justify-between">
               <div>
                 <p className="text-sm text-muted-foreground">Net CO₂ Impact</p>
-                <p className={`text-2xl font-bold ${
-                  netImpact >= 0 
-                    ? 'text-blue-700 dark:text-blue-300' 
+                <p className={`text-2xl font-bold ${netImpact >= 0
+                    ? 'text-blue-700 dark:text-blue-300'
                     : 'text-red-700 dark:text-red-300'
-                }`}>
+                  }`}>
                   {netImpact >= 0 ? '+' : ''}{netImpact.toFixed(2)} kg
                 </p>
               </div>
-              <div className={`p-2 rounded-lg ${
-                netImpact >= 0 
+              <div className={`p-2 rounded-lg ${netImpact >= 0
                   ? 'bg-blue-100 dark:bg-blue-900/40'
                   : 'bg-red-100 dark:bg-red-900/40'
-              }`}>
+                }`}>
                 {netImpact >= 0 ? (
                   <TrendingUp className="h-5 w-5 text-blue-600 dark:text-blue-400" />
                 ) : (
@@ -338,13 +330,12 @@ export function WorldTree() {
                 </div>
               ) : (
                 recentImpacts.map((impact, i) => (
-                  <div 
+                  <div
                     key={impact.tripId}
-                    className={`flex items-center justify-between p-4 rounded-lg border-2 ${
-                      impact.isEcoFriendly 
+                    className={`flex items-center justify-between p-4 rounded-lg border-2 ${impact.isEcoFriendly
                         ? 'bg-green-50 dark:bg-green-950/20 border-green-200'
                         : 'bg-red-50 dark:bg-red-950/20 border-red-200'
-                    }`}
+                      }`}
                   >
                     <div className="flex items-center gap-3">
                       {impact.isEcoFriendly ? (
@@ -362,9 +353,8 @@ export function WorldTree() {
                       </div>
                     </div>
                     <div className="text-right">
-                      <p className={`font-bold ${
-                        impact.isEcoFriendly ? 'text-green-600' : 'text-red-600'
-                      }`}>
+                      <p className={`font-bold ${impact.isEcoFriendly ? 'text-green-600' : 'text-red-600'
+                        }`}>
                         {impact.isEcoFriendly ? '-' : '+'}{impact.co2Saved > 0 ? impact.co2Saved.toFixed(2) : (impact.distance * 0.12).toFixed(2)} kg CO₂
                       </p>
                     </div>
@@ -505,8 +495,8 @@ export function WorldTree() {
                       Real Impact
                     </h4>
                     <p className="text-sm text-blue-800 dark:text-blue-200">
-                      Every carpooled trip saves approximately 60% of CO₂ emissions. 
-                      A single 50km carpool can save up to 3.6kg of CO₂ - equivalent to 
+                      Every carpooled trip saves approximately 60% of CO₂ emissions.
+                      A single 50km carpool can save up to 3.6kg of CO₂ - equivalent to
                       planting a small tree for a day!
                     </p>
                   </div>

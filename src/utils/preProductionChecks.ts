@@ -41,10 +41,10 @@ export async function runPreProductionChecks(): Promise<PreProductionReport> {
 
   // Category 1: Environment Configuration
   checks.push({
-    passed: !!projectId && projectId !== 'your-project-id',
+    passed: !!projectId && (projectId as string) !== 'your-project-id',
     category: 'Environment',
     check: 'Supabase Project ID Configured',
-    status: projectId && projectId !== 'your-project-id' ? 'pass' : 'fail',
+    status: projectId && (projectId as string) !== 'your-project-id' ? 'pass' : 'fail',
     message: projectId ? `Project ID: ${projectId}` : 'Project ID not configured',
     critical: true,
   });
@@ -200,10 +200,10 @@ export async function runPreProductionChecks(): Promise<PreProductionReport> {
   const warnings = checks.filter(c => c.status === 'warning').length;
   const criticalFailures = checks.filter(c => c.status === 'fail' && c.critical).length;
 
-  const overallStatus: 'pass' | 'fail' | 'warning' = 
-    criticalFailures > 0 ? 'fail' : 
-    failed > 0 ? 'warning' : 
-    warnings > 0 ? 'warning' : 'pass';
+  const overallStatus: 'pass' | 'fail' | 'warning' =
+    criticalFailures > 0 ? 'fail' :
+      failed > 0 ? 'warning' :
+        warnings > 0 ? 'warning' : 'pass';
 
   const readyForDeployment = criticalFailures === 0 && failed === 0;
 
@@ -238,7 +238,7 @@ export async function runPreProductionChecks(): Promise<PreProductionReport> {
   console.log(`❌ Failed: ${report.failed}`);
   console.log(`🚨 Critical Failures: ${report.criticalFailures}`);
   console.log(`${'='.repeat(60)}`);
-  
+
   // Group by category
   const categories = [...new Set(checks.map(c => c.category))];
   categories.forEach(category => {

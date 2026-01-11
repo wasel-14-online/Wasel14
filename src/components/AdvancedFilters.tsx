@@ -2,7 +2,6 @@ import { Label } from './ui/label';
 import { Slider } from './ui/slider';
 import { Switch } from './ui/switch';
 import { Button } from './ui/button';
-import { Badge } from './ui/badge';
 import { Separator } from './ui/separator';
 import { X } from 'lucide-react';
 
@@ -45,7 +44,7 @@ export function AdvancedFilters({ filters, onFiltersChange, onClear }: AdvancedF
             max={200}
             step={5}
             value={filters.priceRange}
-            onValueChange={(value) => 
+            onValueChange={(value: number[]) =>
               onFiltersChange({ ...filters, priceRange: value })
             }
           />
@@ -67,7 +66,7 @@ export function AdvancedFilters({ filters, onFiltersChange, onClear }: AdvancedF
             max={5}
             step={0.5}
             value={[filters.minRating]}
-            onValueChange={(value) => 
+            onValueChange={(value: number[]) =>
               onFiltersChange({ ...filters, minRating: value[0] })
             }
           />
@@ -87,7 +86,7 @@ export function AdvancedFilters({ filters, onFiltersChange, onClear }: AdvancedF
             <span className="text-sm">Verified Drivers Only</span>
             <Switch
               checked={filters.verifiedOnly}
-              onCheckedChange={(checked) => 
+              onCheckedChange={(checked: boolean) =>
                 onFiltersChange({ ...filters, verifiedOnly: checked })
               }
             />
@@ -96,7 +95,7 @@ export function AdvancedFilters({ filters, onFiltersChange, onClear }: AdvancedF
             <span className="text-sm">Instant Book Available</span>
             <Switch
               checked={filters.instantBook}
-              onCheckedChange={(checked) => 
+              onCheckedChange={(checked: boolean) =>
                 onFiltersChange({ ...filters, instantBook: checked })
               }
             />
@@ -114,9 +113,9 @@ export function AdvancedFilters({ filters, onFiltersChange, onClear }: AdvancedF
             <span className="text-sm">No Smoking</span>
             <Switch
               checked={filters.preferences.noSmoking}
-              onCheckedChange={(checked) => 
-                onFiltersChange({ 
-                  ...filters, 
+              onCheckedChange={(checked: boolean) =>
+                onFiltersChange({
+                  ...filters,
                   preferences: { ...filters.preferences, noSmoking: checked }
                 })
               }
@@ -126,9 +125,9 @@ export function AdvancedFilters({ filters, onFiltersChange, onClear }: AdvancedF
             <span className="text-sm">Pets Allowed</span>
             <Switch
               checked={filters.preferences.petsAllowed}
-              onCheckedChange={(checked) => 
-                onFiltersChange({ 
-                  ...filters, 
+              onCheckedChange={(checked: boolean) =>
+                onFiltersChange({
+                  ...filters,
                   preferences: { ...filters.preferences, petsAllowed: checked }
                 })
               }
@@ -138,9 +137,9 @@ export function AdvancedFilters({ filters, onFiltersChange, onClear }: AdvancedF
             <span className="text-sm">Music OK</span>
             <Switch
               checked={filters.preferences.musicOk}
-              onCheckedChange={(checked) => 
-                onFiltersChange({ 
-                  ...filters, 
+              onCheckedChange={(checked: boolean) =>
+                onFiltersChange({
+                  ...filters,
                   preferences: { ...filters.preferences, musicOk: checked }
                 })
               }
@@ -150,9 +149,9 @@ export function AdvancedFilters({ filters, onFiltersChange, onClear }: AdvancedF
             <span className="text-sm">Quiet Ride</span>
             <Switch
               checked={filters.preferences.quietRide}
-              onCheckedChange={(checked) => 
-                onFiltersChange({ 
-                  ...filters, 
+              onCheckedChange={(checked: boolean) =>
+                onFiltersChange({
+                  ...filters,
                   preferences: { ...filters.preferences, quietRide: checked }
                 })
               }

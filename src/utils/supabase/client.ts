@@ -25,6 +25,6 @@ export async function getCurrentUser() {
 }
 
 // Helper to get user profile from server
-export async function getUserProfile(userId?: string) {
+export async function getUserProfile(_userId?: string) {
   return null;
 }

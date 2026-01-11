@@ -4,7 +4,7 @@ import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
 import { Progress } from '../ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
-import { Star, TrendingUp, Users, DollarSign, Award, Target } from 'lucide-react';
+import { Star, Users, DollarSign, Award, Target } from 'lucide-react';
 
 interface DriverTier {
   name: string;
@@ -99,8 +99,8 @@ export function DriverEconomySystem() {
     }
   });
 
-  const currentTierData = driverTiers[currentDriver.currentTier - 1];
-  const nextTierData = driverTiers[currentDriver.currentTier] || null;
+  const currentTierData = driverTiers[currentDriver.currentTier - 1] ?? driverTiers[0]!;
+  const nextTierData = driverTiers[currentDriver.currentTier] ?? null;
 
   const calculateProgress = (current: number, target: number) => {
     return Math.min((current / target) * 100, 100);
@@ -288,7 +288,7 @@ export function DriverEconomySystem() {
                   </p>
                 </div>
               </div>
-              
+
               <div className="border-t pt-4">
                 <h4 className="font-semibold mb-3">Ownership Progression Path</h4>
                 <div className="space-y-2">

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Gift, Users, Copy, Share2, TrendingUp, DollarSign, Check } from 'lucide-react';
+import { Users, Copy, Share2, DollarSign, Check } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
@@ -177,15 +177,15 @@ export function ReferralProgram() {
             />
           </div>
           <div className="flex gap-2">
-            <Button 
-              onClick={copyReferralCode} 
+            <Button
+              onClick={copyReferralCode}
               className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground"
             >
               <Copy className="w-4 h-4 mr-2" />
               Copy Code
             </Button>
-            <Button 
-              onClick={shareReferral} 
+            <Button
+              onClick={shareReferral}
               variant="outline"
               className="flex-1"
             >
@@ -232,7 +232,7 @@ export function ReferralProgram() {
               placeholder="Enter referral code"
               className="text-center tracking-wider"
             />
-            <Button 
+            <Button
               onClick={applyReferralCode}
               className="bg-primary hover:bg-primary/90 text-primary-foreground"
             >
@@ -270,9 +270,8 @@ export function ReferralProgram() {
               return (
                 <div
                   key={milestone.count}
-                  className={`flex items-center justify-between p-4 rounded-lg border ${
-                    achieved ? 'bg-primary/5 border-primary/30' : 'bg-muted/30'
-                  }`}
+                  className={`flex items-center justify-between p-4 rounded-lg border ${achieved ? 'bg-primary/5 border-primary/30' : 'bg-muted/30'
+                    }`}
                 >
                   <div className="flex items-center gap-3">
                     <div className="text-3xl">{milestone.icon}</div>

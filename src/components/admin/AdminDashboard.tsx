@@ -11,23 +11,9 @@ import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
 import { Input } from '../ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
-import { 
-  Users, 
-  Car, 
-  DollarSign, 
-  AlertTriangle, 
-  TrendingUp,
-  Shield,
+import {
   Activity,
-  Search,
-  Filter,
-  Download,
-  Ban,
-  CheckCircle,
-  XCircle,
-  Clock,
-  MapPin,
-  MessageSquare
+  Download
 } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { supabase } from '../../services/api';
@@ -83,7 +69,7 @@ export function AdminDashboard() {
 
   useEffect(() => {
     loadDashboardStats();
-    
+
     // Refresh stats every 30 seconds
     const interval = setInterval(loadDashboardStats, 30000);
     return () => clearInterval(interval);
@@ -94,7 +80,7 @@ export function AdminDashboard() {
     try {
       // In production, fetch from backend
       // For now, use aggregated queries
-      
+
       const [usersData, tripsData] = await Promise.all([
         supabase.from('profiles').select('*'),
         supabase.from('trips').select('*'),
@@ -103,17 +89,17 @@ export function AdminDashboard() {
       const mockStats: DashboardStats = {
         users: {
           total: usersData.data?.length || 0,
-          active: usersData.data?.filter((u: any) => u.is_active).length || 0,
-          drivers: usersData.data?.filter((u: any) => u.role === 'driver').length || 0,
-          passengers: usersData.data?.filter((u: any) => u.role === 'passenger').length || 0,
+          active: (usersData.data || []).filter((u: any) => (u as any).is_active).length,
+          drivers: (usersData.data || []).filter((u: any) => (u as any).role === 'driver').length,
+          passengers: (usersData.data || []).filter((u: any) => (u as any).role === 'passenger').length,
           newToday: 12,
           suspended: 3,
         },
         trips: {
           total: tripsData.data?.length || 0,
-          active: tripsData.data?.filter((t: any) => ['waiting', 'in_progress'].includes(t.status)).length || 0,
-          completed: tripsData.data?.filter((t: any) => t.status === 'completed').length || 0,
-          cancelled: tripsData.data?.filter((t: any) => t.status === 'cancelled').length || 0,
+          active: (tripsData.data || []).filter((t: any) => ['waiting', 'in_progress'].includes((t as any).status)).length,
+          completed: (tripsData.data || []).filter((t: any) => (t as any).status === 'completed').length,
+          cancelled: (tripsData.data || []).filter((t: any) => (t as any).status === 'cancelled').length,
           todayRevenue: 15420.50,
         },
         disputes: {
@@ -336,11 +322,10 @@ export function AdminDashboard() {
                   ].map((activity, i) => (
                     <div key={i} className="flex items-center justify-between p-3 bg-muted rounded-lg">
                       <div className="flex items-center gap-3">
-                        <div className={`w-2 h-2 rounded-full ${
-                          activity.status === 'success' ? 'bg-green-500' :
-                          activity.status === 'warning' ? 'bg-yellow-500' :
-                          'bg-blue-500'
-                        }`} />
+                        <div className={`w-2 h-2 rounded-full ${activity.status === 'success' ? 'bg-green-500' :
+                            activity.status === 'warning' ? 'bg-yellow-500' :
+                              'bg-blue-500'
+                          }`} />
                         <div>
                           <p className="font-medium text-sm">{activity.message}</p>
                           <p className="text-xs text-muted-foreground">{activity.user}</p>
