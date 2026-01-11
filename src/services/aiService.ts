@@ -131,9 +131,9 @@ async function getAuthDetails() {
 }
 
 function createAIEndpoint(path: string): string {
-  // TODO: Replace with your actual AI backend endpoint
-  const AI_BASE_URL = (import.meta as any).env.VITE_AI_API_URL || 'https://ai.wassel.app/v1';
-  return `${AI_BASE_URL}${path}`;
+  // Use Supabase Edge Functions for AI processing
+  const SUPABASE_URL = (import.meta as any).env.VITE_SUPABASE_URL || 'https://your-project.supabase.co';
+  return `${SUPABASE_URL}/functions/v1${path}`;
 }
 
 async function makeAIRequest<T>(
@@ -811,32 +811,32 @@ export async function updateUserAIConsent(userId: string, consent: boolean): Pro
 export const aiService = {
   // Route & Location
   getSmartRouteSuggestions,
-  
+
   // Pricing
   getDynamicPricing,
-  
+
   // Safety & Risk
   assessRisk,
-  
+
   // Search
   parseNaturalLanguageQuery,
-  
+
   // Recommendations
   getPersonalizedRecommendations,
-  
+
   // Analytics
   getPredictiveInsights,
-  
+
   // Matching
   getSmartMatches,
-  
+
   // Messaging
   getConversationSuggestions,
-  
+
   // Configuration
   getAIConfig,
   updateAIConfig,
-  
+
   // Consent
   getUserAIConsent,
   updateUserAIConsent,
