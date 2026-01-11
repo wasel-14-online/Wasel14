@@ -62,7 +62,7 @@ export async function performHealthCheck(): Promise<HealthCheckResult> {
   if (supabase) {
     try {
       const authStart = Date.now();
-      const { error } = await supabase.auth.getSession();
+      const { error } = await (supabase as NonNullable<typeof supabase>).auth.getSession();
       latency.auth = Date.now() - authStart;
 
       if (!error) {
@@ -126,7 +126,7 @@ export class HealthMonitor {
   private intervalId: number | null = null;
   private listeners: Array<(result: HealthCheckResult) => void> = [];
 
-  constructor(private intervalMs: number = 60000) {} // Default: 1 minute
+  constructor(private intervalMs: number = 60000) { } // Default: 1 minute
 
   start() {
     if (this.intervalId !== null) {
