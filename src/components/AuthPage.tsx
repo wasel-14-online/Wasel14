@@ -57,7 +57,7 @@ export function AuthPage({ onSuccess, onBack, initialTab = 'signup' }: AuthPageP
 
     try {
       const fullName = `${signupData.firstName} ${signupData.lastName}`;
-      const { error: signupError } = await signUp(signupData.email, signupData.password, fullName);
+      const { error: signupError } = await signUp(signupData.email, signupData.password, fullName, signupData.phone);
 
       if (signupError) {
         setError(signupError.message || 'Failed to create account');
@@ -103,14 +103,18 @@ export function AuthPage({ onSuccess, onBack, initialTab = 'signup' }: AuthPageP
     try {
       const { error } = await signInWithGoogle();
       if (error) {
-        setError(error.message || 'Failed to sign in with Google');
-        toast.error('Failed to sign in with Google');
+        const errorMsg = error.message?.toLowerCase().includes('provider') || error.message?.toLowerCase().includes('configured')
+          ? 'Google login is not configured. Please contact support or use email/password login.'
+          : error.message || 'Failed to sign in with Google';
+        setError(errorMsg);
+        toast.error(errorMsg);
         setIsLoading(false);
       }
       // Note: OAuth redirect happens here, so we don't need to manually call onSuccess
       // unless it opens in a popup (which it doesn't by default in Supabase auth)
     } catch (err) {
       setError('An unexpected error occurred');
+      toast.error('An unexpected error occurred');
       setIsLoading(false);
     }
   };
@@ -121,12 +125,16 @@ export function AuthPage({ onSuccess, onBack, initialTab = 'signup' }: AuthPageP
     try {
       const { error } = await signInWithFacebook();
       if (error) {
-        setError(error.message || 'Failed to sign in with Facebook');
-        toast.error('Failed to sign in with Facebook');
+        const errorMsg = error.message?.toLowerCase().includes('provider') || error.message?.toLowerCase().includes('configured')
+          ? 'Facebook login is not configured. Please contact support or use email/password login.'
+          : error.message || 'Failed to sign in with Facebook';
+        setError(errorMsg);
+        toast.error(errorMsg);
         setIsLoading(false);
       }
     } catch (err) {
       setError('An unexpected error occurred');
+      toast.error('An unexpected error occurred');
       setIsLoading(false);
     }
   };
