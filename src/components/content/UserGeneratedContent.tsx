@@ -8,20 +8,15 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
     PenTool,
-    Image,
-    Video,
     Heart,
     MessageCircle,
     Share2,
     MapPin,
     Calendar,
-    Users,
     TrendingUp,
-    Star,
-    ThumbsUp
+    Star
 } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
-import { supabase } from '../../services/api';
 
 interface TripStory {
     id: string;
@@ -391,11 +386,12 @@ export const UserGeneratedContent: React.FC = () => {
                                             key={star}
                                             onClick={() => setNewStory(prev => ({ ...prev, rating: star }))}
                                             className="focus:outline-none"
+                                            aria-label={`Rate ${star} star${star > 1 ? 's' : ''}`}
                                         >
                                             <Star
                                                 className={`h-6 w-6 ${star <= newStory.rating
-                                                        ? 'fill-yellow-400 text-yellow-400'
-                                                        : 'text-gray-300'
+                                                    ? 'fill-yellow-400 text-yellow-400'
+                                                    : 'text-gray-300'
                                                     }`}
                                             />
                                         </button>

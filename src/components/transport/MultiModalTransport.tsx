@@ -1,25 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Progress } from '@/components/ui/progress';
 import {
     Plane,
     Train,
     Bus,
     Car,
-    MapPin,
-    Clock,
-    DollarSign,
     ArrowRight,
     CheckCircle,
-    AlertTriangle,
     Shuffle
 } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
-import { supabase } from '../../services/api';
 
 interface TransportMode {
     id: string;
@@ -55,7 +49,6 @@ interface MultiModalJourney {
 }
 
 export const MultiModalTransport: React.FC = () => {
-    const { user } = useAuth();
     const [fromLocation, setFromLocation] = useState('');
     const [toLocation, setToLocation] = useState('');
     const [departureDate, setDepartureDate] = useState('');
@@ -112,7 +105,7 @@ export const MultiModalTransport: React.FC = () => {
                     segments: [
                         {
                             id: 'seg-1',
-                            mode: transportModes[3], // Car
+                            mode: transportModes[3]!, // Car
                             from: fromLocation,
                             to: 'Dubai Airport',
                             departureTime: `${departureDate}T08:00:00`,
@@ -125,7 +118,7 @@ export const MultiModalTransport: React.FC = () => {
                         },
                         {
                             id: 'seg-2',
-                            mode: transportModes[0], // Flight
+                            mode: transportModes[0]!, // Flight
                             from: 'Dubai Airport',
                             to: 'Jeddah Airport',
                             departureTime: `${departureDate}T11:00:00`,
@@ -138,7 +131,7 @@ export const MultiModalTransport: React.FC = () => {
                         },
                         {
                             id: 'seg-3',
-                            mode: transportModes[2], // Bus
+                            mode: transportModes[2]!, // Bus
                             from: 'Jeddah Airport',
                             to: toLocation,
                             departureTime: `${departureDate}T15:00:00`,
@@ -160,7 +153,7 @@ export const MultiModalTransport: React.FC = () => {
                     segments: [
                         {
                             id: 'seg-4',
-                            mode: transportModes[1], // Train
+                            mode: transportModes[1]!, // Train
                             from: fromLocation,
                             to: 'Riyadh Central',
                             departureTime: `${departureDate}T06:00:00`,
@@ -173,7 +166,7 @@ export const MultiModalTransport: React.FC = () => {
                         },
                         {
                             id: 'seg-5',
-                            mode: transportModes[2], // Bus
+                            mode: transportModes[2]!, // Bus
                             from: 'Riyadh Central',
                             to: toLocation,
                             departureTime: `${departureDate}T14:00:00`,

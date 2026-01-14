@@ -6,21 +6,15 @@ import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import {
-    TrendingUp,
-    TrendingDown,
     BarChart3,
     Target,
-    Zap,
     RefreshCw,
     CheckCircle,
     AlertTriangle,
-    Lightbulb,
     Users,
     Clock,
     DollarSign
 } from 'lucide-react';
-import { useAuth } from '../../contexts/AuthContext';
-import { supabase } from '../../services/api';
 
 interface ABTest {
     id: string;
@@ -61,7 +55,6 @@ interface SystemMetrics {
 }
 
 export const FeedbackLoops: React.FC = () => {
-    const { user } = useAuth();
     const [abTests, setAbTests] = useState<ABTest[]>([]);
     const [recommendations, setRecommendations] = useState<OptimizationRecommendation[]>([]);
     const [metrics, setMetrics] = useState<SystemMetrics>({

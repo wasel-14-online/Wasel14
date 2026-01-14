@@ -5,7 +5,6 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
-import { Progress } from '@/components/ui/progress';
 import {
     Send,
     ArrowRightLeft,
@@ -13,11 +12,9 @@ import {
     Clock,
     Shield,
     Calculator,
-    CheckCircle,
-    AlertTriangle
+    CheckCircle
 } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
-import { supabase } from '../../services/api';
 
 interface TransferRecipient {
     id: string;
@@ -237,7 +234,7 @@ export const MoneyTransfer: React.FC = () => {
                             {/* Recipient Selection */}
                             <div className="space-y-2">
                                 <Label>Send To</Label>
-                                <Select value={recipient?.id || ''} onValueChange={(id) => {
+                                <Select value={recipient?.id || ''} onValueChange={(id: string) => {
                                     const selected = recipients.find(r => r.id === id);
                                     setRecipient(selected || null);
                                     if (selected) setToCurrency(selected.currency);

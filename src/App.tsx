@@ -8,7 +8,7 @@ import { AIProvider } from './contexts/AIContext';
 import { Toaster } from './components/ui/sonner';
 import { useKeyboardNavigation, SkipLink } from './components/ui/accessibility';
 import { SkeletonScreen } from './components/ui/skeleton-screen';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { AuthPage } from './components/AuthPage';
 import { LandingPage } from './components/LandingPage';
 import { FindRide } from './components/FindRide';

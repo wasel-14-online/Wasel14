@@ -6,16 +6,11 @@ import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
     CreditCard,
-    Calendar,
-    DollarSign,
     CheckCircle,
-    AlertTriangle,
-    Calculator,
-    Clock,
     Shield
 } from 'lucide-react';
-import { useAuth } from '../contexts/AuthContext';
-import { supabase } from '../services/api';
+import { useAuth } from '../../contexts/AuthContext';
+import { supabase } from '../../services/api';
 
 interface BNPLPlan {
     id: string;
@@ -25,14 +20,6 @@ interface BNPLPlan {
     monthlyPayment: number;
     totalAmount: number;
     processingFee: number;
-}
-
-interface TripBooking {
-    id: string;
-    tripId: string;
-    amount: number;
-    currency: string;
-    status: 'pending' | 'approved' | 'paid';
 }
 
 export const BNPLTripPayment: React.FC<{
@@ -236,7 +223,7 @@ export const BNPLTripPayment: React.FC<{
                                     <Button
                                         className="w-full"
                                         variant={selectedPlan?.id === plan.id ? "default" : "outline"}
-                                        onClick={(e) => {
+                                        onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                                             e.stopPropagation();
                                             handlePlanSelection(plan);
                                         }}

@@ -1,4 +1,4 @@
-import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
+import { serve } from "https://deno.land/std@0.190.0/http/server.ts"
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 
 const corsHeaders = {
@@ -6,10 +6,13 @@ const corsHeaders = {
     'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 }
 
-serve(async (req) => {
+serve(async (req: Request) => {
     if (req.method === 'OPTIONS') {
         return new Response('ok', { headers: corsHeaders })
     }
+
+    let query = '', userId = '', context = {};
+    const startTime = Date.now();
 
     try {
         const supabaseClient = createClient(
@@ -22,7 +25,7 @@ serve(async (req) => {
             }
         )
 
-        const { query, userId, context } = await req.json()
+            ({ query, userId, context } = await req.json())
 
         // Log AI interaction
         await supabaseClient.from('ai_logs').insert({
@@ -40,7 +43,7 @@ serve(async (req) => {
                 success: true,
                 data: parsedQuery,
                 source: 'ai',
-                latency: Date.now() - new Date().getTime(),
+                latency: Date.now() - startTime,
                 metadata: {
                     modelVersion: 'bert-ner-v2.0',
                     algorithm: 'Named Entity Recognition'
@@ -57,7 +60,7 @@ serve(async (req) => {
         // Fallback: keyword extraction
         return new Response(
             JSON.stringify({
-                success: true,
+                success: false,
                 data: {
                     intent: 'search',
                     entities: {
@@ -69,12 +72,12 @@ serve(async (req) => {
                     reasoning: 'Keyword-based parsing due to AI unavailability'
                 },
                 source: 'rule-based',
-                latency: 40,
-                error: error.message
+                latency: Date.now() - startTime,
+                error: (error as Error).message
             }),
             {
                 headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-                status: 200,
+                status: 500,
             },
         )
     }
