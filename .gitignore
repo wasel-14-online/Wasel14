@@ -2,5 +2,66 @@
 # Kilo Code agent worktrees
 .kilocode/worktrees/
 
+# Dependencies
+node_modules/
+/.pnp
+.pnp.js
+
+# Testing
+/coverage
+
+# Production
+/build
+/dist
+
+# Environment Variables - NEVER COMMIT THESE
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*.local
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+*.sublime-workspace
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Build artifacts
+*.tsbuildinfo
+.eslintcache
+
+# Firebase
+.firebase/
+firebase-debug.log
+firestore-debug.log
+
+# Supabase
+.supabase/
+
+# Vercel
 .vercel
-.env*.local
+
+# Local development
+.local/
