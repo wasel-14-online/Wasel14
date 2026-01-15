@@ -17,16 +17,8 @@ const VerificationCenter = lazy(() => import('./components/VerificationCenter'))
 const NotificationCenter = lazy(() => import('./components/NotificationCenter'));
 const ReferralProgram = lazy(() => import('./components/ReferralProgram'));
 const BusinessAccounts = lazy(() => import('./components/BusinessAccounts'));
-import { Favorites } from './components/Favorites';
-import { Payments } from './components/Payments';
 const TripAnalytics = lazy(() => import('./components/TripAnalytics'));
 import { SafetyCenter } from './components/SafetyCenter';
-import { VerificationCenter } from './components/VerificationCenter';
-import { Settings } from './components/Settings';
-import { NotificationCenter } from './components/NotificationCenter';
-import { UserProfile } from './components/UserProfile';
-import { ReferralProgram } from './components/ReferralProgram';
-import { BusinessAccounts } from './components/BusinessAccounts';
 const PackageDelivery = lazy(() => import('./components/PackageDelivery'));
 const ScooterRentals = lazy(() => import('./components/ScooterRentals'));
 const FreightShipping = lazy(() => import('./components/FreightShipping'));
@@ -176,7 +168,7 @@ export function AppRouter() {
                         tripStatus: 'waiting',
                         fare: 25.0,
                         onCancel: () => console.log('Cancelled'),
-                        onClose: () => {},
+                        onClose: () => { },
                     })}
                 />
                 <Route path="/promo-codes" element={<Suspense fallback={<div>Loading…</div>}><PromoCodesManager /></Suspense>} />

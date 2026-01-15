@@ -7,4 +7,5 @@ module.exports = {
     '^.+\\.(ts|tsx)$': 'ts-jest',
   },
   testMatch: ['**/__tests__/**/*.(test|spec).(ts|tsx|js)'],
+  modulePathIgnorePatterns: ['<rootDir>/mobile/', '<rootDir>/Wasel14/'],
 };

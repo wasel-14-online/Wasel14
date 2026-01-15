@@ -1,7 +1,4 @@
 
-# Kilo Code agent worktrees
-.kilocode/worktrees/
-
 # Dependencies
 node_modules/
 /.pnp
@@ -10,7 +7,7 @@ node_modules/
 # Testing
 /coverage
 
-# Production
+# Production builds
 /build
 /dist
 
@@ -41,7 +38,6 @@ Thumbs.db
 .project
 .classpath
 .settings/
-*.sublime-workspace
 
 # Temporary files
 *.tmp
@@ -51,6 +47,23 @@ Thumbs.db
 # Build artifacts
 *.tsbuildinfo
 .eslintcache
+
+# Documentation and extra files (not part of core app)
+docs/
+mobile/
+plans/
+scripts/
+services/
+supabase/
+favicon/
+Wasel14/
+-p/
+.github/
+.kilocode/
+
+# All markdown documentation files (keep only README.md)
+*.md
+!README.md
 
 # Firebase
 .firebase/

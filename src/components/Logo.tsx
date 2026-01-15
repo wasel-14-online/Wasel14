@@ -1,4 +1,4 @@
-import wasselLogo from 'figma:asset/1ccf434105a811706fd618a3b652ae052ecf47e1.png';
+import wasselLogo from '../assets/1ccf434105a811706fd618a3b652ae052ecf47e1.png';
 
 interface LogoProps {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
@@ -18,9 +18,9 @@ const sizeMap = {
 export function Logo({ size = 'sm', showText = true, className = '' }: LogoProps) {
   return (
     <div className={`flex items-center gap-2.5 ${className}`}>
-      <img 
-        src={wasselLogo} 
-        alt="Wassel ride sharing platform logo" 
+      <img
+        src={wasselLogo}
+        alt="Wassel ride sharing platform logo"
         className={`${sizeMap[size]} w-auto drop-shadow-md`}
         role="img"
         aria-label="Wassel - Smart ride sharing platform"

@@ -4,7 +4,7 @@ import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
 import { Logo } from './Logo';
 import { ServicesGrid } from './ServicesGrid';
-import wasselLogo from 'figma:asset/1ccf434105a811706fd618a3b652ae052ecf47e1.png';
+import wasselLogo from '../assets/1ccf434105a811706fd618a3b652ae052ecf47e1.png';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 
 interface LandingPageProps {
@@ -42,7 +42,7 @@ export function LandingPage({ onGetStarted, onLogin }: LandingPageProps) {
       {/* Dynamic Background */}
       <div className="fixed inset-0 overflow-hidden -z-10 pointer-events-none">
         {/* Floating orbs with 3D effect */}
-        <motion.div 
+        <motion.div
           className="absolute top-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-gradient-to-br from-[#008080]/20 to-teal-500/10 rounded-full blur-[100px]"
           animate={{
             y: [0, 100, 0],
@@ -56,7 +56,7 @@ export function LandingPage({ onGetStarted, onLogin }: LandingPageProps) {
             ease: "easeInOut"
           }}
         />
-        <motion.div 
+        <motion.div
           className="absolute bottom-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-gradient-to-br from-[#607D4B]/20 to-green-500/10 rounded-full blur-[100px]"
           animate={{
             y: [0, -100, 0],
@@ -70,7 +70,7 @@ export function LandingPage({ onGetStarted, onLogin }: LandingPageProps) {
             ease: "easeInOut"
           }}
         />
-        <motion.div 
+        <motion.div
           className="absolute top-[40%] left-[30%] w-[30vw] h-[30vw] bg-gradient-to-br from-[#800020]/10 to-rose-500/5 rounded-full blur-[80px]"
           animate={{
             y: [0, -50, 0],
@@ -83,7 +83,7 @@ export function LandingPage({ onGetStarted, onLogin }: LandingPageProps) {
             ease: "easeInOut"
           }}
         />
-        
+
         {/* Floating particles */}
         {[...Array(30)].map((_, i) => (
           <motion.div
@@ -108,7 +108,7 @@ export function LandingPage({ onGetStarted, onLogin }: LandingPageProps) {
       </div>
 
       {/* Glass Header */}
-      <motion.header 
+      <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
@@ -131,7 +131,7 @@ export function LandingPage({ onGetStarted, onLogin }: LandingPageProps) {
       <section className="relative pt-20 pb-32 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
@@ -141,7 +141,7 @@ export function LandingPage({ onGetStarted, onLogin }: LandingPageProps) {
                 <Sparkles className="w-4 h-4" />
                 <span>Next-Generation Mobility</span>
               </div>
-              
+
               <h1 className="text-6xl md:text-7xl font-bold leading-tight tracking-tight">
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900">
                   Share Your
@@ -151,23 +151,23 @@ export function LandingPage({ onGetStarted, onLogin }: LandingPageProps) {
                   Journey
                 </span>
               </h1>
-              
+
               <p className="text-xl text-gray-600 leading-relaxed max-w-lg">
                 Connect with travelers, save money, and reduce your carbon footprint with Wassel's smart AI-powered platform across the Middle East.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button 
-                  size="lg" 
+                <Button
+                  size="lg"
                   className="bg-primary hover:bg-primary/90 text-lg h-16 px-8 rounded-2xl shadow-xl shadow-primary/25 transition-all hover:scale-105 hover:shadow-2xl hover:shadow-primary/30"
                   onClick={onGetStarted}
                 >
                   Start Your Journey
                   <MoveRight className="w-5 h-5 ml-2" />
                 </Button>
-                <Button 
-                  size="lg" 
-                  variant="outline" 
+                <Button
+                  size="lg"
+                  variant="outline"
                   className="text-lg h-16 px-8 rounded-2xl border-2 border-primary/20 text-primary hover:bg-primary/5 backdrop-blur-sm"
                   onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
                 >
@@ -179,8 +179,8 @@ export function LandingPage({ onGetStarted, onLogin }: LandingPageProps) {
                 <div className="flex -space-x-4">
                   {[1, 2, 3, 4].map((i) => (
                     <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-gray-200 overflow-hidden">
-                      <ImageWithFallback 
-                        src={`https://i.pravatar.cc/100?img=${i + 10}`} 
+                      <ImageWithFallback
+                        src={`https://i.pravatar.cc/100?img=${i + 10}`}
                         alt="User"
                         className="w-full h-full object-cover"
                       />
@@ -203,7 +203,7 @@ export function LandingPage({ onGetStarted, onLogin }: LandingPageProps) {
               </div>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: 50, rotateY: 20 }}
               animate={{ opacity: 1, x: 0, rotateY: 0 }}
               transition={{ duration: 1 }}
@@ -213,14 +213,14 @@ export function LandingPage({ onGetStarted, onLogin }: LandingPageProps) {
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-secondary/30 rounded-[3rem] blur-3xl transform rotate-6 scale-95" />
                 <div className="bg-white/40 backdrop-blur-xl border border-white/50 rounded-[3rem] p-8 shadow-2xl relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-white/40 to-transparent rounded-full blur-2xl" />
-                  <img 
-                    src={wasselLogo} 
-                    alt="Wassel App Interface" 
-                    className="w-full h-auto drop-shadow-2xl rounded-2xl relative z-10" 
+                  <img
+                    src={wasselLogo}
+                    alt="Wassel App Interface"
+                    className="w-full h-auto drop-shadow-2xl rounded-2xl relative z-10"
                   />
-                  
+
                   {/* Floating Cards */}
-                  <motion.div 
+                  <motion.div
                     animate={{ y: [0, -10, 0] }}
                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                     className="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl flex items-center gap-4 z-20 border border-gray-100"
@@ -234,7 +234,7 @@ export function LandingPage({ onGetStarted, onLogin }: LandingPageProps) {
                     </div>
                   </motion.div>
 
-                  <motion.div 
+                  <motion.div
                     animate={{ y: [0, 10, 0] }}
                     transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                     className="absolute top-12 -right-6 bg-white p-4 rounded-2xl shadow-xl flex items-center gap-4 z-20 border border-gray-100"
@@ -408,7 +408,7 @@ export function LandingPage({ onGetStarted, onLogin }: LandingPageProps) {
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-accent to-pink-700" />
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10" />
-        
+
         <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -419,8 +419,8 @@ export function LandingPage({ onGetStarted, onLogin }: LandingPageProps) {
             <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
               Join Wassel today and experience the future of mobility in the Middle East. Fast, safe, and affordable.
             </p>
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               className="bg-white text-accent hover:bg-gray-100 text-lg h-16 px-10 rounded-full shadow-2xl transition-all hover:scale-105"
               onClick={onGetStarted}
             >
