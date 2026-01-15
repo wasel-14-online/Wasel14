@@ -385,17 +385,16 @@ class RealTimeTrackingService {
     userId: string,
     location: { lat: number; lng: number }
   ): Promise<void> {
-    // In production, this would:
-    // 1. Notify emergency services
-    // 2. Notify trip driver/passengers
-    // 3. Notify user's emergency contacts
-    // 4. Send location to authorities
-    
-    console.log('Emergency SOS triggered:', { tripId, userId, location });
-    
-    // TODO: Integrate with emergency services API
-    // TODO: Send push notifications
-    // TODO: Send SMS to emergency contacts
+    // Trigger server-side emergency workflow (edge function)
+    try {
+      await fetch('/api/emergency-alert', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ tripId, userId, level: 'critical', message: `SOS: location ${location.lat},${location.lng}` }),
+      });
+    } catch (err) {
+      console.error('notifyEmergencyContacts failed', err);
+    }
   }
 
   // ============ GEOFENCING ============

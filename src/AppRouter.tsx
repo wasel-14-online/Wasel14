@@ -40,7 +40,8 @@ const DriverEarnings = lazy(() => import('./components/DriverEarnings'));
 import { DisputeCenter } from './components/DisputeCenter';
 import { PaymentMethods } from './components/PaymentMethods';
 import { ScheduledTrips } from './components/ScheduledTrips';
-const AdminDashboard = lazy(() => import('./components/admin/AdminDashboard'));
+const AdminDashboard = lazy(() => import('./admin/AdminDashboard'));
+const TripDetails = lazy(() => import('./routes/TripDetails'));
 import { TermsOfService } from './components/legal/TermsOfService';
 import { PrivacyPolicy } from './components/legal/PrivacyPolicy';
 import { CookiePolicy } from './components/legal/CookiePolicy';
@@ -85,7 +86,7 @@ export function AppRouter() {
                 <Route path="/recurring" element={<RecurringTrips />} />
                 <Route path="/messages" element={<Suspense fallback={<div>Loading messages…</div>}><Messages /></Suspense>} />
                 <Route path="/messages/:id" element={<Suspense fallback={<div>Loading messages…</div>}><Messages /></Suspense>} />
-                <Route path="/trips/:id" element={<Navigate to="/my-trips" replace />} /> {/* Todo: Direct trip details */}
+                <Route path="/trips/:id" element={<Suspense fallback={<div>Loading trip...</div>}><TripDetails /></Suspense>} />
 
                 {/* Account & Settings */}
                 <Route path="/favorites" element={<Suspense fallback={<div>Loading…</div>}><Favorites /></Suspense>} />

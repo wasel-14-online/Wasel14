@@ -1,3 +1,7 @@
+User-agent: *
+Disallow:
+
+Sitemap: /sitemap.xml
 # Wassel Ride Sharing Platform
 
 User-agent: *
