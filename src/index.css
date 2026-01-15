@@ -5394,7 +5394,7 @@ body {
   }
 
   .dark\:bg-gray-800\/95:is(.dark *) {
-    background-color: color-mix(in srgb, oklch(.278 .033 256.848) 95%, transparent);
+    background-color: rgba(27, 31, 37, 0.05);
   }
 
   @supports (color: color-mix(in lab, red, red)) {
