@@ -194,6 +194,114 @@ const mockAPI = {
       if (error) throw error;
       return { trip: data };
     },
+    async cancelTrip(tripId: string, userId: string) {
+      // Validate inputs
+      if (!tripId || !userId) {
+        throw new Error('Trip ID and User ID are required');
+      }
+
+      // Get trip details
+      const { data: trip, error: tripError } = await supabase
+        .from('trips')
+        .select('*')
+        .eq('id', tripId)
+        .single();
+
+      if (tripError || !trip) {
+        throw new Error('Trip not found');
+      }
+
+      // Check authorization - user must be the driver or have a booking
+      const isDriver = trip.driver_id === userId;
+
+      let userBooking = null;
+      if (!isDriver) {
+        const { data: booking } = await supabase
+          .from('bookings')
+          .select('*')
+          .eq('trip_id', tripId)
+          .eq('passenger_id', userId)
+          .single();
+
+        if (!booking) {
+          throw new Error('Unauthorized: You are not the driver or a passenger on this trip');
+        }
+        userBooking = booking;
+      }
+
+      // Check if trip can be cancelled
+      const cancellableStatuses = ['active', 'scheduled'];
+      if (!cancellableStatuses.includes(trip.status)) {
+        throw new Error(`Trip cannot be cancelled. Current status: ${trip.status}`);
+      }
+
+      // Prevent double cancellation
+      if (trip.status === 'cancelled') {
+        throw new Error('Trip is already cancelled');
+      }
+
+      // Update trip status to cancelled
+      const { error: updateError } = await supabase
+        .from('trips')
+        .update({
+          status: 'cancelled',
+          cancelled_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
+        })
+        .eq('id', tripId);
+
+      if (updateError) {
+        throw new Error('Failed to cancel trip');
+      }
+
+      // Handle refunds for confirmed/paid bookings
+      const { data: bookings } = await supabase
+        .from('bookings')
+        .select('*')
+        .eq('trip_id', tripId)
+        .in('status', ['confirmed', 'paid']);
+
+      if (bookings && bookings.length > 0) {
+        // Process refunds - in production, this should be done via Edge Function
+        for (const booking of bookings) {
+          try {
+            // Call refund API (should be Edge Function in production)
+            const refundResponse = await fetch('/api/refund-payment', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                bookingId: booking.id,
+                amount: booking.total_price,
+                reason: 'trip_cancelled'
+              })
+            });
+
+            if (!refundResponse.ok) {
+              console.error('Refund failed for booking:', booking.id);
+              // In production, this should trigger a retry mechanism or manual processing
+            } else {
+              // Update booking status
+              await supabase
+                .from('bookings')
+                .update({
+                  status: 'refunded',
+                  updated_at: new Date().toISOString()
+                })
+                .eq('id', booking.id);
+            }
+          } catch (error) {
+            console.error('Error processing refund for booking:', booking.id, error);
+          }
+        }
+      }
+
+      return {
+        success: true,
+        message: 'Trip cancelled successfully',
+        tripId,
+        refundsProcessed: bookings?.length || 0
+      };
+    },
     async calculatePrice(type: string, distance_km?: number, base_price?: number) {
       // Pricing logic for different service types
       const pricing = {
