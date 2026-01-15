@@ -1,28 +1,91 @@
-
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary Meta Tags -->
     <title>Wassel - Ride Sharing Platform</title>
-    <meta name="description" content="Smart, bilingual ride-sharing platform with AI-powered features" />
-    <meta name="keywords" content="ride sharing, carpooling, UAE, Dubai, Abu Dhabi, transportation" />
+    <meta name="title" content="Wassel - Smart Ride Sharing Platform" />
+    <meta name="description" content="Smart, bilingual ride-sharing platform with AI-powered features for the Middle East. Book rides, offer rides, and earn money with Wassel." />
+    <meta name="keywords" content="ride sharing, carpooling, UAE, Dubai, Abu Dhabi, transportation, taxi, wassel, ride hailing" />
     <meta name="author" content="Wassel" />
     <meta name="robots" content="index, follow" />
+    
+    <!-- Security Headers -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta http-equiv="X-Frame-Options" content="DENY" />
     <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://wassel.app/" />
+    <meta property="og:title" content="Wassel - Smart Ride Sharing Platform" />
+    <meta property="og:description" content="Smart, bilingual ride-sharing platform with AI-powered features. Book rides, offer rides, and earn money." />
+    <meta property="og:image" content="/icons/icon-512x512.png" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://wassel.app/" />
+    <meta property="twitter:title" content="Wassel - Smart Ride Sharing Platform" />
+    <meta property="twitter:description" content="Smart, bilingual ride-sharing platform with AI-powered features. Book rides, offer rides, and earn money." />
+    <meta property="twitter:image" content="/icons/icon-512x512.png" />
+    
+    <!-- Favicons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/icons/apple-touch-icon.png" />
+    
+    <!-- PWA Manifest -->
     <link rel="manifest" href="/manifest.json" />
+    
+    <!-- Theme Colors -->
     <meta name="theme-color" content="#008080" />
+    <meta name="msapplication-TileColor" content="#008080" />
+    <meta name="msapplication-config" content="/browserconfig.xml" />
+    
+    <!-- Apple Mobile Web App -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-title" content="Wassel" />
+    
+    <!-- Mobile App -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    
+    <!-- Preconnect to external domains for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://djcmatubybyudeosrngt.supabase.co" />
+    
+    <!-- Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/service-worker.js')
+            .then(registration => {
+              console.log('✅ Service Worker registered:', registration.scope);
+            })
+            .catch(error => {
+              console.error('❌ Service Worker registration failed:', error);
+            });
+        });
+      }
+    </script>
   </head>
   <body>
+    <noscript>
+      <div style="padding: 2rem; text-align: center; font-family: system-ui;">
+        <h1>JavaScript Required</h1>
+        <p>Wassel requires JavaScript to run. Please enable JavaScript in your browser settings.</p>
+      </div>
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-  

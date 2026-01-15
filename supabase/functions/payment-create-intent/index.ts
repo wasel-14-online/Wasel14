@@ -1,78 +1,57 @@
+// Supabase Edge Function: Create Payment Intent
+// Purpose: Create a Stripe payment intent for ride booking
+// Endpoint: /functions/v1/payment-create-intent
+
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
-import Stripe from 'https://esm.sh/stripe@14.0.0';
+import Stripe from 'https://esm.sh/stripe@14.7.0?target=deno';
 
-const stripe = new Stripe(Deno.env.get('STRIPE_SECRET_KEY') || '', {
-  httpClient: Stripe.createFetchHttpClient(),
-});
-
-interface CreatePaymentIntentRequest {
-  amount: number;
-  currency: string;
-  userId: string;
-  tripId?: string;
-  metadata?: Record<string, string>;
-}
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+};
 
 serve(async (req) => {
-  try {
-    // Verify request method
-    if (req.method !== 'POST') {
-      return new Response(JSON.stringify({ error: 'Method not allowed' }), {
-        status: 405,
-        headers: { 'Content-Type': 'application/json' },
-      });
-    }
+  // Handle CORS preflight
+  if (req.method === 'OPTIONS') {
+    return new Response('ok', { headers: corsHeaders });
+  }
 
-    // Verify authorization
-    const authHeader = req.headers.get('Authorization');
-    if (!authHeader) {
-      return new Response(JSON.stringify({ error: 'Missing authorization header' }), {
-        status: 401,
-        headers: { 'Content-Type': 'application/json' },
-      });
-    }
+  try {
+    // Initialize Stripe
+    const stripe = new Stripe(Deno.env.get('STRIPE_SECRET_KEY') || '', {
+      apiVersion: '2023-10-16',
+    });
 
     // Parse request body
-    const body: CreatePaymentIntentRequest = await req.json();
-    const { amount, currency = 'usd', userId, tripId, metadata } = body;
+    const { amount, currency, metadata, customerId } = await req.json();
 
-    // Validate required fields
-    if (!amount || !userId) {
-      return new Response(
-        JSON.stringify({ error: 'Missing required fields: amount, userId' }),
-        {
-          status: 400,
-          headers: { 'Content-Type': 'application/json' },
-        }
-      );
+    // Validate input
+    if (!amount || amount <= 0) {
+      throw new Error('Invalid amount');
     }
 
     // Create payment intent
     const paymentIntent = await stripe.paymentIntents.create({
       amount: Math.round(amount * 100), // Convert to cents
-      currency,
+      currency: currency || 'usd',
+      customer: customerId,
+      metadata: {
+        ...metadata,
+        platform: 'wassel',
+      },
       automatic_payment_methods: {
         enabled: true,
       },
-      metadata: {
-        userId,
-        tripId: tripId || '',
-        source: 'wassel-app',
-        ...metadata,
-      },
-      description: tripId ? `Wassel Trip: ${tripId}` : 'Wassel Payment',
     });
 
     return new Response(
       JSON.stringify({
         clientSecret: paymentIntent.client_secret,
         paymentIntentId: paymentIntent.id,
-        amount: paymentIntent.amount,
-        currency: paymentIntent.currency,
       }),
       {
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         status: 200,
-        headers: { 'Content-Type': 'application/json' },
       }
     );
   } catch (error) {
@@ -83,11 +62,9 @@ serve(async (req) => {
         error: error.message || 'Failed to create payment intent',
       }),
       {
-        status: 500,
-        headers: { 'Content-Type': 'application/json' },
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        status: 400,
       }
     );
   }
 });
-
-console.log('Payment Create Intent function initialized');

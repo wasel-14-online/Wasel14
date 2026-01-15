@@ -1,402 +1,257 @@
-/// <reference lib="webworker" />
+// Wassel Service Worker - PWA Cache Management
+const CACHE_NAME = 'wassel-v1.0.0';
+const RUNTIME_CACHE = 'wassel-runtime-v1';
+const IMAGE_CACHE = 'wassel-images-v1';
 
-const CACHE_NAME = 'wassel-v1';
-const STATIC_ASSETS = [
+// Files to cache on install
+const PRECACHE_URLS = [
   '/',
   '/index.html',
   '/manifest.json',
   '/favicon.svg',
+  '/icons/icon-192x192.png',
+  '/icons/icon-512x512.png',
 ];
 
-// Assets to cache immediately on install
-const PRECACHE_ASSETS = [
-  '/icon-192x192.png',
-  '/icon-512x512.png',
-];
-
-// Runtime cache configurations
-const RUNTIME_CACHE_CONFIG = [
-  {
-    // Cache Google Fonts
-    urlPattern: /^https:\/\/fonts\.googleapis\.com/,
-    handler: 'CacheFirst',
-    options: {
-      cacheName: 'google-fonts',
-      expiration: {
-        maxEntries: 10,
-        maxAgeSeconds: 60 * 60 * 24 * 365, // 1 year
-      },
-    },
-  },
-  {
-    // Cache Google Fonts (CSS)
-    urlPattern: /^https:\/\/fonts\.gstatic\.com/,
-    handler: 'CacheFirst',
-    options: {
-      cacheName: 'google-fonts-web',
-      expiration: {
-        maxEntries: 10,
-        maxAgeSeconds: 60 * 60 * 24 * 365, // 1 year
-      },
-    },
-  },
-  {
-    // Cache images
-    urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp|ico)$/,
-    handler: 'CacheFirst',
-    options: {
-      cacheName: 'images',
-      expiration: {
-        maxEntries: 100,
-        maxAgeSeconds: 60 * 60 * 24 * 30, // 30 days
-      },
-    },
-  },
-  {
-    // Cache API requests
-    urlPattern: /\/api\/.*$/,
-    handler: 'NetworkFirst',
-    options: {
-      cacheName: 'api-cache',
-      expiration: {
-        maxEntries: 50,
-        maxAgeSeconds: 60 * 60 * 24, // 24 hours
-      },
-      networkTimeoutSeconds: 10,
-    },
-  },
-  {
-    // Cache Supabase requests
-    urlPattern: /supabase\.co/,
-    handler: 'NetworkFirst',
-    options: {
-      cacheName: 'supabase-cache',
-      expiration: {
-        maxEntries: 50,
-        maxAgeSeconds: 60 * 60 * 24, // 24 hours
-      },
-      networkTimeoutSeconds: 15,
-    },
-  },
-  {
-    // Default handler for everything else
-    urlPattern: /.*/,
-    handler: 'StaleWhileRevalidate',
-    options: {
-      cacheName: 'runtime-cache',
-      expiration: {
-        maxEntries: 100,
-        maxAgeSeconds: 60 * 60 * 24 * 7, // 7 days
-      },
-    },
-  },
-];
-
-// Install event - precache static assets
+// Install event - precache assets
 self.addEventListener('install', (event) => {
-  console.log('[SW] Installing service worker...');
-  
+  console.log('[Service Worker] Installing...');
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then((cache) => {
-        console.log('[SW] Precaching static assets');
-        return cache.addAll(PRECACHE_ASSETS);
+        console.log('[Service Worker] Precaching app shell');
+        return cache.addAll(PRECACHE_URLS);
       })
-      .then(() => {
-        console.log('[SW] Skip waiting');
-        return self.skipWaiting();
-      })
-      .catch((error) => {
-        console.error('[SW] Precache failed:', error);
-      })
+      .then(() => self.skipWaiting())
   );
 });
 
-// Activate event - clean up old caches
+// Activate event - clean old caches
 self.addEventListener('activate', (event) => {
-  console.log('[SW] Activating service worker...');
+  console.log('[Service Worker] Activating...');
+  const currentCaches = [CACHE_NAME, RUNTIME_CACHE, IMAGE_CACHE];
   
   event.waitUntil(
     caches.keys()
       .then((cacheNames) => {
+        return cacheNames.filter((cacheName) => !currentCaches.includes(cacheName));
+      })
+      .then((cachesToDelete) => {
         return Promise.all(
-          cacheNames
-            .filter((cacheName) => cacheName !== CACHE_NAME)
-            .map((cacheName) => {
-              console.log('[SW] Deleting old cache:', cacheName);
-              return caches.delete(cacheName);
-            })
+          cachesToDelete.map((cacheToDelete) => {
+            console.log('[Service Worker] Deleting old cache:', cacheToDelete);
+            return caches.delete(cacheToDelete);
+          })
         );
       })
-      .then(() => {
-        console.log('[SW] Claiming clients');
-        return self.clients.claim();
-      })
+      .then(() => self.clients.claim())
   );
 });
 
-// Fetch event - serve from cache or network
+// Fetch event - serve from cache, fallback to network
 self.addEventListener('fetch', (event) => {
   const { request } = event;
   const url = new URL(request.url);
-  
+
+  // Skip cross-origin requests
+  if (url.origin !== location.origin) {
+    return;
+  }
+
   // Skip non-GET requests
   if (request.method !== 'GET') {
     return;
   }
-  
-  // Skip cross-origin requests (except for fonts, images, etc.)
-  if (url.origin !== location.origin) {
-    // Allow specific cross-origin requests
-    if (url.hostname === 'fonts.googleapis.com' ||
-        url.hostname === 'fonts.gstatic.com' ||
-        url.hostname.includes('supabase.co')) {
-      // These are allowed
-    } else {
-      return;
-    }
-  }
-  
-  // Find matching cache config
-  const matchedConfig = RUNTIME_CACHE_CONFIG.find((config) => 
-    config.urlPattern.test(request.url)
-  );
-  
-  if (matchedConfig) {
-    event.respondWith(
-      caches.match(request)
-        .then((cachedResponse) => {
-          // Return cached response if available
-          if (cachedResponse) {
-            // Fetch in background to update cache
-            fetchAndCache(request, matchedConfig);
-            return cachedResponse;
-          }
-          
-          // No cache, fetch from network
-          return fetchAndCache(request, matchedConfig);
-        })
-        .catch((error) => {
-          console.error('[SW] Fetch failed:', error);
-          
-          // Return offline page for navigation requests
-          if (request.mode === 'navigate') {
-            return caches.match('/');
-          }
-          
-          return new Response('Offline', { status: 503 });
-        })
-    );
+
+  // Handle different types of requests
+  if (request.destination === 'image') {
+    event.respondWith(handleImageRequest(request));
+  } else if (request.url.includes('/api/')) {
+    event.respondWith(handleApiRequest(request));
+  } else {
+    event.respondWith(handleNavigationRequest(request));
   }
 });
 
-// Helper function to fetch and cache
-async function fetchAndCache(request, config) {
+// Handle image requests - cache first
+async function handleImageRequest(request) {
+  const cache = await caches.open(IMAGE_CACHE);
+  const cached = await cache.match(request);
+  
+  if (cached) {
+    return cached;
+  }
+
   try {
-    const networkResponse = await fetch(request);
-    
-    // Cache successful responses
-    if (networkResponse.ok) {
-      const cache = await caches.open(config.options.cacheName);
-      
-      // Clone response because it can only be consumed once
-      const responseToCache = networkResponse.clone();
-      cache.put(request, responseToCache);
+    const response = await fetch(request);
+    if (response.ok) {
+      cache.put(request, response.clone());
     }
-    
-    return networkResponse;
+    return response;
   } catch (error) {
-    console.error('[SW] Fetch error:', error);
-    throw error;
+    console.error('[Service Worker] Image fetch failed:', error);
+    // Return placeholder image
+    return new Response('', { status: 404 });
   }
 }
 
-// Background sync for offline actions
+// Handle API requests - network first, fallback to cache
+async function handleApiRequest(request) {
+  const cache = await caches.open(RUNTIME_CACHE);
+
+  try {
+    const response = await fetch(request);
+    if (response.ok) {
+      cache.put(request, response.clone());
+    }
+    return response;
+  } catch (error) {
+    console.log('[Service Worker] Network failed, serving from cache');
+    const cached = await cache.match(request);
+    if (cached) {
+      return cached;
+    }
+    
+    // Return offline response
+    return new Response(
+      JSON.stringify({ error: 'Offline', message: 'You are currently offline' }),
+      {
+        status: 503,
+        headers: { 'Content-Type': 'application/json' }
+      }
+    );
+  }
+}
+
+// Handle navigation requests - cache first, fallback to network
+async function handleNavigationRequest(request) {
+  const cache = await caches.open(CACHE_NAME);
+  const cached = await cache.match(request);
+
+  if (cached) {
+    // Return cached version and update in background
+    fetchAndUpdate(request, cache);
+    return cached;
+  }
+
+  try {
+    const response = await fetch(request);
+    if (response.ok) {
+      cache.put(request, response.clone());
+    }
+    return response;
+  } catch (error) {
+    console.error('[Service Worker] Navigation fetch failed:', error);
+    // Return offline page
+    return cache.match('/index.html');
+  }
+}
+
+// Background fetch and update
+async function fetchAndUpdate(request, cache) {
+  try {
+    const response = await fetch(request);
+    if (response.ok) {
+      cache.put(request, response.clone());
+    }
+  } catch (error) {
+    // Silently fail background updates
+    console.log('[Service Worker] Background update failed');
+  }
+}
+
+// Handle push notifications
+self.addEventListener('push', (event) => {
+  console.log('[Service Worker] Push received');
+  
+  const data = event.data ? event.data.json() : {};
+  const title = data.title || 'Wassel Notification';
+  const options = {
+    body: data.body || 'You have a new notification',
+    icon: '/icons/icon-192x192.png',
+    badge: '/icons/badge-72x72.png',
+    vibrate: [200, 100, 200],
+    data: data.data || {},
+    actions: data.actions || [
+      { action: 'open', title: 'Open App' },
+      { action: 'close', title: 'Close' }
+    ],
+    requireInteraction: data.requireInteraction || false,
+    tag: data.tag || 'wassel-notification',
+    renotify: true,
+  };
+
+  event.waitUntil(
+    self.registration.showNotification(title, options)
+  );
+});
+
+// Handle notification clicks
+self.addEventListener('notificationclick', (event) => {
+  console.log('[Service Worker] Notification clicked');
+  event.notification.close();
+
+  const urlToOpen = event.notification.data?.url || '/';
+
+  event.waitUntil(
+    clients.matchAll({ type: 'window', includeUncontrolled: true })
+      .then((clientList) => {
+        // Focus existing window if available
+        for (const client of clientList) {
+          if (client.url === urlToOpen && 'focus' in client) {
+            return client.focus();
+          }
+        }
+        // Open new window
+        if (clients.openWindow) {
+          return clients.openWindow(urlToOpen);
+        }
+      })
+  );
+});
+
+// Handle background sync
 self.addEventListener('sync', (event) => {
-  console.log('[SW] Background sync:', event.tag);
+  console.log('[Service Worker] Background sync:', event.tag);
   
   if (event.tag === 'sync-trips') {
     event.waitUntil(syncTrips());
-  }
-  
-  if (event.tag === 'sync-messages') {
+  } else if (event.tag === 'sync-messages') {
     event.waitUntil(syncMessages());
   }
 });
 
-// Sync trips when back online
 async function syncTrips() {
-  console.log('[SW] Syncing trips...');
-  
-  try {
-    // Get pending trips from IndexedDB
-    const pendingTrips = await getPendingTrips();
-    
-    for (const trip of pendingTrips) {
-      try {
-        await fetch('/api/trips/sync', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(trip),
-        });
-        
-        // Remove from pending
-        await removePendingTrip(trip.id);
-      } catch (error) {
-        console.error('[SW] Failed to sync trip:', error);
-      }
-    }
-  } catch (error) {
-    console.error('[SW] Sync trips failed:', error);
-  }
+  // Sync pending trip data when online
+  console.log('[Service Worker] Syncing trips...');
+  // Implementation depends on your sync logic
 }
 
-// Sync messages when back online
 async function syncMessages() {
-  console.log('[SW] Syncing messages...');
-  
-  try {
-    const pendingMessages = await getPendingMessages();
-    
-    for (const message of pendingMessages) {
-      try {
-        await fetch('/api/messages/sync', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(message),
-        });
-        
-        await removePendingMessage(message.id);
-      } catch (error) {
-        console.error('[SW] Failed to sync message:', error);
-      }
-    }
-  } catch (error) {
-    console.error('[SW] Sync messages failed:', error);
-  }
+  // Sync pending messages when online
+  console.log('[Service Worker] Syncing messages...');
+  // Implementation depends on your sync logic
 }
 
-// Push notification handler
-self.addEventListener('push', (event) => {
-  console.log('[SW] Push received:', event);
-  
-  let data = {
-    title: 'Wassel',
-    body: 'New notification',
-    icon: '/icon-192x192.png',
-    badge: '/icon-72x72.png',
-    tag: 'default',
-  };
-  
-  if (event.data) {
-    try {
-      data = { ...data, ...event.data.json() };
-    } catch (e) {
-      data.body = event.data.text();
-    }
-  }
-  
-  const options = {
-    body: data.body,
-    icon: data.icon,
-    badge: data.badge,
-    tag: data.tag,
-    vibrate: [100, 50, 100],
-    data: data.data || {},
-    actions: data.actions || [],
-    requireInteraction: data.requireInteraction || false,
-  };
-  
-  event.waitUntil(
-    self.registration.showNotification(data.title, options)
-  );
-});
-
-// Notification click handler
-self.addEventListener('notificationclick', (event) => {
-  console.log('[SW] Notification clicked:', event);
-  
-  event.notification.close();
-  
-  const action = event.action;
-  const data = event.notification.data;
-  
-  let url = '/';
-  
-  // Determine URL based on notification type
-  if (data.type === 'trip_update') {
-    url = `/?page=live-trip&tripId=${data.tripId}`;
-  } else if (data.type === 'message') {
-    url = `/?page=messages&conversationId=${data.conversationId}`;
-  } else if (data.type === 'payment') {
-    url = '/?page=payments';
-  } else if (action === 'view') {
-    url = data.url || '/';
-  }
-  
-  event.waitUntil(
-    clients.matchAll({ type: 'window', includeUncontrolled: true })
-      .then((clientList) => {
-        // Check if there's already a window open
-        for (const client of clientList) {
-          if (client.url.includes(self.location.origin) && 'focus' in client) {
-            client.postMessage({ type: 'NAVIGATE', url });
-            return client.focus();
-          }
-        }
-        
-        // Open new window
-        if (clients.openWindow) {
-          return clients.openWindow(url);
-        }
-      })
-  );
-});
-
-// Message handler for communication with main app
+// Handle messages from clients
 self.addEventListener('message', (event) => {
-  console.log('[SW] Message received:', event.data);
-  
+  console.log('[Service Worker] Message received:', event.data);
+
   if (event.data.type === 'SKIP_WAITING') {
     self.skipWaiting();
-  }
-  
-  if (event.data.type === 'CLEAR_CACHE') {
+  } else if (event.data.type === 'CACHE_URLS') {
     event.waitUntil(
-      caches.keys().then((cacheNames) => {
-        return Promise.all(
+      caches.open(RUNTIME_CACHE)
+        .then((cache) => cache.addAll(event.data.urls))
+    );
+  } else if (event.data.type === 'CLEAR_CACHE') {
+    event.waitUntil(
+      caches.keys()
+        .then((cacheNames) => Promise.all(
           cacheNames.map((cacheName) => caches.delete(cacheName))
-        );
-      })
+        ))
     );
   }
-  
-  if (event.data.type === 'GET_CACHE_SIZE') {
-    event.ports[0].postMessage({ type: 'CACHE_SIZE', size: 'calculating...' });
-  }
 });
 
-// Placeholder functions for IndexedDB operations
-async function getPendingTrips() {
-  return [];
-}
-
-async function removePendingTrip(id) {}
-
-async function getPendingMessages() {
-  return [];
-}
-
-async function removePendingMessage(id) {}
-
-// Periodic background sync (if supported)
-self.addEventListener('periodicsync', (event) => {
-  if (event.tag === 'sync-location') {
-    event.waitUntil(syncLocationUpdates());
-  }
-});
-
-async function syncLocationUpdates() {
-  console.log('[SW] Syncing location updates...');
-  // Implementation for background location sync
-}
+console.log('[Service Worker] Loaded successfully');
