@@ -1,36 +1,44 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node';
-import fetch from 'node-fetch';
+import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 
-// POST /update-trip with { tripId, updates }
-// Requires service role key to modify trips table
-
-export default async function handler(req: VercelRequest, res: VercelResponse) {
-  if (req.method !== 'POST') return res.status(405).send('Method Not Allowed');
-  const { tripId, updates } = req.body || {};
-  if (!tripId || !updates) return res.status(400).json({ error: 'Missing tripId or updates' });
-
-  const SUPABASE_URL = process.env.VITE_SUPABASE_URL;
-  const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) return res.status(500).json({ error: 'Missing supabase config' });
+serve(async (req) => {
+  if (req.method !== 'POST') {
+    return new Response('Method Not Allowed', { status: 405 })
+  }
 
   try {
-    const resp = await fetch(`${SUPABASE_URL}/rest/v1/trips?id=eq.${encodeURIComponent(tripId)}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        apikey: SUPABASE_SERVICE_ROLE_KEY,
-        Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
-      },
-      body: JSON.stringify(updates),
-    });
-
-    if (!resp.ok) {
-      const text = await resp.text();
-      return res.status(500).json({ error: 'Failed to update trip', details: text });
+    const { tripId, updates } = await req.json()
+    if (!tripId || !updates) {
+      return new Response(JSON.stringify({ error: 'Missing tripId or updates' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' }
+      })
     }
 
-    return res.status(200).json({ ok: true });
+    const supabase = createClient(
+      Deno.env.get('SUPABASE_URL') ?? '',
+      Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
+    )
+
+    const { error } = await supabase
+      .from('trips')
+      .update(updates)
+      .eq('id', tripId)
+
+    if (error) {
+      return new Response(JSON.stringify({ error: error.message }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' }
+      })
+    }
+
+    return new Response(JSON.stringify({ ok: true }), {
+      headers: { 'Content-Type': 'application/json' }
+    })
   } catch (err) {
-    return res.status(500).json({ error: String(err) });
+    return new Response(JSON.stringify({ error: String(err) }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' }
+    })
   }
-}
+})

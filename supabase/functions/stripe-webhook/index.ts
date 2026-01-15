@@ -10,15 +10,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   let event: Stripe.Event;
   try {
     if (webhookSecret && sig) {
-      const buf = Buffer.from(req.body as any, 'utf8');
-      event = stripe.webhooks.constructEvent(buf, sig, webhookSecret);
+      // Prefer raw body if available (Vercel exposes req.rawBody)
+      const raw = (req as any).rawBody || (typeof req.body === 'string' ? req.body : JSON.stringify(req.body));
+      event = stripe.webhooks.constructEvent(raw as any, sig, webhookSecret);
     } else {
       // Fallback: unsafe parse
       event = req.body as Stripe.Event;
     }
   } catch (err) {
     console.error('Stripe webhook signature verification failed.', err);
-    return res.status(400).send(`Webhook Error: ${err}`);
+    return res.status(400).send(`Webhook Error: ${String(err)}`);
   }
 
   // Handle important events
