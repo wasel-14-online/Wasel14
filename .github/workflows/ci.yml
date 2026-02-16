@@ -1,83 +1,80 @@
-name: CI
+name: CI-CD Pipeline
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [main, master]
   pull_request:
-    branches: [ main ]
+    branches: [main]
+
+env:
+  NODE_VERSION: 20
 
 jobs:
+# =========================
+# BUILD & TEST
+# =========================
   build-and-test:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+
       - name: Install dependencies
         run: npm ci
-      - name: Type check
+
+      - name: TypeScript type check
         run: npx tsc --noEmit
+
       - name: Run tests
-        run: npm test
+        run: npm test -- --passWithNoTests --coverage
+
       - name: Build app
         run: npm run build
+
       - name: Build service worker
         run: npm run build-sw
+
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
           name: site-dist
-          path: dist/
+          path: dist
+          retention-days: 7
 
+
+# =========================
+# DEPLOY SUPABASE FUNCTIONS
+# =========================
   deploy-functions:
     needs: build-and-test
     runs-on: ubuntu-latest
+
+    # Only deploy on push to main
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    steps:
-      - uses: actions/checkout@v4
-      - name: Install supabase CLI
-        run: |
-          curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-          sudo apt-get install -y nodejs
-          npm i -g supabase
-      - name: Deploy Supabase functions
-        env:
-          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
-          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
-        run: |
-          if command -v supabase >/dev/null 2>&1; then
-            echo "Deploying functions..."
-            supabase functions deploy --project-ref $SUPABASE_URL || echo "Supabase deploy failed or not configured"
-          else
-            echo "supabase CLI not installed"
-          fi
-name: CI
-
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
-jobs:
-  build-and-test:
-    runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
-      - name: Use Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: ${{ env.NODE_VERSION }}
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Install Supabase CLI
+        run: npm install -g supabase
 
-      - name: TypeScript type-check
-        run: npx tsc --noEmit
-
-      - name: Run tests
-        run: npx jest --passWithNoTests --coverage
+      - name: Deploy Supabase Functions
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
+        run: |
+          echo "Deploying Supabase Edge Functions..."
+          supabase functions deploy --project-ref $SUPABASE_PROJECT_REF
