@@ -14,13 +14,8 @@ export interface Driver {
 
 export const driverService = {
   async updateDriverStatus(driverId: string, status: Driver['status']) {
-    const { data, error } = await supabase
-      .from('drivers')
-      .update({ status })
-      .eq('id', driverId)
-      .select()
-      .single();
-    
+    const { data, error } = await supabase.from('drivers').update({ status }).eq('id', driverId).select().single();
+
     if (error) throw error;
     return data;
   },
@@ -32,7 +27,7 @@ export const driverService = {
       .eq('id', driverId)
       .select()
       .single();
-    
+
     if (error) throw error;
     return data;
   },
@@ -43,7 +38,7 @@ export const driverService = {
       lng: location.lng,
       radius_km: radiusKm
     });
-    
+
     if (error) throw error;
     return data;
   },
@@ -53,7 +48,7 @@ export const driverService = {
       driver_id: driverId,
       period
     });
-    
+
     if (error) throw error;
     return data;
   },
@@ -64,7 +59,7 @@ export const driverService = {
       .insert({ driver_id: driverId, amount, status: 'pending' })
       .select()
       .single();
-    
+
     if (error) throw error;
     return data;
   }

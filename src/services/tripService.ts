@@ -23,7 +23,7 @@ export const tripService = {
       .insert({ ...tripData, status: 'pending' })
       .select()
       .single();
-    
+
     if (error) throw error;
     return data;
   },
@@ -35,30 +35,21 @@ export const tripService = {
       .eq('id', tripId)
       .select()
       .single();
-    
+
     if (error) throw error;
     return data;
   },
 
   async updateTripStatus(tripId: string, status: TripStatus) {
-    const { data, error } = await supabase
-      .from('trips')
-      .update({ status })
-      .eq('id', tripId)
-      .select()
-      .single();
-    
+    const { data, error } = await supabase.from('trips').update({ status }).eq('id', tripId).select().single();
+
     if (error) throw error;
     return data;
   },
 
   async getTripById(tripId: string) {
-    const { data, error } = await supabase
-      .from('trips')
-      .select('*')
-      .eq('id', tripId)
-      .single();
-    
+    const { data, error } = await supabase.from('trips').select('*').eq('id', tripId).single();
+
     if (error) throw error;
     return data;
   },
@@ -70,7 +61,7 @@ export const tripService = {
       .or(`passenger_id.eq.${userId},driver_id.eq.${userId}`)
       .order('created_at', { ascending: false })
       .limit(limit);
-    
+
     if (error) throw error;
     return data;
   },
@@ -78,8 +69,9 @@ export const tripService = {
   subscribeToTrip(tripId: string, callback: (trip: Trip) => void) {
     return supabase
       .channel(`trip:${tripId}`)
-      .on('postgres_changes', { event: '*', schema: 'public', table: 'trips', filter: `id=eq.${tripId}` }, 
-        (payload) => callback(payload.new as Trip))
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'trips', filter: `id=eq.${tripId}` }, payload =>
+        callback(payload.new as Trip)
+      )
       .subscribe();
   }
 };

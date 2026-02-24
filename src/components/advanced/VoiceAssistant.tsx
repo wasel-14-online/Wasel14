@@ -1,1 +1,3 @@
-export function VoiceAssistant() { return null; }
+export function VoiceAssistant() {
+  return null;
+}

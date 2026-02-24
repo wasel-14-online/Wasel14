@@ -1,1 +1,3 @@
-export function RideSocial() { return <div>Ride Social</div>; }
+export function RideSocial() {
+  return <div>Ride Social</div>;
+}

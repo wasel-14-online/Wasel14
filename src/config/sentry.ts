@@ -16,8 +16,8 @@ export function initSentry() {
       new BrowserTracing(),
       new Sentry.Replay({
         maskAllText: true,
-        blockAllMedia: true,
-      }),
+        blockAllMedia: true
+      })
     ],
     tracesSampleRate: 0.1,
     replaysSessionSampleRate: 0.1,
@@ -28,7 +28,7 @@ export function initSentry() {
         return null;
       }
       return event;
-    },
+    }
   });
 }
 

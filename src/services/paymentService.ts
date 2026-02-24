@@ -13,7 +13,7 @@ export const paymentService = {
     const { data, error } = await supabase.functions.invoke('payment-create-intent', {
       body: { amount, currency, tripId }
     });
-    
+
     if (error) throw error;
     return data;
   },
@@ -22,7 +22,7 @@ export const paymentService = {
     const { data, error } = await supabase.functions.invoke('payment-confirm', {
       body: { paymentIntentId }
     });
-    
+
     if (error) throw error;
     return data;
   },
@@ -33,17 +33,14 @@ export const paymentService = {
       .insert({ trip_id: tripId, amount, reason, status: 'pending' })
       .select()
       .single();
-    
+
     if (error) throw error;
     return data;
   },
 
   async getPaymentMethods(userId: string) {
-    const { data, error } = await supabase
-      .from('payment_methods')
-      .select('*')
-      .eq('user_id', userId);
-    
+    const { data, error } = await supabase.from('payment_methods').select('*').eq('user_id', userId);
+
     if (error) throw error;
     return data;
   },
@@ -54,7 +51,7 @@ export const paymentService = {
       .insert({ user_id: userId, payment_method_id: paymentMethodId, type })
       .select()
       .single();
-    
+
     if (error) throw error;
     return data;
   }

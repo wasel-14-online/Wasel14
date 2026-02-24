@@ -22,14 +22,14 @@ export const verificationService = {
     const { data: uploadData, error: uploadError } = await supabase.storage
       .from('verification-documents')
       .upload(fileName, file);
-    
+
     if (uploadError) throw uploadError;
-    
+
     // Get public URL
-    const { data: { publicUrl } } = supabase.storage
-      .from('verification-documents')
-      .getPublicUrl(fileName);
-    
+    const {
+      data: { publicUrl }
+    } = supabase.storage.from('verification-documents').getPublicUrl(fileName);
+
     // Create verification record
     const { data, error } = await supabase
       .from('verification_documents')
@@ -42,7 +42,7 @@ export const verificationService = {
       })
       .select()
       .single();
-    
+
     if (error) throw error;
     return data;
   },
@@ -55,14 +55,14 @@ export const verificationService = {
     if (rejectionReason) {
       updates.rejection_reason = rejectionReason;
     }
-    
+
     const { data, error } = await supabase
       .from('verification_documents')
       .update(updates)
       .eq('id', documentId)
       .select()
       .single();
-    
+
     if (error) throw error;
     return data;
   },
@@ -73,7 +73,7 @@ export const verificationService = {
       .select('*')
       .eq('user_id', userId)
       .order('created_at', { ascending: false });
-    
+
     if (error) throw error;
     return data;
   },
@@ -85,7 +85,7 @@ export const verificationService = {
       .eq('user_id', userId)
       .eq('status', 'approved')
       .in('type', ['drivers_license', 'vehicle_registration', 'insurance']);
-    
+
     return data?.length === 3;
   },
 
@@ -95,7 +95,7 @@ export const verificationService = {
       .select('*')
       .eq('status', 'pending')
       .order('created_at', { ascending: true });
-    
+
     if (error) throw error;
     return data;
   }

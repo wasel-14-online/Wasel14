@@ -18,7 +18,12 @@ const PRICING = {
 };
 
 export const fareService = {
-  calculateFare(distance: number, duration: number, currency: keyof typeof PRICING = 'AED', surgeMultiplier = 1): FareCalculation {
+  calculateFare(
+    distance: number,
+    duration: number,
+    currency: keyof typeof PRICING = 'AED',
+    surgeMultiplier = 1
+  ): FareCalculation {
     const pricing = PRICING[currency];
     const baseFare = pricing.base;
     const distanceFare = distance * pricing.perKm;
@@ -39,10 +44,8 @@ export const fareService = {
   },
 
   applyPromoCode(fare: FareCalculation, promoCode: { type: 'percentage' | 'fixed'; value: number }): FareCalculation {
-    const discount = promoCode.type === 'percentage' 
-      ? fare.total * (promoCode.value / 100)
-      : promoCode.value;
-    
+    const discount = promoCode.type === 'percentage' ? fare.total * (promoCode.value / 100) : promoCode.value;
+
     return {
       ...fare,
       discount,

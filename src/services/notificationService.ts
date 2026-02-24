@@ -14,27 +14,30 @@ export interface Notification {
 }
 
 export const notificationService = {
-  async sendNotification(userId: string, type: NotificationType, title: string, message: string, data?: Record<string, any>) {
+  async sendNotification(
+    userId: string,
+    type: NotificationType,
+    title: string,
+    message: string,
+    data?: Record<string, any>
+  ) {
     const { data: notification, error } = await supabase
       .from('notifications')
       .insert({ user_id: userId, type, title, message, data, read: false })
       .select()
       .single();
-    
+
     if (error) throw error;
 
     // Send push notification
     await this.sendPushNotification(userId, title, message, data);
-    
+
     return notification;
   },
 
   async sendPushNotification(userId: string, title: string, body: string, data?: Record<string, any>) {
-    const { data: tokens } = await supabase
-      .from('push_tokens')
-      .select('token')
-      .eq('user_id', userId);
-    
+    const { data: tokens } = await supabase.from('push_tokens').select('token').eq('user_id', userId);
+
     if (!tokens?.length) return;
 
     // Call Firebase Cloud Messaging via edge function
@@ -62,17 +65,14 @@ export const notificationService = {
       .eq('user_id', userId)
       .order('created_at', { ascending: false })
       .limit(limit);
-    
+
     if (error) throw error;
     return data;
   },
 
   async markAsRead(notificationId: string) {
-    const { error } = await supabase
-      .from('notifications')
-      .update({ read: true })
-      .eq('id', notificationId);
-    
+    const { error } = await supabase.from('notifications').update({ read: true }).eq('id', notificationId);
+
     if (error) throw error;
   }
 };

@@ -23,18 +23,18 @@ Object.defineProperty(window, 'matchMedia', {
     removeListener: vi.fn(),
     addEventListener: vi.fn(),
     removeEventListener: vi.fn(),
-    dispatchEvent: vi.fn(),
-  })),
+    dispatchEvent: vi.fn()
+  }))
 });
 
 // Mock geolocation
 const mockGeolocation = {
   getCurrentPosition: vi.fn(),
   watchPosition: vi.fn(),
-  clearWatch: vi.fn(),
+  clearWatch: vi.fn()
 };
 
 Object.defineProperty(global.navigator, 'geolocation', {
   value: mockGeolocation,
-  writable: true,
+  writable: true
 });

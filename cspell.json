@@ -2,12 +2,17 @@
   "version": "0.2",
   "language": "en",
   "words": [
+    "Careem",
+    "CCPA",
     "firestore",
-    "supabase",
+    "Jumio",
+    "mcpServers",
     "mixpanel",
+    "psql",
+    "Shadcn",
+    "supabase",
     "wassel",
-    "Wassel",
-    "mcpServers"
+    "Wassel"
   ],
   "ignorePaths": [
     "node_modules",

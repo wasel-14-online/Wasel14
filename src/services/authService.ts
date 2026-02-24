@@ -1,7 +1,11 @@
 import { supabase } from './api';
 
 export const authService = {
-  async signUp(email: string, password: string, userData: { name: string; phone: string; role: 'passenger' | 'driver' }) {
+  async signUp(
+    email: string,
+    password: string,
+    userData: { name: string; phone: string; role: 'passenger' | 'driver' }
+  ) {
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
@@ -9,7 +13,7 @@ export const authService = {
         data: userData
       }
     });
-    
+
     if (error) throw error;
     return data;
   },
@@ -19,7 +23,7 @@ export const authService = {
       email,
       password
     });
-    
+
     if (error) throw error;
     return data;
   },

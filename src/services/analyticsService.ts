@@ -11,18 +11,20 @@ export interface AnalyticsEvent {
 
 export const analyticsService = {
   async trackEvent(eventType: EventType, properties?: Record<string, any>) {
-    const { data: { user } } = await supabase.auth.getUser();
-    
+    const {
+      data: { user }
+    } = await supabase.auth.getUser();
+
     const event: AnalyticsEvent = {
       event_type: eventType,
       user_id: user?.id,
       properties,
       timestamp: new Date().toISOString()
     };
-    
+
     // Store in database
     await supabase.from('analytics_events').insert(event);
-    
+
     // Send to external analytics (Mixpanel)
     if (window.mixpanel) {
       window.mixpanel.track(eventType, properties);
@@ -48,7 +50,7 @@ export const analyticsService = {
       .eq('user_id', userId)
       .gte('timestamp', startDate)
       .lte('timestamp', endDate);
-    
+
     if (error) throw error;
     return data;
   },
@@ -58,7 +60,7 @@ export const analyticsService = {
       start_date: startDate,
       end_date: endDate
     });
-    
+
     if (error) throw error;
     return data;
   }

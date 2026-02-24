@@ -6,7 +6,7 @@ export const aiService = {
     const { data, error } = await supabase.functions.invoke('ai-optimize-route', {
       body: { waypoints }
     });
-    
+
     if (error) throw error;
     return data.optimizedRoute;
   },
@@ -15,7 +15,7 @@ export const aiService = {
     const { data, error } = await supabase.functions.invoke('ai-dynamic-pricing', {
       body: { distance, time, demand }
     });
-    
+
     if (error) throw error;
     return data.surgeMultiplier;
   },
@@ -24,7 +24,7 @@ export const aiService = {
     const { data, error } = await supabase.functions.invoke('ai-risk-assessment', {
       body: { userId, tripData }
     });
-    
+
     if (error) throw error;
     return data;
   },
@@ -33,7 +33,7 @@ export const aiService = {
     const { data, error } = await supabase.functions.invoke('ai-location-search', {
       body: { query }
     });
-    
+
     if (error) throw error;
     return data.locations;
   },
@@ -42,7 +42,7 @@ export const aiService = {
     const { data, error } = await supabase.functions.invoke('ai-recommendations', {
       body: { userId }
     });
-    
+
     if (error) throw error;
     return data.recommendations;
   },
@@ -51,7 +51,7 @@ export const aiService = {
     const { data, error } = await supabase.functions.invoke('ai-driver-matching', {
       body: { tripData }
     });
-    
+
     if (error) throw error;
     return data.driverId;
   },
@@ -60,7 +60,7 @@ export const aiService = {
     const { data, error } = await supabase.functions.invoke('ai-fraud-detection', {
       body: { transactionData }
     });
-    
+
     if (error) throw error;
     return data;
   },
@@ -69,7 +69,7 @@ export const aiService = {
     const { data, error } = await supabase.functions.invoke('ai-demand-prediction', {
       body: { location, time }
     });
-    
+
     if (error) throw error;
     return data.demandScore;
   }

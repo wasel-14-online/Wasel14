@@ -97,13 +97,13 @@ function AppContent() {
       return (
         <>
           <Toaster />
-          <AuthPage 
-            initialTab={authTab} 
-            onBack={() => setShowAuthPage(false)} 
+          <AuthPage
+            initialTab={authTab}
+            onBack={() => setShowAuthPage(false)}
             onSuccess={() => {
               // AuthContext will automatically update user state
               // No need to manually navigate
-            }} 
+            }}
           />
         </>
       );
@@ -112,7 +112,7 @@ function AppContent() {
     return (
       <>
         <Toaster />
-        <LandingPage 
+        <LandingPage
           onLogin={() => {
             setAuthTab('login');
             setShowAuthPage(true);
@@ -223,39 +223,43 @@ function AppContent() {
       case 'driver-dashboard':
         return <DriverEconomySystem />;
       case 'live-trip':
-        return <LiveTrip 
-          tripId="demo-trip-id"
-          driverId="demo-driver-id"
-          driverInfo={{ 
-            name: 'Ahmed Khan', 
-            photo: '', 
-            rating: 4.8, 
-            vehicleModel: 'Toyota Camry', 
-            vehiclePlate: 'ABC 1234', 
-            vehicleColor: 'Silver'
-          }}
-          pickupLocation={{ 
-            address: '123 Main Street, Amman', 
-            coordinates: { lat: 31.9539, lng: 35.9106 }
-          }}
-          dropoffLocation={{ 
-            address: '456 Queen Alia Street, Amman', 
-            coordinates: { lat: 31.9731, lng: 35.8433 }
-          }}
-        />;
+        return (
+          <LiveTrip
+            tripId="demo-trip-id"
+            driverId="demo-driver-id"
+            driverInfo={{
+              name: 'Ahmed Khan',
+              photo: '',
+              rating: 4.8,
+              vehicleModel: 'Toyota Camry',
+              vehiclePlate: 'ABC 1234',
+              vehicleColor: 'Silver'
+            }}
+            pickupLocation={{
+              address: '123 Main Street, Amman',
+              coordinates: { lat: 31.9539, lng: 35.9106 }
+            }}
+            dropoffLocation={{
+              address: '456 Queen Alia Street, Amman',
+              coordinates: { lat: 31.9731, lng: 35.8433 }
+            }}
+          />
+        );
       case 'trip-export':
         return <TripExport />;
       case 'cancel-trip':
-        return <CancelTrip 
-          tripId="demo-trip-id"
-          tripStatus="waiting"
-          fare={25.00}
-          onCancel={() => {
-            console.log('Trip cancelled');
-            setCurrentPage('my-trips');
-          }}
-          onClose={() => setCurrentPage('my-trips')}
-        />;
+        return (
+          <CancelTrip
+            tripId="demo-trip-id"
+            tripStatus="waiting"
+            fare={25.0}
+            onCancel={() => {
+              console.log('Trip cancelled');
+              setCurrentPage('my-trips');
+            }}
+            onClose={() => setCurrentPage('my-trips')}
+          />
+        );
       case 'promo-codes':
         return <PromoCodesManager />;
       case 'popular-routes':
@@ -273,10 +277,10 @@ function AppContent() {
     <>
       <InstallPWA />
       <Toaster />
-      
+
       {/* Voice Assistant */}
       <VoiceAssistant />
-      
+
       {/* Floating Action Button */}
       <FloatingActionButton
         onBookRide={() => setCurrentPage('find-ride')}
@@ -284,7 +288,7 @@ function AppContent() {
         onScheduleTrip={() => setCurrentPage('scheduled-trips')}
         onCorporateBooking={() => setCurrentPage('business')}
       />
-      
+
       <div className="flex h-screen bg-gray-50 dark:bg-gray-900">
         {/* Sidebar */}
         <Sidebar
@@ -296,10 +300,7 @@ function AppContent() {
 
         {/* Main Content */}
         <div className="flex-1 flex flex-col overflow-hidden">
-          <Header
-            onMenuClick={() => setIsSidebarOpen(!isSidebarOpen)}
-            onNavigate={setCurrentPage}
-          />
+          <Header onMenuClick={() => setIsSidebarOpen(!isSidebarOpen)} onNavigate={setCurrentPage} />
 
           <main className="flex-1 overflow-y-auto p-3 sm:p-6">
             <DemoBanner />

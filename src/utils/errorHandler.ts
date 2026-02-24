@@ -61,21 +61,21 @@ export const ERROR_CODES = {
   AUTH_USER_NOT_FOUND: 'User not found',
   AUTH_EMAIL_EXISTS: 'Email already registered',
   AUTH_WEAK_PASSWORD: 'Password is too weak',
-  
+
   // Trip errors
   TRIP_NOT_FOUND: 'Trip not found',
   TRIP_ALREADY_CANCELLED: 'Trip already cancelled',
   TRIP_CANNOT_CANCEL: 'Cannot cancel trip at this stage',
-  
+
   // Payment errors
   PAYMENT_FAILED: 'Payment failed',
   PAYMENT_INSUFFICIENT_FUNDS: 'Insufficient funds',
   PAYMENT_CARD_DECLINED: 'Card declined',
-  
+
   // Driver errors
   DRIVER_NOT_AVAILABLE: 'No drivers available',
   DRIVER_NOT_VERIFIED: 'Driver not verified',
-  
+
   // General errors
   NETWORK_ERROR: 'Network connection error',
   VALIDATION_ERROR: 'Validation error',

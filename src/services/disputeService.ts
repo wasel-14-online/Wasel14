@@ -24,7 +24,7 @@ export const disputeService = {
       .insert({ ...disputeData, status: 'open' })
       .select()
       .single();
-    
+
     if (error) throw error;
     return data;
   },
@@ -35,35 +35,21 @@ export const disputeService = {
       updates.resolution = resolution;
       updates.resolved_at = new Date().toISOString();
     }
-    
-    const { data, error } = await supabase
-      .from('disputes')
-      .update(updates)
-      .eq('id', disputeId)
-      .select()
-      .single();
-    
+
+    const { data, error } = await supabase.from('disputes').update(updates).eq('id', disputeId).select().single();
+
     if (error) throw error;
     return data;
   },
 
   async addEvidence(disputeId: string, evidenceUrl: string) {
-    const { data: dispute } = await supabase
-      .from('disputes')
-      .select('evidence')
-      .eq('id', disputeId)
-      .single();
-    
+    const { data: dispute } = await supabase.from('disputes').select('evidence').eq('id', disputeId).single();
+
     const evidence = dispute?.evidence || [];
     evidence.push(evidenceUrl);
-    
-    const { data, error } = await supabase
-      .from('disputes')
-      .update({ evidence })
-      .eq('id', disputeId)
-      .select()
-      .single();
-    
+
+    const { data, error } = await supabase.from('disputes').update({ evidence }).eq('id', disputeId).select().single();
+
     if (error) throw error;
     return data;
   },
@@ -74,21 +60,18 @@ export const disputeService = {
       .select('*')
       .or(`reporter_id.eq.${userId},reported_id.eq.${userId}`)
       .order('created_at', { ascending: false });
-    
+
     if (error) throw error;
     return data;
   },
 
   async getAllDisputes(status?: DisputeStatus) {
-    let query = supabase
-      .from('disputes')
-      .select('*')
-      .order('created_at', { ascending: false });
-    
+    let query = supabase.from('disputes').select('*').order('created_at', { ascending: false });
+
     if (status) {
       query = query.eq('status', status);
     }
-    
+
     const { data, error } = await query;
     if (error) throw error;
     return data;

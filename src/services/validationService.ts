@@ -11,7 +11,7 @@ export const validationService = {
 
   password(password: string): { valid: boolean; errors: string[] } {
     const errors: string[] = [];
-    
+
     if (password.length < 8) {
       errors.push('Password must be at least 8 characters');
     }
@@ -24,7 +24,7 @@ export const validationService = {
     if (!/[0-9]/.test(password)) {
       errors.push('Password must contain at least one number');
     }
-    
+
     return { valid: errors.length === 0, errors };
   },
 
@@ -33,10 +33,7 @@ export const validationService = {
   },
 
   sanitizeString(input: string): string {
-    return input
-      .replace(/[<>]/g, '')
-      .trim()
-      .slice(0, 1000);
+    return input.replace(/[<>]/g, '').trim().slice(0, 1000);
   },
 
   sanitizeHtml(html: string): string {
@@ -47,7 +44,7 @@ export const validationService = {
 
   validateTripData(data: any): { valid: boolean; errors: string[] } {
     const errors: string[] = [];
-    
+
     if (!data.pickup_location || !this.coordinates(data.pickup_location.lat, data.pickup_location.lng)) {
       errors.push('Invalid pickup location');
     }
@@ -57,7 +54,7 @@ export const validationService = {
     if (typeof data.fare !== 'number' || data.fare < 0) {
       errors.push('Invalid fare amount');
     }
-    
+
     return { valid: errors.length === 0, errors };
   }
 };
