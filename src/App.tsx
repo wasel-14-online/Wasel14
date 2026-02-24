@@ -10,70 +10,13 @@ import { useState, useEffect } from 'react';
 import { AuthPage } from './components/AuthPage';
 import { LandingPage } from './components/LandingPage';
 import { Dashboard } from './components/Dashboard';
-import { FindRide } from './components/FindRide';
-import { OfferRide } from './components/OfferRide';
-import { MyTrips } from './components/MyTrips';
-import { RecurringTrips } from './components/RecurringTrips';
-import { Messages } from './components/Messages';
-import { Favorites } from './components/Favorites';
-import { Payments } from './components/Payments';
-import { TripAnalytics } from './components/TripAnalytics';
-import { SafetyCenter } from './components/SafetyCenter';
-import { VerificationCenter } from './components/VerificationCenter';
-import { Settings } from './components/Settings';
-import { NotificationCenter } from './components/NotificationCenter';
-import { UserProfile } from './components/UserProfile';
-import { ReferralProgram } from './components/ReferralProgram';
-import { BusinessAccounts } from './components/BusinessAccounts';
-import { PackageDelivery } from './components/PackageDelivery';
-import { Sidebar } from './components/Sidebar';
-import { Header } from './components/Header';
-// Driver components
+import { FindRide, OfferRide, MyTrips, RecurringTrips, Messages, Favorites, Payments, TripAnalytics, SafetyCenter, VerificationCenter, Settings, NotificationCenter, UserProfile, ReferralProgram, BusinessAccounts, PackageDelivery, Sidebar, Header, LiveTrip, TripExport, CancelTrip, PromoCodesManager, PopularRoutes, WorkflowGuide, DriverEarnings, DisputeCenter, PaymentMethods, ScheduledTrips, CurrencySelector, EnhancedRating, SafetyReport, DriverBadges, CancellationPolicy, RefundStatus, TripInsurance, AccidentReport, InsuranceClaim, ScooterRentals, FreightShipping, PetTransport, SchoolTransport, MedicalTransport, CarRentals, ShuttleService, LuxuryRides, ThinkingCoach } from './components/FindRide';
 import { DriverEconomySystem } from './components/driver/DriverEconomySystem';
-// Missing components
-import { LiveTrip } from './components/LiveTrip';
-import { TripExport } from './components/TripExport';
-import { CancelTrip } from './components/CancelTrip';
-import { PromoCodesManager } from './components/PromoCodesManager';
-import { PopularRoutes } from './components/PopularRoutes';
-import { WorkflowGuide } from './components/WorkflowGuide';
-import { DriverEarnings } from './components/DriverEarnings';
-import { DisputeCenter } from './components/DisputeCenter';
-import { PaymentMethods } from './components/PaymentMethods';
-import { ScheduledTrips } from './components/ScheduledTrips';
 import { AdminDashboard } from './components/admin/AdminDashboard';
-import { TermsOfService } from './components/legal/TermsOfService';
-import { PrivacyPolicy } from './components/legal/PrivacyPolicy';
-import { CookiePolicy } from './components/legal/CookiePolicy';
-import { RefundPolicy } from './components/legal/RefundPolicy';
-import { DriverAgreement } from './components/legal/DriverAgreement';
-// New components
-import { CurrencySelector } from './components/CurrencySelector';
-import { EnhancedRating } from './components/EnhancedRating';
-import { SafetyReport } from './components/SafetyReport';
-import { DriverBadges } from './components/DriverBadges';
-import { CancellationPolicy } from './components/CancellationPolicy';
-import { RefundStatus } from './components/RefundStatus';
-import { TripInsurance } from './components/TripInsurance';
-import { AccidentReport } from './components/AccidentReport';
-import { InsuranceClaim } from './components/InsuranceClaim';
-// Premium components
-import { SplashScreen } from './components/premium/SplashScreen';
-import { FloatingActionButton } from './components/premium/FloatingActionButton';
-import { EnhancedDashboard } from './components/premium/EnhancedDashboard';
-// Advanced features
+import { TermsOfService, PrivacyPolicy, CookiePolicy, RefundPolicy, DriverAgreement } from './components/legal/TermsOfService';
+import { SplashScreen, FloatingActionButton, EnhancedDashboard } from './components/premium/SplashScreen';
 import { VoiceAssistant } from './components/advanced/VoiceAssistant';
 import { RideSocial } from './components/social/RideSocial';
-// New Service components
-import { ScooterRentals } from './components/ScooterRentals';
-import { FreightShipping } from './components/FreightShipping';
-import { PetTransport } from './components/PetTransport';
-import { SchoolTransport } from './components/SchoolTransport';
-import { MedicalTransport } from './components/MedicalTransport';
-import { CarRentals } from './components/CarRentals';
-import { ShuttleService } from './components/ShuttleService';
-import { LuxuryRides } from './components/LuxuryRides';
-import { ThinkingCoach } from './components/ThinkingCoach';
 
 function AppContent() {
   const { user, loading } = useAuth();
