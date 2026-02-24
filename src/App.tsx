@@ -10,10 +10,63 @@ import { useState, useEffect } from 'react';
 import { AuthPage } from './components/AuthPage';
 import { LandingPage } from './components/LandingPage';
 import { Dashboard } from './components/Dashboard';
-import { FindRide, OfferRide, MyTrips, RecurringTrips, Messages, Favorites, Payments, TripAnalytics, SafetyCenter, VerificationCenter, Settings, NotificationCenter, UserProfile, ReferralProgram, BusinessAccounts, PackageDelivery, Sidebar, Header, LiveTrip, TripExport, CancelTrip, PromoCodesManager, PopularRoutes, WorkflowGuide, DriverEarnings, DisputeCenter, PaymentMethods, ScheduledTrips, CurrencySelector, EnhancedRating, SafetyReport, DriverBadges, CancellationPolicy, RefundStatus, TripInsurance, AccidentReport, InsuranceClaim, ScooterRentals, FreightShipping, PetTransport, SchoolTransport, MedicalTransport, CarRentals, ShuttleService, LuxuryRides, ThinkingCoach } from './components/FindRide';
+import {
+  FindRide,
+  OfferRide,
+  MyTrips,
+  RecurringTrips,
+  Messages,
+  Favorites,
+  Payments,
+  TripAnalytics,
+  SafetyCenter,
+  VerificationCenter,
+  Settings,
+  NotificationCenter,
+  UserProfile,
+  ReferralProgram,
+  BusinessAccounts,
+  PackageDelivery,
+  Sidebar,
+  Header,
+  LiveTrip,
+  TripExport,
+  CancelTrip,
+  PromoCodesManager,
+  PopularRoutes,
+  WorkflowGuide,
+  DriverEarnings,
+  DisputeCenter,
+  PaymentMethods,
+  ScheduledTrips,
+  CurrencySelector,
+  EnhancedRating,
+  SafetyReport,
+  DriverBadges,
+  CancellationPolicy,
+  RefundStatus,
+  TripInsurance,
+  AccidentReport,
+  InsuranceClaim,
+  ScooterRentals,
+  FreightShipping,
+  PetTransport,
+  SchoolTransport,
+  MedicalTransport,
+  CarRentals,
+  ShuttleService,
+  LuxuryRides,
+  ThinkingCoach
+} from './components/FindRide';
 import { DriverEconomySystem } from './components/driver/DriverEconomySystem';
 import { AdminDashboard } from './components/admin/AdminDashboard';
-import { TermsOfService, PrivacyPolicy, CookiePolicy, RefundPolicy, DriverAgreement } from './components/legal/TermsOfService';
+import {
+  TermsOfService,
+  PrivacyPolicy,
+  CookiePolicy,
+  RefundPolicy,
+  DriverAgreement
+} from './components/legal/TermsOfService';
 import { SplashScreen, FloatingActionButton, EnhancedDashboard } from './components/premium/SplashScreen';
 import { VoiceAssistant } from './components/advanced/VoiceAssistant';
 import { RideSocial } from './components/social/RideSocial';
