@@ -1,0 +1,17 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    "firestore",
+    "supabase",
+    "mixpanel",
+    "wassel",
+    "Wassel",
+    "mcpServers"
+  ],
+  "ignorePaths": [
+    "node_modules",
+    "dist",
+    "build"
+  ]
+}

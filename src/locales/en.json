@@ -1,0 +1,45 @@
+{
+  "app": {
+    "name": "Wassel",
+    "tagline": "Your Ride, Your Way"
+  },
+  "auth": {
+    "login": "Login",
+    "signup": "Sign Up",
+    "logout": "Logout",
+    "email": "Email",
+    "password": "Password",
+    "forgotPassword": "Forgot Password?"
+  },
+  "trip": {
+    "bookRide": "Book a Ride",
+    "pickup": "Pickup Location",
+    "dropoff": "Dropoff Location",
+    "fare": "Fare",
+    "distance": "Distance",
+    "duration": "Duration",
+    "status": "Status",
+    "cancel": "Cancel Trip"
+  },
+  "driver": {
+    "earnings": "Earnings",
+    "trips": "Trips",
+    "rating": "Rating",
+    "goOnline": "Go Online",
+    "goOffline": "Go Offline"
+  },
+  "payment": {
+    "total": "Total",
+    "pay": "Pay Now",
+    "addCard": "Add Card",
+    "paymentMethods": "Payment Methods"
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success"
+  }
+}

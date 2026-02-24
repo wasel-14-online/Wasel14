@@ -1,0 +1,455 @@
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-02-24T10:53:48.462Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-02-24T10:53:50.545Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-02-24T10:53:50.557Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-02-24T10:53:53.545Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-02-24T10:53:53.553Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-02-24T10:54:48.407Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-02-24T10:54:48.410Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-02-24T10:54:56.225Z] Running auto auth
+[debug] [2026-02-24T10:54:56.226Z] Running auto auth
+[debug] [2026-02-24T10:54:56.227Z] Running auto auth
+[debug] [2026-02-24T10:54:56.227Z] Running auto auth
+[debug] [2026-02-24T10:54:56.227Z] Running auto auth
+[debug] [2026-02-24T10:54:56.227Z] Running auto auth
+[debug] [2026-02-24T10:54:56.228Z] Running auto auth
+[debug] [2026-02-24T10:54:56.305Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:56.319Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo [none]
+[debug] [2026-02-24T10:54:56.374Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:56.379Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo [none]
+[debug] [2026-02-24T10:54:56.415Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:56.416Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo [none]
+[debug] [2026-02-24T10:54:56.446Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:56.447Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo [none]
+[debug] [2026-02-24T10:54:56.482Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:56.482Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo [none]
+[debug] [2026-02-24T10:54:56.502Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:56.502Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo [none]
+[debug] [2026-02-24T10:54:56.518Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:56.519Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo [none]
+[debug] [2026-02-24T10:54:56.746Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo 200
+[debug] [2026-02-24T10:54:56.747Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo {"name":"projects/wasel-29064/billingInfo","projectId":"wasel-29064","billingAccountName":"","billingEnabled":false}
+[debug] [2026-02-24T10:54:56.771Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:56.772Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:56.772Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:56.773Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:56.777Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:56.778Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:56.779Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:56.814Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:56.815Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:56.816Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firestore.googleapis.com [none]
+[debug] [2026-02-24T10:54:56.816Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firestore.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:56.820Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/storage.googleapis.com [none]
+[debug] [2026-02-24T10:54:56.820Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/storage.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:56.823Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebasedataconnect.googleapis.com [none]
+[debug] [2026-02-24T10:54:56.823Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebasedataconnect.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:56.826Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/identitytoolkit.googleapis.com [none]
+[debug] [2026-02-24T10:54:56.826Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/identitytoolkit.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:56.828Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/fcm.googleapis.com [none]
+[debug] [2026-02-24T10:54:56.828Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/fcm.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:56.829Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/cloudfunctions.googleapis.com [none]
+[debug] [2026-02-24T10:54:56.829Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/cloudfunctions.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:56.831Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseremoteconfig.googleapis.com [none]
+[debug] [2026-02-24T10:54:56.831Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseremoteconfig.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:56.833Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseapphosting.googleapis.com [none]
+[debug] [2026-02-24T10:54:56.833Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseapphosting.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:56.835Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseio.com [none]
+[debug] [2026-02-24T10:54:56.835Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseio.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:56.995Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo 200
+[debug] [2026-02-24T10:54:56.995Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo {"name":"projects/wasel-29064/billingInfo","projectId":"wasel-29064","billingAccountName":"","billingEnabled":false}
+[debug] [2026-02-24T10:54:56.996Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:56.997Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:56.997Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:56.998Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:56.999Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:56.999Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.000Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.038Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.044Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.047Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firestore.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.047Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firestore.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.051Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/storage.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.051Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/storage.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.057Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebasedataconnect.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.059Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebasedataconnect.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.061Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/identitytoolkit.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.061Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/identitytoolkit.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.063Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/fcm.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.063Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/fcm.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.066Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/cloudfunctions.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.066Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/cloudfunctions.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.070Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseremoteconfig.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.070Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseremoteconfig.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.072Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseapphosting.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.073Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseapphosting.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.074Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseio.com [none]
+[debug] [2026-02-24T10:54:57.074Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseio.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.154Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo 200
+[debug] [2026-02-24T10:54:57.154Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo {"name":"projects/wasel-29064/billingInfo","projectId":"wasel-29064","billingAccountName":"","billingEnabled":false}
+[debug] [2026-02-24T10:54:57.155Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.156Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.157Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.157Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.158Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.158Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.158Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.171Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.171Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.172Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firestore.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.172Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firestore.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.174Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/storage.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.174Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/storage.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.178Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebasedataconnect.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.179Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebasedataconnect.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.181Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/identitytoolkit.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.181Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/identitytoolkit.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.186Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/fcm.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.187Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/fcm.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.188Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/cloudfunctions.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.189Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/cloudfunctions.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.192Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseremoteconfig.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.193Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseremoteconfig.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.197Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseapphosting.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.197Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseapphosting.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.200Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseio.com [none]
+[debug] [2026-02-24T10:54:57.200Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseio.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.477Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo 200
+[debug] [2026-02-24T10:54:57.477Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo {"name":"projects/wasel-29064/billingInfo","projectId":"wasel-29064","billingAccountName":"","billingEnabled":false}
+[debug] [2026-02-24T10:54:57.478Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.480Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.492Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.493Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.493Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.493Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.496Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.506Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.506Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.507Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firestore.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.507Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firestore.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.513Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/storage.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.513Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/storage.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.514Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebasedataconnect.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.515Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebasedataconnect.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.518Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/identitytoolkit.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.518Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/identitytoolkit.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.521Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/fcm.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.521Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/fcm.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.524Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/cloudfunctions.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.524Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/cloudfunctions.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.527Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseremoteconfig.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.527Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseremoteconfig.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.530Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseapphosting.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.530Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseapphosting.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.532Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseio.com [none]
+[debug] [2026-02-24T10:54:57.532Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseio.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.634Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo 200
+[debug] [2026-02-24T10:54:57.634Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo {"name":"projects/wasel-29064/billingInfo","projectId":"wasel-29064","billingAccountName":"","billingEnabled":false}
+[debug] [2026-02-24T10:54:57.635Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.635Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.636Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.636Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.648Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.649Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.649Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.662Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.662Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.663Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firestore.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.663Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firestore.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.665Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/storage.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.665Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/storage.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.667Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebasedataconnect.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.667Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebasedataconnect.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.668Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/identitytoolkit.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.669Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/identitytoolkit.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.670Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/fcm.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.670Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/fcm.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.672Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/cloudfunctions.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.672Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/cloudfunctions.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.675Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseremoteconfig.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.675Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseremoteconfig.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.677Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseapphosting.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.677Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseapphosting.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.680Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseio.com [none]
+[debug] [2026-02-24T10:54:57.680Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseio.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.830Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo 200
+[debug] [2026-02-24T10:54:57.830Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo {"name":"projects/wasel-29064/billingInfo","projectId":"wasel-29064","billingAccountName":"","billingEnabled":false}
+[debug] [2026-02-24T10:54:57.831Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.833Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.834Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.838Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.838Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.839Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.839Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.874Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.877Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:57.877Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firestore.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.877Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firestore.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.878Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/storage.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.878Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/storage.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.882Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebasedataconnect.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.882Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebasedataconnect.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.883Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/identitytoolkit.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.883Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/identitytoolkit.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.884Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/fcm.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.884Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/fcm.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.884Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/cloudfunctions.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.884Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/cloudfunctions.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.885Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseremoteconfig.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.885Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseremoteconfig.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.885Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseapphosting.googleapis.com [none]
+[debug] [2026-02-24T10:54:57.885Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseapphosting.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:57.886Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseio.com [none]
+[debug] [2026-02-24T10:54:57.886Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseio.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:58.086Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo 200
+[debug] [2026-02-24T10:54:58.086Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo {"name":"projects/wasel-29064/billingInfo","projectId":"wasel-29064","billingAccountName":"","billingEnabled":false}
+[debug] [2026-02-24T10:54:58.091Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:58.091Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:58.097Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:58.098Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:58.098Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:58.098Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:58.098Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:58.134Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:58.135Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:58.135Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firestore.googleapis.com [none]
+[debug] [2026-02-24T10:54:58.135Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firestore.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:58.142Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/storage.googleapis.com [none]
+[debug] [2026-02-24T10:54:58.142Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/storage.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:58.143Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebasedataconnect.googleapis.com [none]
+[debug] [2026-02-24T10:54:58.145Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebasedataconnect.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:58.146Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/identitytoolkit.googleapis.com [none]
+[debug] [2026-02-24T10:54:58.146Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/identitytoolkit.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:58.153Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/fcm.googleapis.com [none]
+[debug] [2026-02-24T10:54:58.153Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/fcm.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:58.154Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/cloudfunctions.googleapis.com [none]
+[debug] [2026-02-24T10:54:58.154Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/cloudfunctions.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:58.161Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseremoteconfig.googleapis.com [none]
+[debug] [2026-02-24T10:54:58.161Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseremoteconfig.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:58.162Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseapphosting.googleapis.com [none]
+[debug] [2026-02-24T10:54:58.162Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseapphosting.googleapis.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:58.174Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseio.com [none]
+[debug] [2026-02-24T10:54:58.175Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseio.com  x-goog-user-project=wasel-29064
+[debug] [2026-02-24T10:54:58.400Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/cloudfunctions.googleapis.com 200
+[debug] [2026-02-24T10:54:58.401Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:58.404Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseio.com 403
+[debug] [2026-02-24T10:54:58.407Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseio.com [omitted]
+[debug] [2026-02-24T10:54:58.634Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseapphosting.googleapis.com 200
+[debug] [2026-02-24T10:54:58.635Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:58.639Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/fcm.googleapis.com 200
+[debug] [2026-02-24T10:54:58.639Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/fcm.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:58.737Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firestore.googleapis.com 200
+[debug] [2026-02-24T10:54:58.737Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firestore.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:58.738Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebasedataconnect.googleapis.com 200
+[debug] [2026-02-24T10:54:58.738Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:58.750Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebasedataconnect.googleapis.com 200
+[debug] [2026-02-24T10:54:58.750Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:58.770Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseapphosting.googleapis.com 200
+[debug] [2026-02-24T10:54:58.772Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:58.773Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firestore.googleapis.com 200
+[debug] [2026-02-24T10:54:58.774Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firestore.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:58.777Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/fcm.googleapis.com 200
+[debug] [2026-02-24T10:54:58.777Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/fcm.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:58.798Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebasedataconnect.googleapis.com 200
+[debug] [2026-02-24T10:54:58.798Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:58.802Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseremoteconfig.googleapis.com 200
+[debug] [2026-02-24T10:54:58.802Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseremoteconfig.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:58.810Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseremoteconfig.googleapis.com 200
+[debug] [2026-02-24T10:54:58.810Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseremoteconfig.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:58.817Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseremoteconfig.googleapis.com 200
+[debug] [2026-02-24T10:54:58.817Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseremoteconfig.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:58.829Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/storage.googleapis.com 200
+[debug] [2026-02-24T10:54:58.829Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/storage.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:58.841Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/cloudfunctions.googleapis.com 200
+[debug] [2026-02-24T10:54:58.841Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:58.865Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebasedataconnect.googleapis.com 200
+[debug] [2026-02-24T10:54:58.865Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:58.865Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseremoteconfig.googleapis.com 200
+[debug] [2026-02-24T10:54:58.866Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseremoteconfig.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:58.878Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseio.com 403
+[debug] [2026-02-24T10:54:58.879Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseio.com [omitted]
+[debug] [2026-02-24T10:54:58.892Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseio.com 403
+[debug] [2026-02-24T10:54:58.893Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseio.com [omitted]
+[debug] [2026-02-24T10:54:58.894Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firestore.googleapis.com 200
+[debug] [2026-02-24T10:54:58.894Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firestore.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:58.909Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/fcm.googleapis.com 200
+[debug] [2026-02-24T10:54:58.909Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/fcm.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:58.926Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/identitytoolkit.googleapis.com 200
+[debug] [2026-02-24T10:54:58.926Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/identitytoolkit.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:58.936Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/cloudfunctions.googleapis.com 200
+[debug] [2026-02-24T10:54:58.936Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:58.936Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/identitytoolkit.googleapis.com 200
+[debug] [2026-02-24T10:54:58.937Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/identitytoolkit.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:58.945Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/fcm.googleapis.com 200
+[debug] [2026-02-24T10:54:58.945Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/fcm.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:58.957Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseio.com 403
+[debug] [2026-02-24T10:54:58.957Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseio.com [omitted]
+[debug] [2026-02-24T10:54:58.959Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseio.com 403
+[debug] [2026-02-24T10:54:58.959Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseio.com [omitted]
+[debug] [2026-02-24T10:54:58.978Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebasedataconnect.googleapis.com 200
+[debug] [2026-02-24T10:54:58.979Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:58.981Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/identitytoolkit.googleapis.com 200
+[debug] [2026-02-24T10:54:58.981Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/identitytoolkit.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:59.000Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/identitytoolkit.googleapis.com 200
+[debug] [2026-02-24T10:54:59.001Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/identitytoolkit.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:59.014Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/cloudfunctions.googleapis.com 200
+[debug] [2026-02-24T10:54:59.015Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:59.016Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/storage.googleapis.com 200
+[debug] [2026-02-24T10:54:59.017Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/storage.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:59.028Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseapphosting.googleapis.com 200
+[debug] [2026-02-24T10:54:59.029Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:59.038Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/storage.googleapis.com 200
+[debug] [2026-02-24T10:54:59.038Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/storage.googleapis.com [omitted]
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-02-24T10:54:59.062Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/cloudfunctions.googleapis.com 200
+[debug] [2026-02-24T10:54:59.062Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:59.063Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseremoteconfig.googleapis.com 200
+[debug] [2026-02-24T10:54:59.063Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseremoteconfig.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:59.073Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/cloudfunctions.googleapis.com 200
+[debug] [2026-02-24T10:54:59.074Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:59.076Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseapphosting.googleapis.com 200
+[debug] [2026-02-24T10:54:59.076Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:59.080Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebasedataconnect.googleapis.com 200
+[debug] [2026-02-24T10:54:59.080Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:59.087Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/storage.googleapis.com 200
+[debug] [2026-02-24T10:54:59.088Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/storage.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:59.100Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firestore.googleapis.com 200
+[debug] [2026-02-24T10:54:59.100Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firestore.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:59.104Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseapphosting.googleapis.com 200
+[debug] [2026-02-24T10:54:59.104Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:59.108Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseio.com 403
+[debug] [2026-02-24T10:54:59.109Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseio.com [omitted]
+[debug] [2026-02-24T10:54:59.110Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/identitytoolkit.googleapis.com 200
+[debug] [2026-02-24T10:54:59.110Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/identitytoolkit.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:59.127Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/fcm.googleapis.com 200
+[debug] [2026-02-24T10:54:59.128Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/fcm.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:59.152Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/identitytoolkit.googleapis.com 200
+[debug] [2026-02-24T10:54:59.153Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/identitytoolkit.googleapis.com [omitted]
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-02-24T10:54:59.184Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/storage.googleapis.com 200
+[debug] [2026-02-24T10:54:59.185Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/storage.googleapis.com [omitted]
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-02-24T10:54:59.212Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-02-24T10:54:59.215Z] > authorizing via signed-in user (laith.nassar.90@gmail.com)
+[debug] [2026-02-24T10:54:59.219Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:59.219Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo [none]
+[debug] [2026-02-24T10:54:59.226Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseapphosting.googleapis.com 200
+[debug] [2026-02-24T10:54:59.230Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:59.231Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/storage.googleapis.com 200
+[debug] [2026-02-24T10:54:59.231Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/storage.googleapis.com [omitted]
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-02-24T10:54:59.277Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-02-24T10:54:59.279Z] > authorizing via signed-in user (laith.nassar.90@gmail.com)
+[debug] [2026-02-24T10:54:59.280Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:59.280Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo [none]
+[debug] [2026-02-24T10:54:59.291Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/fcm.googleapis.com 200
+[debug] [2026-02-24T10:54:59.291Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/fcm.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:59.306Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebasedataconnect.googleapis.com 200
+[debug] [2026-02-24T10:54:59.307Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:59.314Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/fcm.googleapis.com 200
+[debug] [2026-02-24T10:54:59.314Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/fcm.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:59.333Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firestore.googleapis.com 200
+[debug] [2026-02-24T10:54:59.333Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firestore.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:59.338Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firestore.googleapis.com 200
+[debug] [2026-02-24T10:54:59.339Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firestore.googleapis.com [omitted]
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-02-24T10:54:59.352Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firestore.googleapis.com 200
+[debug] [2026-02-24T10:54:59.353Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firestore.googleapis.com [omitted]
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-02-24T10:54:59.367Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/storage.googleapis.com 200
+[debug] [2026-02-24T10:54:59.367Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/storage.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:59.376Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseremoteconfig.googleapis.com 200
+[debug] [2026-02-24T10:54:59.376Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseremoteconfig.googleapis.com [omitted]
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-02-24T10:54:59.395Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-02-24T10:54:59.395Z] > authorizing via signed-in user (laith.nassar.90@gmail.com)
+[debug] [2026-02-24T10:54:59.399Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:59.399Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo [none]
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-02-24T10:54:59.418Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-02-24T10:54:59.421Z] > authorizing via signed-in user (laith.nassar.90@gmail.com)
+[debug] [2026-02-24T10:54:59.421Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:59.422Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo [none]
+[debug] [2026-02-24T10:54:59.437Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseremoteconfig.googleapis.com 200
+[debug] [2026-02-24T10:54:59.437Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseremoteconfig.googleapis.com [omitted]
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-02-24T10:54:59.489Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-02-24T10:54:59.490Z] > authorizing via signed-in user (laith.nassar.90@gmail.com)
+[debug] [2026-02-24T10:54:59.491Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:59.492Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo [none]
+[debug] [2026-02-24T10:54:59.495Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/identitytoolkit.googleapis.com 200
+[debug] [2026-02-24T10:54:59.495Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/identitytoolkit.googleapis.com [omitted]
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-02-24T10:54:59.517Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-02-24T10:54:59.518Z] > authorizing via signed-in user (laith.nassar.90@gmail.com)
+[debug] [2026-02-24T10:54:59.518Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:59.519Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo [none]
+[debug] [2026-02-24T10:54:59.521Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseapphosting.googleapis.com 200
+[debug] [2026-02-24T10:54:59.521Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:59.528Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo 200
+[debug] [2026-02-24T10:54:59.529Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo {"name":"projects/wasel-29064/billingInfo","projectId":"wasel-29064","billingAccountName":"","billingEnabled":false}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-02-24T10:54:59.540Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-02-24T10:54:59.540Z] > authorizing via signed-in user (laith.nassar.90@gmail.com)
+[debug] [2026-02-24T10:54:59.548Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/cloudfunctions.googleapis.com 200
+[debug] [2026-02-24T10:54:59.549Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2026-02-24T10:54:59.554Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo 200
+[debug] [2026-02-24T10:54:59.555Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo {"name":"projects/wasel-29064/billingInfo","projectId":"wasel-29064","billingAccountName":"","billingEnabled":false}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-02-24T10:54:59.562Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-02-24T10:54:59.562Z] > authorizing via signed-in user (laith.nassar.90@gmail.com)
+[debug] [2026-02-24T10:54:59.566Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseio.com 403
+[debug] [2026-02-24T10:54:59.566Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wasel-29064/services/firebaseio.com [omitted]
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-02-24T10:54:59.591Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-02-24T10:54:59.592Z] > authorizing via signed-in user (laith.nassar.90@gmail.com)
+[debug] [2026-02-24T10:54:59.593Z] No OAuth tokens found
+[debug] [2026-02-24T10:54:59.593Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo [none]
+[debug] [2026-02-24T10:54:59.599Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo 200
+[debug] [2026-02-24T10:54:59.599Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo {"name":"projects/wasel-29064/billingInfo","projectId":"wasel-29064","billingAccountName":"","billingEnabled":false}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-02-24T10:54:59.603Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-02-24T10:54:59.604Z] > authorizing via signed-in user (laith.nassar.90@gmail.com)
+[debug] [2026-02-24T10:54:59.641Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo 200
+[debug] [2026-02-24T10:54:59.641Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo {"name":"projects/wasel-29064/billingInfo","projectId":"wasel-29064","billingAccountName":"","billingEnabled":false}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-02-24T10:54:59.647Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-02-24T10:54:59.647Z] > authorizing via signed-in user (laith.nassar.90@gmail.com)
+[debug] [2026-02-24T10:54:59.677Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo 200
+[debug] [2026-02-24T10:54:59.677Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo {"name":"projects/wasel-29064/billingInfo","projectId":"wasel-29064","billingAccountName":"","billingEnabled":false}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-02-24T10:54:59.683Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-02-24T10:54:59.683Z] > authorizing via signed-in user (laith.nassar.90@gmail.com)
+[debug] [2026-02-24T10:54:59.693Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo 200
+[debug] [2026-02-24T10:54:59.693Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo {"name":"projects/wasel-29064/billingInfo","projectId":"wasel-29064","billingAccountName":"","billingEnabled":false}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-02-24T10:54:59.699Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-02-24T10:54:59.702Z] > authorizing via signed-in user (laith.nassar.90@gmail.com)
+[debug] [2026-02-24T10:54:59.738Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo 200
+[debug] [2026-02-24T10:54:59.741Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/wasel-29064/billingInfo {"name":"projects/wasel-29064/billingInfo","projectId":"wasel-29064","billingAccountName":"","billingEnabled":false}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-02-24T10:54:59.746Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-02-24T10:54:59.746Z] > authorizing via signed-in user (laith.nassar.90@gmail.com)

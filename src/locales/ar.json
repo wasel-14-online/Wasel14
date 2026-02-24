@@ -1,0 +1,45 @@
+{
+  "app": {
+    "name": "وصل",
+    "tagline": "رحلتك، بطريقتك"
+  },
+  "auth": {
+    "login": "تسجيل الدخول",
+    "signup": "إنشاء حساب",
+    "logout": "تسجيل الخروج",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "forgotPassword": "نسيت كلمة المرور؟"
+  },
+  "trip": {
+    "bookRide": "احجز رحلة",
+    "pickup": "موقع الانطلاق",
+    "dropoff": "موقع الوصول",
+    "fare": "الأجرة",
+    "distance": "المسافة",
+    "duration": "المدة",
+    "status": "الحالة",
+    "cancel": "إلغاء الرحلة"
+  },
+  "driver": {
+    "earnings": "الأرباح",
+    "trips": "الرحلات",
+    "rating": "التقييم",
+    "goOnline": "متصل",
+    "goOffline": "غير متصل"
+  },
+  "payment": {
+    "total": "المجموع",
+    "pay": "ادفع الآن",
+    "addCard": "إضافة بطاقة",
+    "paymentMethods": "طرق الدفع"
+  },
+  "common": {
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "confirm": "تأكيد",
+    "loading": "جاري التحميل...",
+    "error": "خطأ",
+    "success": "نجح"
+  }
+}

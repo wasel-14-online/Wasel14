@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "server-name": {
+      "command": "node",
+      "args": ["path/to/server.js"],
+      "env": {}
+    },
+    "firebase": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "firebase-tools@latest",
+        "experimental:mcp",
+        "--only",
+        "auth,firestore"
+      ]
+    }
+  }
+}
